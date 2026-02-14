@@ -150,6 +150,22 @@
             object-position: top;
         }
         
+        .card-image .fallback {
+            display: none;
+            font-size: 3rem;
+        }
+        
+        .card-image img.error + .fallback {
+            display: flex;
+        }
+        
+        .card-image img.error {
+            display: none;
+        }
+        
+        .card-image.farm-bg { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); }
+        .card-image.beauty-bg { background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%); }
+        
         .card-badge {
             position: absolute;
             top: 0.75rem;
@@ -379,8 +395,9 @@
             </a>
             
             <a href="./caskey-orchards/" class="card" data-categories="farm">
-                <div class="card-image">
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/caskey-orchards/" alt="Caskey Orchards preview" loading="lazy">
+                <div class="card-image farm-bg">
+                    <img src="https://image.thum.io/get/width/400/crop/600/https://geeteshparelly.github.io/flowly-demos/caskey-orchards/" alt="Caskey Orchards preview" loading="lazy" onerror="this.classList.add('error')">
+                    <span class="fallback">🍎</span>
                 </div>
                 <div class="card-content">
                     <div class="card-title">Caskey Orchards</div>
@@ -392,8 +409,9 @@
             </a>
             
             <a href="./salon/" class="card" data-categories="other">
-                <div class="card-image">
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/salon/" alt="Salon Template preview" loading="lazy">
+                <div class="card-image beauty-bg">
+                    <img src="https://image.thum.io/get/width/400/crop/600/https://geeteshparelly.github.io/flowly-demos/salon/" alt="Salon Template preview" loading="lazy" onerror="this.classList.add('error')">
+                    <span class="fallback">💇‍♀️</span>
                 </div>
                 <div class="card-content">
                     <div class="card-title">Salon Template</div>
