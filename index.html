@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowly | Website Demos by Geetesh</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #faf9f7;
+            --surface: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-body: #4a4a4a;
+            --text-muted: #777;
+            --accent: #2d6a4f;
+            --accent-light: #e8f5e9;
+            --border: #e5e5e5;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--text-body);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent-light);
+            color: var(--accent);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-family: 'Source Serif 4', serif;
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .card {
+            background: var(--surface);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+        }
+        
+        .card-image {
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+        
+        .card-content {
+            padding: 1.25rem;
+        }
+        
+        .card-title {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.25rem;
+            font-size: 1.1rem;
+        }
+        
+        .card-type {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        
+        .card-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        .view-site {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info a {
+            color: var(--text-body);
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+        
+        .contact-info a:hover { color: var(--accent); }
+        
+        .price-tag {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+        
+        /* Category colors */
+        .food { background: linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%); }
+        .farm { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); }
+        .flowers { background: linear-gradient(135deg, #fdf4ff 0%, #fae8ff 100%); }
+        .pets { background: linear-gradient(135deg, #fefce8 0%, #fef9c3 100%); }
+        .services { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); }
+        .beauty { background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%); }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 1.8rem; }
+            .container { padding: 2rem 1rem; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="badge">Flowly Portfolio</div>
+            <h1>Website Demos</h1>
+            <p class="subtitle">Custom websites for small businesses • $100 flat rate</p>
+        </header>
+        
+        <div class="grid">
+            <a href="./goodie-dumplings/" class="card">
+                <div class="card-image food">🥟</div>
+                <div class="card-content">
+                    <div class="card-title">Goodie Dumplings</div>
+                    <div class="card-type">Restaurant • Austin, TX</div>
+                    <div class="card-arrow">
+                        <span class="view-site">View Demo →</span>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="./yallatizers/" class="card">
+                <div class="card-image food">🧆</div>
+                <div class="card-content">
+                    <div class="card-title">Yallatizers</div>
+                    <div class="card-type">Mediterranean Food • Austin, TX</div>
+                    <div class="card-arrow">
+                        <span class="view-site">View Demo →</span>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="./ks-seafood/" class="card">
+                <div class="card-image food">🦐</div>
+                <div class="card-content">
+                    <div class="card-title">K&S Seafood</div>
+                    <div class="card-type">Gulf Seafood • Georgetown, TX</div>
+                    <div class="card-arrow">
+                        <span class="view-site">View Demo →</span>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="./bernhardts-farm/" class="card">
+                <div class="card-image farm">🌿</div>
+                <div class="card-content">
+                    <div class="card-title">Bernhardt's Farm</div>
+                    <div class="card-type">Farm & Produce • Elgin, TX</div>
+                    <div class="card-arrow">
+                        <span class="view-site">View Demo →</span>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="./southpaw-bladeworks/" class="card">
+                <div class="card-image services">🔪</div>
+                <div class="card-content">
+                    <div class="card-title">Southpaw Bladeworks</div>
+                    <div class="card-type">Knife Sharpening • Austin, TX</div>
+                    <div class="card-arrow">
+                        <span class="view-site">View Demo →</span>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="./french-and-ginger-flower-co/" class="card">
+                <div class="card-image flowers">💐</div>
+                <div class="card-content">
+                    <div class="card-title">French & Ginger Flower Co</div>
+                    <div class="card-type">Florist • Austin, TX</div>
+                    <div class="card-arrow">
+                        <span class="view-site">View Demo →</span>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="./haute-canine-couture/" class="card">
+                <div class="card-image pets">🐕</div>
+                <div class="card-content">
+                    <div class="card-title">Haute Canine Couture</div>
+                    <div class="card-type">Pet Boutique • Austin, TX</div>
+                    <div class="card-arrow">
+                        <span class="view-site">View Demo →</span>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="./crescent-city-flavor/" class="card">
+                <div class="card-image food">🍳</div>
+                <div class="card-content">
+                    <div class="card-title">Crescent City Flavor</div>
+                    <div class="card-type">Cajun/Creole Food • Austin, TX</div>
+                    <div class="card-arrow">
+                        <span class="view-site">View Demo →</span>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="./caskey-orchards/" class="card">
+                <div class="card-image farm">🍎</div>
+                <div class="card-content">
+                    <div class="card-title">Caskey Orchards</div>
+                    <div class="card-type">Orchard & Farm • Texas</div>
+                    <div class="card-arrow">
+                        <span class="view-site">View Demo →</span>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="./salon/" class="card">
+                <div class="card-image beauty">💇‍♀️</div>
+                <div class="card-content">
+                    <div class="card-title">Salon Template</div>
+                    <div class="card-type">Hair & Beauty Salon</div>
+                    <div class="card-arrow">
+                        <span class="view-site">View Demo →</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        
+        <footer>
+            <div class="contact-info">
+                <a href="tel:737-287-5336">📞 (737) 287-5336</a>
+                <a href="mailto:geetesh.parelly@2hourlearning.com">✉️ geetesh.parelly@2hourlearning.com</a>
+                <a href="https://x.com/GeeteshParelly" target="_blank">𝕏 @GeeteshParelly</a>
+            </div>
+            <div class="price-tag">$100 per website</div>
+        </footer>
+    </div>
+</body>
+</html>
