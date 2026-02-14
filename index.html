@@ -26,17 +26,54 @@
             color: var(--text-body);
             line-height: 1.6;
             min-height: 100vh;
+            padding-top: 70px;
+        }
+        
+        /* Sticky Contact Header */
+        .sticky-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--accent);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .sticky-header .name {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        .sticky-header a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        
+        .sticky-header a:hover {
+            opacity: 0.9;
         }
         
         .container {
             max-width: 1000px;
             margin: 0 auto;
-            padding: 3rem 1.5rem;
+            padding: 2rem 1.5rem;
         }
         
         header {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
         
         .badge {
@@ -60,6 +97,32 @@
         .subtitle {
             color: var(--text-muted);
             font-size: 1.1rem;
+        }
+        
+        /* Search Bar */
+        .search-container {
+            max-width: 500px;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid var(--border);
+            border-radius: 50px;
+            font-size: 1rem;
+            font-family: inherit;
+            outline: none;
+            transition: all 0.2s;
+        }
+        
+        .search-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-light);
+        }
+        
+        .search-input::placeholder {
+            color: var(--text-muted);
         }
         
         /* Filter Tabs */
@@ -258,21 +321,41 @@
         }
         
         @media (max-width: 768px) {
+            body { padding-top: 100px; }
+            .sticky-header { 
+                padding: 0.5rem 1rem;
+                gap: 0.75rem;
+                font-size: 0.9rem;
+            }
+            .sticky-header .name { font-size: 1rem; }
             h1 { font-size: 1.8rem; }
-            .container { padding: 2rem 1rem; }
+            .container { padding: 1.5rem 1rem; }
             .grid { grid-template-columns: 1fr; }
             .filters { gap: 0.4rem; }
             .filter-btn { padding: 0.4rem 0.9rem; font-size: 0.8rem; }
+            .search-input { padding: 0.8rem 1.2rem; font-size: 0.95rem; }
         }
     </style>
 </head>
 <body>
+    <!-- Sticky Contact Header -->
+    <div class="sticky-header">
+        <span class="name">Geetesh Parelly</span>
+        <a href="tel:737-287-5336">📞 (737) 287-5336</a>
+        <a href="mailto:geetesh.parelly@2hourlearning.com">✉️ Email</a>
+    </div>
+
     <div class="container">
         <header>
             <div class="badge">Flowly Portfolio</div>
             <h1>Website Demos</h1>
             <p class="subtitle">Custom websites for small businesses</p>
         </header>
+        
+        <!-- Search Bar -->
+        <div class="search-container">
+            <input type="text" class="search-input" id="searchInput" placeholder="🔍 Search by name, type, or keyword (e.g. farm, jewelry, food...)">
+        </div>
         
         <div class="filters">
             <button class="filter-btn active" data-filter="all">All</button>
@@ -285,7 +368,7 @@
         
         <div class="grid" id="grid">
             <!-- Bell Cedar Park Vendors -->
-            <a href="./goodie-dumplings/" class="card" data-categories="bell food">
+            <a href="./goodie-dumplings/" class="card" data-categories="bell food" data-tags="goodie dumplings restaurant chinese asian austin food bell market cedar park">
                 <div class="card-image">
                     <span class="card-badge">Bell Market</span>
                     <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/goodie-dumplings/" alt="Goodie Dumplings preview" loading="lazy">
@@ -299,7 +382,7 @@
                 </div>
             </a>
             
-            <a href="./yallatizers/" class="card" data-categories="bell food">
+            <a href="./yallatizers/" class="card" data-categories="bell food" data-tags="yallatizers mediterranean middle eastern food bell market">
                 <div class="card-image">
                     <span class="card-badge">Bell Market</span>
                     <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/yallatizers/" alt="Yallatizers preview" loading="lazy">
@@ -313,7 +396,7 @@
                 </div>
             </a>
             
-            <a href="./ks-seafood/" class="card" data-categories="bell food">
+            <a href="./ks-seafood/" class="card" data-categories="bell food" data-tags="ks seafood gulf fish shrimp georgetown bell market">
                 <div class="card-image">
                     <span class="card-badge">Bell Market</span>
                     <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ks-seafood/" alt="K&S Seafood preview" loading="lazy">
@@ -327,7 +410,7 @@
                 </div>
             </a>
             
-            <a href="./bernhardts-farm/" class="card" data-categories="bell farm">
+            <a href="./bernhardts-farm/" class="card" data-categories="bell farm" data-tags="bernhardts farm produce organic vegetables elgin bell market">
                 <div class="card-image">
                     <span class="card-badge">Bell Market</span>
                     <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/bernhardts-farm/" alt="Bernhardt's Farm preview" loading="lazy">
@@ -341,7 +424,7 @@
                 </div>
             </a>
             
-            <a href="./southpaw-bladeworks/" class="card" data-categories="bell other">
+            <a href="./southpaw-bladeworks/" class="card" data-categories="bell other" data-tags="southpaw bladeworks knife sharpening services bell market">
                 <div class="card-image">
                     <span class="card-badge">Bell Market</span>
                     <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/southpaw-bladeworks/" alt="Southpaw Bladeworks preview" loading="lazy">
@@ -356,7 +439,7 @@
             </a>
             
             <!-- Other Demos -->
-            <a href="./french-and-ginger-flower-co/" class="card" data-categories="other">
+            <a href="./french-and-ginger-flower-co/" class="card" data-categories="other" data-tags="french ginger flower florist bouquet wedding flowers austin">
                 <div class="card-image">
                     <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/french-and-ginger-flower-co/" alt="French & Ginger preview" loading="lazy">
                 </div>
@@ -369,7 +452,7 @@
                 </div>
             </a>
             
-            <a href="./haute-canine-couture/" class="card" data-categories="other">
+            <a href="./haute-canine-couture/" class="card" data-categories="other" data-tags="haute canine couture pet dog boutique austin">
                 <div class="card-image">
                     <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/haute-canine-couture/" alt="Haute Canine Couture preview" loading="lazy">
                 </div>
@@ -382,7 +465,7 @@
                 </div>
             </a>
             
-            <a href="./crescent-city-flavor/" class="card" data-categories="food">
+            <a href="./crescent-city-flavor/" class="card" data-categories="food" data-tags="crescent city flavor cajun creole new orleans food austin">
                 <div class="card-image">
                     <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/crescent-city-flavor/" alt="Crescent City Flavor preview" loading="lazy">
                 </div>
@@ -395,7 +478,7 @@
                 </div>
             </a>
             
-            <a href="./caskey-orchards/" class="card" data-categories="farm">
+            <a href="./caskey-orchards/" class="card" data-categories="farm" data-tags="caskey orchards apples fruit farm produce texas">
                 <div class="card-image farm-bg">
                     <img src="https://image.thum.io/get/noanimate/width/400/https://geeteshparelly.github.io/flowly-demos/caskey-orchards/" alt="Caskey Orchards preview" loading="lazy" onerror="this.classList.add('error')">
                     <span class="fallback">🍎</span>
@@ -409,7 +492,7 @@
                 </div>
             </a>
             
-            <a href="./salon/" class="card" data-categories="other">
+            <a href="./salon/" class="card" data-categories="other" data-tags="salon hair beauty haircut styling barber">
                 <div class="card-image beauty-bg">
                     <img src="https://image.thum.io/get/noanimate/width/400/https://geeteshparelly.github.io/flowly-demos/salon/" alt="Salon Template preview" loading="lazy" onerror="this.classList.add('error')">
                     <span class="fallback">💇‍♀️</span>
@@ -424,7 +507,7 @@
             </a>
             
             <!-- Ramadan Market Vendors -->
-            <a href="./ramadan/ahenk-home.html" class="card" data-categories="ramadan other">
+            <a href="./ramadan/ahenk-home.html" class="card" data-categories="ramadan other" data-tags="ahenk home prayer rugs textiles islamic muslim ramadan">
                 <div class="card-image" style="background: linear-gradient(135deg, #e8f4f3 0%, #d0e8e6 100%);">
                     <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
                     <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/ahenk-home.html" alt="Ahenk Home" loading="lazy">
@@ -436,7 +519,7 @@
                 </div>
             </a>
             
-            <a href="./ramadan/husnulain.html" class="card" data-categories="ramadan other">
+            <a href="./ramadan/husnulain.html" class="card" data-categories="ramadan other" data-tags="husnulain desi fashion clothing eid ramadan indian pakistani">
                 <div class="card-image" style="background: linear-gradient(135deg, #faf5f0 0%, #f5ebe0 100%);">
                     <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
                     <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/husnulain.html" alt="Husnulain" loading="lazy">
@@ -448,7 +531,7 @@
                 </div>
             </a>
             
-            <a href="./ramadan/graceful-scarfs.html" class="card" data-categories="ramadan other">
+            <a href="./ramadan/graceful-scarfs.html" class="card" data-categories="ramadan other" data-tags="graceful scarfs hijab hijabs jewelry modest fashion ramadan">
                 <div class="card-image" style="background: linear-gradient(135deg, #fdf8f5 0%, #f5f0ec 100%);">
                     <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
                     <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/graceful-scarfs.html" alt="Graceful Scarfs" loading="lazy">
@@ -460,7 +543,7 @@
                 </div>
             </a>
             
-            <a href="./ramadan/arabisk-boutique.html" class="card" data-categories="ramadan other">
+            <a href="./ramadan/arabisk-boutique.html" class="card" data-categories="ramadan other" data-tags="arabisk boutique hijab hijabs kuwait modest fashion ramadan">
                 <div class="card-image" style="background: linear-gradient(135deg, #faf5ef 0%, #f5ebe0 100%);">
                     <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
                     <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/arabisk-boutique.html" alt="Arabisk Boutique" loading="lazy">
@@ -472,7 +555,7 @@
                 </div>
             </a>
             
-            <a href="./ramadan/haus-of-z-jewelry.html" class="card" data-categories="ramadan other">
+            <a href="./ramadan/haus-of-z-jewelry.html" class="card" data-categories="ramadan other" data-tags="haus of z jewelry bold statement rings necklaces earrings ramadan">
                 <div class="card-image" style="background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);">
                     <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
                     <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/haus-of-z-jewelry.html" alt="Haus of Z" loading="lazy">
@@ -484,7 +567,7 @@
                 </div>
             </a>
             
-            <a href="./ramadan/moti-jewelry.html" class="card" data-categories="ramadan other">
+            <a href="./ramadan/moti-jewelry.html" class="card" data-categories="ramadan other" data-tags="moti jewelry luxurious trendy rings necklaces earrings ramadan">
                 <div class="card-image" style="background: linear-gradient(135deg, #faf5ef 0%, #f5ebe0 100%);">
                     <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
                     <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/moti-jewelry.html" alt="Moti Jewelry" loading="lazy">
@@ -496,7 +579,7 @@
                 </div>
             </a>
             
-            <a href="./ramadan/nationgem.html" class="card" data-categories="ramadan other">
+            <a href="./ramadan/nationgem.html" class="card" data-categories="ramadan other" data-tags="nationgem gemstone jewelry gems precious stones ramadan">
                 <div class="card-image" style="background: linear-gradient(135deg, #e8f0ed 0%, #d8e8e3 100%);">
                     <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
                     <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/nationgem.html" alt="NationGem" loading="lazy">
@@ -508,7 +591,7 @@
                 </div>
             </a>
             
-            <a href="./ramadan/fashion-fusion.html" class="card" data-categories="ramadan other">
+            <a href="./ramadan/fashion-fusion.html" class="card" data-categories="ramadan other" data-tags="fashion 786 fusion jewelry accessories trendy ramadan">
                 <div class="card-image" style="background: linear-gradient(135deg, #faf5ff 0%, #f5e6ff 100%);">
                     <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
                     <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/fashion-fusion.html" alt="Fashion 786 Fusion" loading="lazy">
@@ -520,7 +603,7 @@
                 </div>
             </a>
             
-            <a href="./ramadan/selene-by-ayesha.html" class="card" data-categories="ramadan other">
+            <a href="./ramadan/selene-by-ayesha.html" class="card" data-categories="ramadan other" data-tags="selene ayesha moon celestial jewelry design ramadan">
                 <div class="card-image" style="background: linear-gradient(135deg, #16161d 0%, #0d0d12 100%);">
                     <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
                     <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/selene-by-ayesha.html" alt="Selene by Ayesha" loading="lazy">
@@ -532,7 +615,7 @@
                 </div>
             </a>
             
-            <a href="./ramadan/c-is-for-crafting.html" class="card" data-categories="ramadan other">
+            <a href="./ramadan/c-is-for-crafting.html" class="card" data-categories="ramadan other" data-tags="c is for crafting laila personalized gifts handmade ramadan">
                 <div class="card-image" style="background: linear-gradient(135deg, #fdf0f4 0%, #fce8ef 100%);">
                     <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
                     <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/c-is-for-crafting.html" alt="C is for Crafting" loading="lazy">
@@ -544,7 +627,7 @@
                 </div>
             </a>
             
-            <a href="./ramadan/gifty-by-ai.html" class="card" data-categories="ramadan other">
+            <a href="./ramadan/gifty-by-ai.html" class="card" data-categories="ramadan other" data-tags="gifty ai gifts decor handmade eid ramadan">
                 <div class="card-image" style="background: linear-gradient(135deg, #faf6ef 0%, #f5ebe0 100%);">
                     <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
                     <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/gifty-by-ai.html" alt="Gifty by AI" loading="lazy">
@@ -556,7 +639,7 @@
                 </div>
             </a>
             
-            <a href="./ramadan/tulip-hut.html" class="card" data-categories="ramadan other">
+            <a href="./ramadan/tulip-hut.html" class="card" data-categories="ramadan other" data-tags="tulip hut saleha handmade crafts gifts ramadan">
                 <div class="card-image" style="background: linear-gradient(135deg, #fff0f0 0%, #fff5f5 100%);">
                     <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
                     <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/tulip-hut.html" alt="Tulip Hut" loading="lazy">
@@ -568,7 +651,7 @@
                 </div>
             </a>
             
-            <a href="./ramadan/pinora-by-huda.html" class="card" data-categories="ramadan other">
+            <a href="./ramadan/pinora-by-huda.html" class="card" data-categories="ramadan other" data-tags="pinora huda art artwork designs artist ramadan">
                 <div class="card-image" style="background: linear-gradient(135deg, #f5f0ec 0%, #ebe5df 100%);">
                     <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
                     <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/pinora-by-huda.html" alt="Pinora by Huda" loading="lazy">
@@ -580,7 +663,7 @@
                 </div>
             </a>
             
-            <a href="./ramadan/art-by-3afaf.html" class="card" data-categories="ramadan other">
+            <a href="./ramadan/art-by-3afaf.html" class="card" data-categories="ramadan other" data-tags="art 3afaf afaf artwork paintings artist ramadan">
                 <div class="card-image" style="background: linear-gradient(135deg, #f5f0eb 0%, #ebe5df 100%);">
                     <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
                     <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/art-by-3afaf.html" alt="Art by 3afaf" loading="lazy">
@@ -592,7 +675,7 @@
                 </div>
             </a>
             
-            <a href="./ramadan/2009-apparel.html" class="card" data-categories="ramadan other">
+            <a href="./ramadan/2009-apparel.html" class="card" data-categories="ramadan other" data-tags="2009 apparel streetwear hoodies tees clothing fashion ramadan">
                 <div class="card-image" style="background: linear-gradient(135deg, #141414 0%, #0a0a0a 100%);">
                     <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
                     <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/2009-apparel.html" alt="2009 Apparel" loading="lazy">
@@ -604,7 +687,7 @@
                 </div>
             </a>
             
-            <a href="./ramadan/a-better-force.html" class="card" data-categories="ramadan other">
+            <a href="./ramadan/a-better-force.html" class="card" data-categories="ramadan other" data-tags="better force women fitness performance empowerment ramadan">
                 <div class="card-image" style="background: linear-gradient(135deg, #eef0ff 0%, #e0e4ff 100%);">
                     <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
                     <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/a-better-force.html" alt="A Better Force" loading="lazy">
@@ -616,7 +699,7 @@
                 </div>
             </a>
             
-            <a href="./ramadan/nadia-baklava.html" class="card" data-categories="ramadan food">
+            <a href="./ramadan/nadia-baklava.html" class="card" data-categories="ramadan food" data-tags="nadia baklava middle eastern sweets dessert pastry ramadan">
                 <div class="card-image" style="background: linear-gradient(135deg, #fdf9f3 0%, #f5ebe0 100%);">
                     <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
                     <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/nadia-baklava.html" alt="Nadia's Baklava" loading="lazy">
@@ -628,7 +711,7 @@
                 </div>
             </a>
             
-            <a href="./ramadan/damascus-sweets.html" class="card" data-categories="ramadan food">
+            <a href="./ramadan/damascus-sweets.html" class="card" data-categories="ramadan food" data-tags="damascus sweets syrian pastries dessert baklava ramadan">
                 <div class="card-image" style="background: linear-gradient(135deg, #fdf9f3 0%, #f5ebe0 100%);">
                     <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
                     <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/damascus-sweets.html" alt="Damascus Sweets" loading="lazy">
@@ -640,7 +723,7 @@
                 </div>
             </a>
             
-            <a href="./ramadan/oasis-dates-co.html" class="card" data-categories="ramadan food">
+            <a href="./ramadan/oasis-dates-co.html" class="card" data-categories="ramadan food" data-tags="oasis dates stuffed chocolate premium ramadan">
                 <div class="card-image" style="background: linear-gradient(135deg, #faf6ef 0%, #f5ebe0 100%);">
                     <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
                     <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/oasis-dates-co.html" alt="Oasis Dates Co" loading="lazy">
@@ -652,7 +735,7 @@
                 </div>
             </a>
             
-            <a href="./ramadan/green-crescent-farm.html" class="card" data-categories="ramadan farm">
+            <a href="./ramadan/green-crescent-farm.html" class="card" data-categories="ramadan farm" data-tags="green crescent farm organic produce dates vegetables ramadan">
                 <div class="card-image" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);">
                     <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
                     <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/green-crescent-farm.html" alt="Green Crescent Farm" loading="lazy">
@@ -664,7 +747,7 @@
                 </div>
             </a>
             
-            <a href="./ramadan/halal-heritage-farm.html" class="card" data-categories="ramadan farm">
+            <a href="./ramadan/halal-heritage-farm.html" class="card" data-categories="ramadan farm" data-tags="halal heritage farm meat beef lamb chicken zabiha ramadan">
                 <div class="card-image" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);">
                     <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
                     <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/halal-heritage-farm.html" alt="Halal Heritage Farm" loading="lazy">
@@ -676,7 +759,7 @@
                 </div>
             </a>
             
-            <a href="./ramadan/saffron-spice-co.html" class="card" data-categories="ramadan food">
+            <a href="./ramadan/saffron-spice-co.html" class="card" data-categories="ramadan food" data-tags="saffron spice spices blends cooking middle eastern ramadan">
                 <div class="card-image" style="background: linear-gradient(135deg, #fef9e7 0%, #fef3c7 100%);">
                     <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
                     <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/saffron-spice-co.html" alt="Saffron Spice Co" loading="lazy">
@@ -688,7 +771,7 @@
                 </div>
             </a>
             
-            <a href="./ramadan/olive-branch-imports.html" class="card" data-categories="ramadan food">
+            <a href="./ramadan/olive-branch-imports.html" class="card" data-categories="ramadan food" data-tags="olive branch imports mediterranean food olives ramadan">
                 <div class="card-image" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);">
                     <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
                     <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/olive-branch-imports.html" alt="Olive Branch Imports" loading="lazy">
@@ -700,7 +783,7 @@
                 </div>
             </a>
             
-            <a href="./ramadan/zaytoun-olive-oil.html" class="card" data-categories="ramadan food">
+            <a href="./ramadan/zaytoun-olive-oil.html" class="card" data-categories="ramadan food" data-tags="zaytoun olive oil premium cooking mediterranean ramadan">
                 <div class="card-image" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);">
                     <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
                     <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/zaytoun-olive-oil.html" alt="Zaytoun Olive Oil" loading="lazy">
@@ -730,27 +813,50 @@
         const filterBtns = document.querySelectorAll('.filter-btn');
         const cards = document.querySelectorAll('.card');
         const noResults = document.getElementById('no-results');
+        const searchInput = document.getElementById('searchInput');
         
+        let currentFilter = 'all';
+        let currentSearch = '';
+        
+        function filterCards() {
+            let visibleCount = 0;
+            
+            cards.forEach(card => {
+                const categories = card.dataset.categories.split(' ');
+                const tags = (card.dataset.tags || '').toLowerCase();
+                const title = card.querySelector('.card-title').textContent.toLowerCase();
+                const type = card.querySelector('.card-type').textContent.toLowerCase();
+                const searchText = `${title} ${type} ${tags} ${categories.join(' ')}`;
+                
+                const matchesFilter = currentFilter === 'all' || categories.includes(currentFilter);
+                const matchesSearch = currentSearch === '' || searchText.includes(currentSearch.toLowerCase());
+                
+                if (matchesFilter && matchesSearch) {
+                    card.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+            
+            noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+        
+        // Search input handler
+        searchInput.addEventListener('input', (e) => {
+            currentSearch = e.target.value.trim();
+            filterCards();
+        });
+        
+        // Filter button handlers
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                // Update active button
                 filterBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                
-                const filter = btn.dataset.filter;
-                let visibleCount = 0;
-                
-                cards.forEach(card => {
-                    const categories = card.dataset.categories.split(' ');
-                    if (filter === 'all' || categories.includes(filter)) {
-                        card.classList.remove('hidden');
-                        visibleCount++;
-                    } else {
-                        card.classList.add('hidden');
-                    }
-                });
-                
-                noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+                currentFilter = btn.dataset.filter;
+                searchInput.value = ''; // Clear search when changing filter
+                currentSearch = '';
+                filterCards();
             });
         });
     </script>
