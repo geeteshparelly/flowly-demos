@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowly QR Code</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, #f0f7ff 0%, #e8f4fc 50%, #f5faff 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 3rem 2.5rem;
+            text-align: center;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            max-width: 380px;
+            width: 100%;
+            border: 1px solid #e3edf5;
+        }
+        
+        .logo {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 0.25rem;
+            letter-spacing: -0.5px;
+        }
+        
+        .tagline {
+            color: #6b9cc3;
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+        }
+        
+        .qr-container {
+            background: #f8fbfd;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #e8f1f8;
+        }
+        
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            border-radius: 8px;
+        }
+        
+        .scan-text {
+            color: #1a1a1a;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .description {
+            color: #7a9bb8;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #d4e5f2, transparent);
+            margin: 1.5rem 0;
+        }
+        
+        .contact {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: #5a8ab5;
+            font-size: 0.85rem;
+        }
+        
+        .dot {
+            width: 4px;
+            height: 4px;
+            background: #c5dae9;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="logo">flowly</div>
+        <div class="tagline">websites for small businesses</div>
+        
+        <div class="qr-container">
+            <img class="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://geeteshparelly.github.io/flowly-demos/&format=svg" alt="QR Code">
+        </div>
+        
+        <div class="scan-text">Scan to see demos</div>
+        <div class="description">View sample websites I've built for local businesses</div>
+        
+        <div class="divider"></div>
+        
+        <div class="contact">
+            <span>Geetesh</span>
+            <span class="dot"></span>
+            <span>(737) 287-5336</span>
+        </div>
+    </div>
+</body>
+</html>
