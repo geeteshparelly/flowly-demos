@@ -36,7 +36,7 @@
         
         header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
         
         .badge {
@@ -62,6 +62,52 @@
             font-size: 1.1rem;
         }
         
+        /* Filter Tabs */
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .filter-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+            color: var(--text-body);
+        }
+        
+        .filter-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        
+        .filter-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+        
+        .filter-btn.bell-special {
+            background: #fff3e0;
+            border-color: #ff9800;
+            color: #e65100;
+        }
+        
+        .filter-btn.bell-special:hover,
+        .filter-btn.bell-special.active {
+            background: #ff9800;
+            border-color: #ff9800;
+            color: white;
+        }
+        
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -78,6 +124,10 @@
             display: block;
         }
         
+        .card.hidden {
+            display: none;
+        }
+        
         .card:hover {
             transform: translateY(-4px);
             box-shadow: 0 12px 40px rgba(0,0,0,0.1);
@@ -89,6 +139,19 @@
             align-items: center;
             justify-content: center;
             font-size: 3rem;
+            position: relative;
+        }
+        
+        .card-badge {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            background: #ff9800;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.25rem 0.6rem;
+            border-radius: 50px;
         }
         
         .card-content {
@@ -163,10 +226,19 @@
         .services { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); }
         .beauty { background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%); }
         
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted);
+            display: none;
+        }
+        
         @media (max-width: 768px) {
             h1 { font-size: 1.8rem; }
             .container { padding: 2rem 1rem; }
             .grid { grid-template-columns: 1fr; }
+            .filters { gap: 0.4rem; }
+            .filter-btn { padding: 0.4rem 0.9rem; font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -178,9 +250,21 @@
             <p class="subtitle">Custom websites for small businesses • $100 flat rate</p>
         </header>
         
-        <div class="grid">
-            <a href="./goodie-dumplings/" class="card">
-                <div class="card-image food">🥟</div>
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn bell-special" data-filter="bell">🎯 Bell Cedar Park</button>
+            <button class="filter-btn" data-filter="food">🍽️ Food & Restaurant</button>
+            <button class="filter-btn" data-filter="farm">🌿 Farm & Produce</button>
+            <button class="filter-btn" data-filter="other">✨ Other</button>
+        </div>
+        
+        <div class="grid" id="grid">
+            <!-- Bell Cedar Park Vendors -->
+            <a href="./goodie-dumplings/" class="card" data-categories="bell food">
+                <div class="card-image food">
+                    <span class="card-badge">Bell Market</span>
+                    🥟
+                </div>
                 <div class="card-content">
                     <div class="card-title">Goodie Dumplings</div>
                     <div class="card-type">Restaurant • Austin, TX</div>
@@ -190,8 +274,11 @@
                 </div>
             </a>
             
-            <a href="./yallatizers/" class="card">
-                <div class="card-image food">🧆</div>
+            <a href="./yallatizers/" class="card" data-categories="bell food">
+                <div class="card-image food">
+                    <span class="card-badge">Bell Market</span>
+                    🧆
+                </div>
                 <div class="card-content">
                     <div class="card-title">Yallatizers</div>
                     <div class="card-type">Mediterranean Food • Austin, TX</div>
@@ -201,8 +288,11 @@
                 </div>
             </a>
             
-            <a href="./ks-seafood/" class="card">
-                <div class="card-image food">🦐</div>
+            <a href="./ks-seafood/" class="card" data-categories="bell food">
+                <div class="card-image food">
+                    <span class="card-badge">Bell Market</span>
+                    🦐
+                </div>
                 <div class="card-content">
                     <div class="card-title">K&S Seafood</div>
                     <div class="card-type">Gulf Seafood • Georgetown, TX</div>
@@ -212,8 +302,11 @@
                 </div>
             </a>
             
-            <a href="./bernhardts-farm/" class="card">
-                <div class="card-image farm">🌿</div>
+            <a href="./bernhardts-farm/" class="card" data-categories="bell farm">
+                <div class="card-image farm">
+                    <span class="card-badge">Bell Market</span>
+                    🌿
+                </div>
                 <div class="card-content">
                     <div class="card-title">Bernhardt's Farm</div>
                     <div class="card-type">Farm & Produce • Elgin, TX</div>
@@ -223,8 +316,11 @@
                 </div>
             </a>
             
-            <a href="./southpaw-bladeworks/" class="card">
-                <div class="card-image services">🔪</div>
+            <a href="./southpaw-bladeworks/" class="card" data-categories="bell other">
+                <div class="card-image services">
+                    <span class="card-badge">Bell Market</span>
+                    🔪
+                </div>
                 <div class="card-content">
                     <div class="card-title">Southpaw Bladeworks</div>
                     <div class="card-type">Knife Sharpening • Austin, TX</div>
@@ -234,7 +330,8 @@
                 </div>
             </a>
             
-            <a href="./french-and-ginger-flower-co/" class="card">
+            <!-- Other Demos -->
+            <a href="./french-and-ginger-flower-co/" class="card" data-categories="other">
                 <div class="card-image flowers">💐</div>
                 <div class="card-content">
                     <div class="card-title">French & Ginger Flower Co</div>
@@ -245,7 +342,7 @@
                 </div>
             </a>
             
-            <a href="./haute-canine-couture/" class="card">
+            <a href="./haute-canine-couture/" class="card" data-categories="other">
                 <div class="card-image pets">🐕</div>
                 <div class="card-content">
                     <div class="card-title">Haute Canine Couture</div>
@@ -256,7 +353,7 @@
                 </div>
             </a>
             
-            <a href="./crescent-city-flavor/" class="card">
+            <a href="./crescent-city-flavor/" class="card" data-categories="food">
                 <div class="card-image food">🍳</div>
                 <div class="card-content">
                     <div class="card-title">Crescent City Flavor</div>
@@ -267,7 +364,7 @@
                 </div>
             </a>
             
-            <a href="./caskey-orchards/" class="card">
+            <a href="./caskey-orchards/" class="card" data-categories="farm">
                 <div class="card-image farm">🍎</div>
                 <div class="card-content">
                     <div class="card-title">Caskey Orchards</div>
@@ -278,7 +375,7 @@
                 </div>
             </a>
             
-            <a href="./salon/" class="card">
+            <a href="./salon/" class="card" data-categories="other">
                 <div class="card-image beauty">💇‍♀️</div>
                 <div class="card-content">
                     <div class="card-title">Salon Template</div>
@@ -290,6 +387,10 @@
             </a>
         </div>
         
+        <div class="no-results" id="no-results">
+            No demos in this category yet.
+        </div>
+        
         <footer>
             <div class="contact-info">
                 <a href="tel:737-287-5336">📞 (737) 287-5336</a>
@@ -299,5 +400,34 @@
             <div class="price-tag">$100 per website</div>
         </footer>
     </div>
+    
+    <script>
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.card');
+        const noResults = document.getElementById('no-results');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active button
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.dataset.filter;
+                let visibleCount = 0;
+                
+                cards.forEach(card => {
+                    const categories = card.dataset.categories.split(' ');
+                    if (filter === 'all' || categories.includes(filter)) {
+                        card.classList.remove('hidden');
+                        visibleCount++;
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+                
+                noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+            });
+        });
+    </script>
 </body>
 </html>
