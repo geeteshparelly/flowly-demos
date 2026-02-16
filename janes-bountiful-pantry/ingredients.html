@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingredients & Allergens | Jane's Bountiful Pantry</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Serif+4:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #faf8f5;
+            --surface: #ffffff;
+            --cream: #f5f0e8;
+            --brown: #8b5a2b;
+            --brown-dark: #6b4423;
+            --brown-light: #d4a574;
+            --green: #5d7a5d;
+            --green-light: #e8f0e8;
+            --text-dark: #2d2418;
+            --text-body: #5c4d3d;
+            --text-muted: #8c7b6b;
+            --border: #e8e0d5;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--text-body);
+            line-height: 1.7;
+        }
+        
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--surface);
+            padding: 1rem 2rem;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .nav-logo {
+            font-family: 'Source Serif 4', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--brown);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--text-body);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--brown);
+        }
+        
+        .nav-cta {
+            background: var(--brown);
+            color: white !important;
+            padding: 0.6rem 1.25rem;
+            border-radius: 6px;
+        }
+        
+        .page-header {
+            padding: 8rem 2rem 4rem;
+            background: var(--cream);
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-family: 'Source Serif 4', serif;
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .page-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        section {
+            padding: 4rem 2rem;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        h2 {
+            font-family: 'Source Serif 4', serif;
+            font-size: 1.75rem;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Promise Section */
+        .promise-section {
+            background: var(--surface);
+        }
+        
+        .promise-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .promise-item {
+            text-align: center;
+            padding: 1.5rem;
+        }
+        
+        .promise-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--green-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+        
+        .checkmark {
+            width: 24px;
+            height: 24px;
+            border: 3px solid var(--green);
+            border-radius: 50%;
+            position: relative;
+        }
+        
+        .checkmark::after {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 2px;
+            width: 6px;
+            height: 12px;
+            border: solid var(--green);
+            border-width: 0 3px 3px 0;
+            transform: rotate(45deg);
+        }
+        
+        .promise-item h3 {
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .promise-item p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        /* Flour Section */
+        .flour-section {
+            background: var(--bg);
+        }
+        
+        .flour-content p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+        
+        .flour-list {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+        
+        .flour-list h3 {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .flour-list ul {
+            list-style: none;
+        }
+        
+        .flour-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .flour-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .flour-name {
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        
+        .flour-reason {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        /* What We Avoid */
+        .avoid-section {
+            background: var(--surface);
+        }
+        
+        .avoid-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .avoid-item {
+            background: #fef2f2;
+            padding: 1.25rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .avoid-x {
+            width: 24px;
+            height: 24px;
+            background: #fee2e2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #dc2626;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .avoid-item span {
+            color: #991b1b;
+            font-weight: 500;
+        }
+        
+        /* Product Ingredients */
+        .products-section {
+            background: var(--bg);
+        }
+        
+        .product-ingredients {
+            background: var(--surface);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border);
+        }
+        
+        .product-ingredients h3 {
+            color: var(--text-dark);
+            font-family: 'Source Serif 4', serif;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-ingredients .price {
+            color: var(--brown);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .product-ingredients h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            margin: 1rem 0 0.5rem;
+        }
+        
+        .product-ingredients p {
+            font-size: 0.95rem;
+        }
+        
+        .allergen-note {
+            background: #fef9c3;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: #854d0e;
+            margin-top: 1rem;
+        }
+        
+        /* FAQ */
+        .faq-section {
+            background: var(--surface);
+        }
+        
+        .faq-item {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        
+        .faq-q {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .faq-a {
+            color: var(--text-muted);
+        }
+        
+        footer {
+            background: var(--text-dark);
+            color: rgba(255,255,255,0.7);
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--brown-light);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            nav { padding: 1rem; }
+            .nav-links { gap: 1rem; }
+            .page-header { padding: 6rem 1.5rem 3rem; }
+            .page-header h1 { font-size: 2rem; }
+            section { padding: 3rem 1.5rem; }
+            .promise-grid { grid-template-columns: 1fr; }
+            .flour-list li { flex-direction: column; gap: 0.25rem; }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-links a:not(.nav-cta) { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="./" class="nav-logo">Jane's Bountiful Pantry</a>
+        <div class="nav-links">
+            <a href="./about.html">About Us</a>
+            <a href="./ingredients.html" class="active">Ingredients</a>
+            <a href="./testimonials.html">Reviews</a>
+            <a href="./#products" class="nav-cta">Order Now</a>
+        </div>
+    </nav>
+    
+    <header class="page-header">
+        <h1>Ingredients & Allergens</h1>
+        <p>Full transparency — because you deserve to know exactly what you're eating</p>
+    </header>
+    
+    <!-- Promise Section -->
+    <section class="promise-section">
+        <div class="container">
+            <div class="promise-grid">
+                <div class="promise-item">
+                    <div class="promise-icon"><div class="checkmark"></div></div>
+                    <h3>100% Vegan</h3>
+                    <p>No eggs, no dairy, no honey, no animal products in anything we make</p>
+                </div>
+                
+                <div class="promise-item">
+                    <div class="promise-icon"><div class="checkmark"></div></div>
+                    <h3>Gluten-Free Kitchen</h3>
+                    <p>Dedicated space with no wheat, barley, or rye — ever</p>
+                </div>
+                
+                <div class="promise-item">
+                    <div class="promise-icon"><div class="checkmark"></div></div>
+                    <h3>Dairy-Free</h3>
+                    <p>No milk, butter, cream, or dairy derivatives of any kind</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Our Flour Blend -->
+    <section class="flour-section">
+        <div class="container">
+            <h2>Our Flour Blend</h2>
+            
+            <div class="flour-content">
+                <p>
+                    Getting the right texture without gluten took years of testing. Most gluten-free baked goods 
+                    are either gummy, crumbly, or taste like cardboard. Ours don't — here's what we use:
+                </p>
+            </div>
+            
+            <div class="flour-list">
+                <h3>Certified Gluten-Free Ingredients</h3>
+                <ul>
+                    <li>
+                        <span class="flour-name">Oat Flour</span>
+                        <span class="flour-reason">Certified GF oats — adds softness and mild flavor</span>
+                    </li>
+                    <li>
+                        <span class="flour-name">Almond Flour</span>
+                        <span class="flour-reason">Adds moisture and richness without dairy</span>
+                    </li>
+                    <li>
+                        <span class="flour-name">Tapioca Starch</span>
+                        <span class="flour-reason">Creates chewiness and helps bind everything together</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="flour-content">
+                <p>
+                    All our flours are certified gluten-free and sourced from suppliers who test for 
+                    cross-contamination. We don't just trust labels — we verify.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- What We Never Use -->
+    <section class="avoid-section">
+        <div class="container">
+            <h2>What We Never Use</h2>
+            
+            <div class="avoid-grid">
+                <div class="avoid-item">
+                    <span class="avoid-x">✕</span>
+                    <span>Wheat / Gluten</span>
+                </div>
+                <div class="avoid-item">
+                    <span class="avoid-x">✕</span>
+                    <span>Dairy / Milk</span>
+                </div>
+                <div class="avoid-item">
+                    <span class="avoid-x">✕</span>
+                    <span>Eggs</span>
+                </div>
+                <div class="avoid-item">
+                    <span class="avoid-x">✕</span>
+                    <span>Honey</span>
+                </div>
+                <div class="avoid-item">
+                    <span class="avoid-x">✕</span>
+                    <span>Artificial Colors</span>
+                </div>
+                <div class="avoid-item">
+                    <span class="avoid-x">✕</span>
+                    <span>High Fructose Corn Syrup</span>
+                </div>
+                <div class="avoid-item">
+                    <span class="avoid-x">✕</span>
+                    <span>Artificial Preservatives</span>
+                </div>
+                <div class="avoid-item">
+                    <span class="avoid-x">✕</span>
+                    <span>Refined White Sugar</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Full Product Ingredients -->
+    <section class="products-section">
+        <div class="container">
+            <h2>Full Ingredient Lists by Product</h2>
+            
+            <div class="product-ingredients">
+                <h3>Pecan Pie Cookie</h3>
+                <p class="price">$16.00</p>
+                
+                <h4>Ingredients</h4>
+                <p>Gluten-free flour blend (certified GF oat flour, almond flour, tapioca starch), pecans, maple syrup, coconut oil, coconut sugar, vanilla extract, flax egg (ground flaxseed, water), sea salt.</p>
+                
+                <h4>Allergen Information</h4>
+                <p>Contains: Tree nuts (pecans, almonds)</p>
+                
+                <div class="allergen-note">
+                    Made in a dedicated gluten-free facility. Processed on equipment that also handles other tree nuts.
+                </div>
+            </div>
+            
+            <div class="product-ingredients">
+                <h3>Baklava Pistachio Pecan Cookie</h3>
+                <p class="price">$16.00</p>
+                
+                <h4>Ingredients</h4>
+                <p>Gluten-free flour blend (certified GF oat flour, almond flour, tapioca starch), pistachios, pecans, maple syrup, coconut oil, cinnamon, cardamom, vanilla extract, flax egg (ground flaxseed, water), sea salt.</p>
+                
+                <h4>Allergen Information</h4>
+                <p>Contains: Tree nuts (pistachios, pecans, almonds)</p>
+                
+                <div class="allergen-note">
+                    Made in a dedicated gluten-free facility. Processed on equipment that also handles other tree nuts.
+                </div>
+            </div>
+            
+            <div class="product-ingredients">
+                <h3>Cookie Dough Chocolate Chip</h3>
+                <p class="price">$13.00</p>
+                
+                <h4>Ingredients</h4>
+                <p>Gluten-free flour blend (certified GF oat flour, almond flour, tapioca starch), dairy-free chocolate chips (cacao, cane sugar, cocoa butter), coconut oil, maple syrup, coconut sugar, vanilla extract, sea salt.</p>
+                
+                <h4>Allergen Information</h4>
+                <p>Contains: Tree nuts (almonds). May contain traces of soy (from chocolate chips).</p>
+                
+                <div class="allergen-note">
+                    Made in a dedicated gluten-free facility. Safe to eat raw — no eggs.
+                </div>
+            </div>
+            
+            <div class="product-ingredients">
+                <h3>Cookie Dough Snickerdoodle</h3>
+                <p class="price">$13.00</p>
+                
+                <h4>Ingredients</h4>
+                <p>Gluten-free flour blend (certified GF oat flour, almond flour, tapioca starch), coconut oil, coconut sugar, maple syrup, cinnamon, vanilla extract, sea salt.</p>
+                
+                <h4>Allergen Information</h4>
+                <p>Contains: Tree nuts (almonds)</p>
+                
+                <div class="allergen-note">
+                    Made in a dedicated gluten-free facility. Safe to eat raw — no eggs.
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>Allergen Questions</h2>
+            
+            <div class="faq-item">
+                <p class="faq-q">Is your kitchen certified gluten-free?</p>
+                <p class="faq-a">Our kitchen is dedicated gluten-free — no wheat, barley, or rye is ever present. While we're not third-party certified, we follow strict protocols and use only certified GF ingredients.</p>
+            </div>
+            
+            <div class="faq-item">
+                <p class="faq-q">I have a severe nut allergy. Are any products nut-free?</p>
+                <p class="faq-a">Unfortunately, no. All our products contain almond flour, and our kitchen processes multiple tree nuts. We cannot guarantee nut-free products at this time.</p>
+            </div>
+            
+            <div class="faq-item">
+                <p class="faq-q">What about soy?</p>
+                <p class="faq-a">Our chocolate chip cookie dough may contain traces of soy from the chocolate chips. All other products are soy-free.</p>
+            </div>
+            
+            <div class="faq-item">
+                <p class="faq-q">Is everything vegan?</p>
+                <p class="faq-a">Yes. No eggs, dairy, honey, or animal products in any of our items. We use flax eggs for binding and coconut oil instead of butter.</p>
+            </div>
+            
+            <div class="faq-item">
+                <p class="faq-q">Can I request a custom item for my allergy?</p>
+                <p class="faq-a">Reach out and we'll see what we can do. Some modifications are possible depending on the specific allergy.</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>Jane's Bountiful Pantry · Austin, TX · <a href="./">Back to Menu</a></p>
+    </footer>
+</body>
+</html>

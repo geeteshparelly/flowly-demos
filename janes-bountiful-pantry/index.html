@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jane's Bountiful Pantry | Vegan & Gluten-Free Baked Goods</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Serif+4:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #faf8f5;
@@ -39,17 +39,16 @@
             right: 0;
             background: var(--surface);
             padding: 1rem 2rem;
-            z-index: 1000;
+            z-index: 100;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 15px rgba(139, 90, 43, 0.1);
             border-bottom: 1px solid var(--border);
         }
         
         .nav-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
+            font-family: 'Source Serif 4', serif;
+            font-size: 1.3rem;
             font-weight: 600;
             color: var(--brown);
             text-decoration: none;
@@ -57,7 +56,7 @@
         
         .nav-links {
             display: flex;
-            gap: 1.5rem;
+            gap: 2rem;
             align-items: center;
         }
         
@@ -74,88 +73,69 @@
         }
         
         .nav-cta {
-            background: var(--brown) !important;
+            background: var(--brown);
             color: white !important;
-            padding: 0.5rem 1.25rem;
-            border-radius: 50px;
+            padding: 0.6rem 1.25rem;
+            border-radius: 6px;
         }
         
         .nav-cta:hover {
-            background: var(--brown-dark) !important;
+            background: var(--brown-dark);
         }
         
-        /* Vegan Badge */
-        .vegan-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-            background: var(--green-light);
-            color: var(--green);
-            padding: 0.25rem 0.75rem;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .badges {
+        /* Dietary Tags */
+        .dietary-tags {
             display: flex;
             gap: 0.5rem;
             flex-wrap: wrap;
         }
         
-        .badge {
+        .tag {
             display: inline-block;
-            padding: 0.25rem 0.6rem;
-            border-radius: 50px;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
             font-size: 0.7rem;
             font-weight: 600;
             text-transform: uppercase;
+            letter-spacing: 0.3px;
         }
         
-        .badge-vegan { background: var(--green-light); color: var(--green); }
-        .badge-gf { background: #fef3c7; color: #92400e; }
-        .badge-df { background: #e0e7ff; color: #3730a3; }
+        .tag-vegan { background: var(--green-light); color: var(--green); }
+        .tag-gf { background: #fef3c7; color: #92400e; }
+        .tag-df { background: #e0e7ff; color: #3730a3; }
         
         /* Hero Section */
         .hero {
-            padding: 8rem 2rem 4rem;
-            text-align: center;
-            background: linear-gradient(135deg, var(--cream) 0%, var(--bg) 100%);
+            padding: 9rem 2rem 5rem;
+            background: linear-gradient(180deg, var(--cream) 0%, var(--bg) 100%);
         }
         
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
+        .hero-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .hero-tags {
+            display: flex;
+            justify-content: center;
             gap: 0.5rem;
-            background: var(--green-light);
-            color: var(--green);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
             margin-bottom: 1.5rem;
         }
         
         .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
+            font-family: 'Source Serif 4', serif;
+            font-size: 3.2rem;
             color: var(--text-dark);
-            margin-bottom: 0.5rem;
-        }
-        
-        .hero-tagline {
-            font-size: 1.3rem;
-            color: var(--brown);
-            font-weight: 500;
             margin-bottom: 1rem;
+            font-weight: 600;
+            line-height: 1.2;
         }
         
-        .hero-description {
-            font-size: 1.1rem;
+        .hero-subtitle {
+            font-size: 1.2rem;
             color: var(--text-muted);
-            max-width: 600px;
+            max-width: 550px;
             margin: 0 auto 2rem;
         }
         
@@ -167,10 +147,10 @@
         }
         
         .btn {
-            padding: 0.875rem 2rem;
-            border-radius: 50px;
+            padding: 0.9rem 1.75rem;
+            border-radius: 6px;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.95rem;
             text-decoration: none;
             transition: all 0.2s;
             display: inline-block;
@@ -186,13 +166,12 @@
         
         .btn-primary:hover {
             background: var(--brown-dark);
-            transform: translateY(-2px);
         }
         
         .btn-secondary {
             background: var(--surface);
             color: var(--text-dark);
-            border: 2px solid var(--border);
+            border: 1px solid var(--border);
         }
         
         .btn-secondary:hover {
@@ -202,7 +181,7 @@
         
         /* Section Styles */
         section {
-            padding: 4rem 2rem;
+            padding: 5rem 2rem;
         }
         
         .container {
@@ -211,20 +190,19 @@
         }
         
         .section-header {
-            text-align: center;
             margin-bottom: 3rem;
         }
         
         .section-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
+            font-family: 'Source Serif 4', serif;
+            font-size: 2rem;
             color: var(--text-dark);
             margin-bottom: 0.5rem;
+            font-weight: 600;
         }
         
         .section-header p {
             color: var(--text-muted);
-            font-size: 1.05rem;
         }
         
         /* Products Section */
@@ -234,29 +212,26 @@
         
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 1.5rem;
         }
         
         .product-card {
             background: var(--bg);
-            border-radius: 20px;
+            border-radius: 12px;
             overflow: hidden;
+            cursor: pointer;
             transition: all 0.3s;
             border: 1px solid var(--border);
         }
         
         .product-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(139, 90, 43, 0.15);
+            box-shadow: 0 12px 30px rgba(139, 90, 43, 0.12);
         }
         
         .product-image {
             height: 200px;
-            background: var(--cream);
-            display: flex;
-            align-items: center;
-            justify-content: center;
             overflow: hidden;
         }
         
@@ -264,321 +239,256 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
         }
         
         .product-content {
-            padding: 1.5rem;
+            padding: 1.25rem;
         }
         
-        .product-badges {
+        .product-tags {
             display: flex;
             gap: 0.4rem;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.6rem;
         }
         
         .product-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.25rem;
+            font-family: 'Source Serif 4', serif;
+            font-size: 1.1rem;
             font-weight: 600;
             color: var(--text-dark);
             margin-bottom: 0.5rem;
         }
         
-        .product-description {
-            font-size: 0.9rem;
+        .product-brief {
+            font-size: 0.85rem;
             color: var(--text-muted);
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
         .product-price {
-            font-size: 1.4rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: var(--brown);
         }
         
-        /* About Section */
-        #about {
+        .product-view {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        
+        /* Product Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .modal-overlay.active {
+            display: flex;
+        }
+        
+        .modal {
+            background: var(--surface);
+            border-radius: 16px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        
+        .modal-image {
             background: var(--cream);
         }
         
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-        
-        .about-text h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            color: var(--text-dark);
-            margin-bottom: 1rem;
-        }
-        
-        .about-text p {
-            margin-bottom: 1rem;
-            color: var(--text-body);
-        }
-        
-        .about-image {
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-        }
-        
-        .about-image img {
+        .modal-image img {
             width: 100%;
-            height: auto;
-            display: block;
+            height: 100%;
+            object-fit: cover;
+            min-height: 400px;
         }
         
-        /* Ingredients Section */
-        #ingredients {
+        .modal-content {
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
             background: var(--surface);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
-        .ingredients-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .ingredient-card {
-            background: var(--bg);
-            padding: 1.5rem;
-            border-radius: 16px;
-            text-align: center;
-            border: 1px solid var(--border);
-        }
-        
-        .ingredient-icon {
-            font-size: 2.5rem;
+        .modal-tags {
+            display: flex;
+            gap: 0.5rem;
             margin-bottom: 1rem;
         }
         
-        .ingredient-card h3 {
+        .modal-title {
+            font-family: 'Source Serif 4', serif;
+            font-size: 1.75rem;
             color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .modal-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--brown);
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal-description {
+            color: var(--text-body);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .modal-section {
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal-section h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
             margin-bottom: 0.5rem;
         }
         
-        .ingredient-card p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
+        .modal-section p, .modal-section ul {
+            color: var(--text-body);
+            font-size: 0.95rem;
         }
         
-        /* Market Schedule */
-        #markets {
-            background: var(--green-light);
+        .modal-section ul {
+            list-style: none;
         }
         
-        .market-list {
-            display: grid;
-            gap: 1rem;
-            max-width: 600px;
-            margin: 0 auto;
+        .modal-section li {
+            padding: 0.25rem 0;
         }
         
-        .market-item {
-            background: var(--surface);
-            padding: 1.25rem 1.5rem;
-            border-radius: 12px;
+        .modal-actions {
+            margin-top: auto;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            gap: 1rem;
         }
         
-        .market-info h3 {
-            color: var(--text-dark);
-            font-size: 1.1rem;
-            margin-bottom: 0.25rem;
-        }
-        
-        .market-info p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-        
-        .market-day {
-            background: var(--brown);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.85rem;
+        .modal-actions .btn {
+            flex: 1;
+            text-align: center;
         }
         
         /* FAQ Section */
         #faq {
-            background: var(--surface);
+            background: var(--bg);
         }
         
-        .faq-list {
-            max-width: 700px;
-            margin: 0 auto;
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
         }
         
         .faq-item {
-            border-bottom: 1px solid var(--border);
-            padding: 1.5rem 0;
-        }
-        
-        .faq-item:last-child {
-            border-bottom: none;
+            background: var(--surface);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid var(--border);
         }
         
         .faq-question {
             font-weight: 600;
             color: var(--text-dark);
-            font-size: 1.05rem;
             margin-bottom: 0.5rem;
         }
         
         .faq-answer {
             color: var(--text-muted);
+            font-size: 0.95rem;
         }
         
-        /* Testimonials */
-        #testimonials {
+        /* Market Info */
+        #markets {
             background: var(--cream);
         }
         
-        .testimonials-grid {
+        .markets-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
         }
         
-        .testimonial-card {
+        .market-card {
             background: var(--surface);
             padding: 1.5rem;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        }
-        
-        .testimonial-text {
-            font-style: italic;
-            color: var(--text-body);
-            margin-bottom: 1rem;
-            font-size: 1rem;
-        }
-        
-        .testimonial-author {
-            font-weight: 600;
-            color: var(--text-dark);
-        }
-        
-        /* Pre-order Form */
-        #preorder {
-            background: var(--brown);
-            color: white;
-        }
-        
-        #preorder .section-header h2 {
-            color: white;
-        }
-        
-        #preorder .section-header p {
-            color: rgba(255,255,255,0.8);
-        }
-        
-        .preorder-form {
-            max-width: 600px;
-            margin: 0 auto;
-            background: var(--surface);
-            padding: 2rem;
-            border-radius: 20px;
-        }
-        
-        .form-group {
-            margin-bottom: 1.25rem;
-        }
-        
-        .form-group label {
-            display: block;
-            font-weight: 500;
-            color: var(--text-dark);
-            margin-bottom: 0.4rem;
-        }
-        
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.875rem 1rem;
-            border: 2px solid var(--border);
-            border-radius: 12px;
-            font-size: 1rem;
-            font-family: inherit;
-            transition: all 0.2s;
-            background: var(--bg);
-        }
-        
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--brown);
-        }
-        
-        .checkbox-group {
-            display: grid;
-            gap: 0.75rem;
-        }
-        
-        .checkbox-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.75rem 1rem;
-            background: var(--bg);
             border-radius: 10px;
-            cursor: pointer;
-            border: 2px solid transparent;
-            transition: all 0.2s;
         }
         
-        .checkbox-item:hover {
-            border-color: var(--brown-light);
-        }
-        
-        .checkbox-item input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            accent-color: var(--brown);
-        }
-        
-        .checkbox-item .item-details {
-            flex: 1;
-        }
-        
-        .checkbox-item .item-name {
-            font-weight: 500;
+        .market-card h3 {
             color: var(--text-dark);
+            margin-bottom: 0.25rem;
         }
         
-        .checkbox-item .item-price {
+        .market-card .day {
             color: var(--brown);
             font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .market-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
         }
         
         /* Email Signup */
         #signup {
-            background: var(--bg);
-            text-align: center;
+            background: var(--surface);
         }
         
         .signup-box {
             max-width: 500px;
             margin: 0 auto;
-            background: var(--surface);
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            text-align: center;
         }
         
         .signup-box h3 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Source Serif 4', serif;
             font-size: 1.5rem;
             color: var(--text-dark);
             margin-bottom: 0.5rem;
@@ -597,8 +507,8 @@
         .signup-form input {
             flex: 1;
             padding: 0.875rem 1rem;
-            border: 2px solid var(--border);
-            border-radius: 50px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
             font-size: 1rem;
             font-family: inherit;
         }
@@ -608,145 +518,127 @@
             border-color: var(--brown);
         }
         
-        .signup-form button {
-            padding: 0.875rem 1.5rem;
-            background: var(--brown);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-family: inherit;
-        }
-        
-        .signup-form button:hover {
-            background: var(--brown-dark);
-        }
-        
         /* Footer */
         footer {
             background: var(--text-dark);
             color: white;
             padding: 3rem 2rem;
-            text-align: center;
         }
         
-        .footer-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+        .footer-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
         }
         
-        .footer-badges {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .footer-contact p {
+        .footer-brand h3 {
+            font-family: 'Source Serif 4', serif;
+            font-size: 1.3rem;
             margin-bottom: 0.5rem;
-            color: rgba(255,255,255,0.8);
         }
         
-        .footer-contact a {
+        .footer-brand p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+        
+        .footer-links h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+            color: rgba(255,255,255,0.5);
+        }
+        
+        .footer-links a {
+            display: block;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            padding: 0.3rem 0;
+            font-size: 0.95rem;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            max-width: 1000px;
+            margin: 2rem auto 0;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.5);
+        }
+        
+        .footer-bottom a {
             color: var(--brown-light);
             text-decoration: none;
         }
         
-        .footer-bottom {
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.6);
-        }
-        
         /* Mobile Styles */
         @media (max-width: 768px) {
-            nav {
-                padding: 1rem;
-            }
+            nav { padding: 1rem; }
+            .nav-links { gap: 1rem; }
             
-            .nav-links {
-                gap: 1rem;
-                font-size: 0.85rem;
-            }
+            .hero { padding: 7rem 1.5rem 3rem; }
+            .hero h1 { font-size: 2.2rem; }
             
-            .hero {
-                padding: 7rem 1.5rem 3rem;
-            }
+            section { padding: 3rem 1.5rem; }
             
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            
-            .about-content {
+            .modal {
                 grid-template-columns: 1fr;
+                max-height: 95vh;
             }
             
-            .about-image {
-                order: -1;
-            }
+            .modal-image { max-height: 250px; }
+            .modal-image img { min-height: auto; }
+            .modal-content { padding: 1.5rem; }
             
-            section {
-                padding: 3rem 1.5rem;
-            }
+            .signup-form { flex-direction: column; }
             
-            .section-header h2 {
-                font-size: 1.8rem;
-            }
-            
-            .signup-form {
-                flex-direction: column;
-            }
-            
-            .market-item {
-                flex-direction: column;
-                gap: 0.75rem;
-                text-align: center;
-            }
+            .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+            .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
         }
         
         @media (max-width: 480px) {
-            .nav-links a:not(.nav-cta) {
-                display: none;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
+            .nav-links a:not(.nav-cta) { display: none; }
+            .hero-buttons { flex-direction: column; align-items: center; }
         }
     </style>
 </head>
 <body>
     <nav>
-        <a href="#" class="nav-logo">Jane's Bountiful Pantry</a>
+        <a href="./" class="nav-logo">Jane's Bountiful Pantry</a>
         <div class="nav-links">
-            <a href="#products">Products</a>
-            <a href="#about">About</a>
-            <a href="#markets">Markets</a>
-            <a href="#faq">FAQ</a>
-            <a href="#preorder" class="nav-cta">Pre-Order</a>
+            <a href="./about.html">About Us</a>
+            <a href="./ingredients.html">Ingredients</a>
+            <a href="./testimonials.html">Reviews</a>
+            <a href="#products" class="nav-cta">Order Now</a>
         </div>
     </nav>
     
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-badge">
-            🌱 100% Vegan • Gluten-Free • Dairy-Free
-        </div>
-        <h1>Jane's Bountiful Pantry</h1>
-        <p class="hero-tagline">Homemade with love ❤️</p>
-        <p class="hero-description">
-            Delicious vegan and gluten-free baked goods made with clean ingredients. 
-            No gluten, no dairy, no eggs — just pure goodness you can trust.
-        </p>
-        <div class="hero-buttons">
-            <a href="#preorder" class="btn btn-primary">Pre-Order for Pickup →</a>
-            <a href="#products" class="btn btn-secondary">View Our Treats</a>
+        <div class="hero-inner">
+            <div class="hero-tags">
+                <span class="tag tag-vegan">Vegan</span>
+                <span class="tag tag-gf">Gluten-Free</span>
+                <span class="tag tag-df">Dairy-Free</span>
+            </div>
+            <h1>Baked Goods You Can Actually Eat</h1>
+            <p class="hero-subtitle">
+                Handmade treats without the gluten, dairy, or eggs. 
+                Real ingredients, real flavor — made in small batches in Austin.
+            </p>
+            <div class="hero-buttons">
+                <a href="#products" class="btn btn-primary">See What's Available</a>
+                <a href="./about.html" class="btn btn-secondary">Our Story</a>
+            </div>
         </div>
     </section>
     
@@ -754,174 +646,111 @@
     <section id="products">
         <div class="container">
             <div class="section-header">
-                <h2>Our Treats</h2>
-                <p>Every item is 100% vegan, gluten-free, and dairy-free</p>
+                <h2>This Week's Menu</h2>
+                <p>Everything is vegan, gluten-free, and dairy-free. Click any item for details.</p>
             </div>
             
             <div class="products-grid">
-                <div class="product-card">
+                <div class="product-card" onclick="openModal('pecan')">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400&h=300&fit=crop" alt="Pecan Pie Cookie">
+                        <img src="./images/pecan-pie-cookie.jpg" alt="Pecan Pie Cookie">
                     </div>
                     <div class="product-content">
-                        <div class="product-badges">
-                            <span class="badge badge-vegan">Vegan</span>
-                            <span class="badge badge-gf">GF</span>
-                            <span class="badge badge-df">DF</span>
+                        <div class="product-tags">
+                            <span class="tag tag-vegan">V</span>
+                            <span class="tag tag-gf">GF</span>
+                            <span class="tag tag-df">DF</span>
                         </div>
                         <h3 class="product-name">Pecan Pie Cookie</h3>
-                        <p class="product-description">Rich, gooey pecan pie filling on a buttery cookie base. A Southern classic, reimagined.</p>
-                        <div class="product-price">$16.00</div>
-                    </div>
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1548848221-0c2e497ed557?w=400&h=300&fit=crop" alt="Baklava Pistachio Pecan Cookie">
-                    </div>
-                    <div class="product-content">
-                        <div class="product-badges">
-                            <span class="badge badge-vegan">Vegan</span>
-                            <span class="badge badge-gf">GF</span>
-                            <span class="badge badge-df">DF</span>
+                        <p class="product-brief">Gooey pecan filling on a buttery cookie base</p>
+                        <div class="product-footer">
+                            <span class="product-price">$16</span>
+                            <span class="product-view">View Details</span>
                         </div>
-                        <h3 class="product-name">Baklava Pistachio Pecan Cookie</h3>
-                        <p class="product-description">Inspired by traditional baklava — honey, pistachios, and pecans in cookie form.</p>
-                        <div class="product-price">$16.00</div>
                     </div>
                 </div>
                 
-                <div class="product-card">
+                <div class="product-card" onclick="openModal('baklava')">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=400&h=300&fit=crop" alt="Cookie Dough Chocolate Chip">
+                        <img src="./images/baklava-cookie.jpg" alt="Baklava Pistachio Pecan Cookie">
                     </div>
                     <div class="product-content">
-                        <div class="product-badges">
-                            <span class="badge badge-vegan">Vegan</span>
-                            <span class="badge badge-gf">GF</span>
-                            <span class="badge badge-df">DF</span>
+                        <div class="product-tags">
+                            <span class="tag tag-vegan">V</span>
+                            <span class="tag tag-gf">GF</span>
+                            <span class="tag tag-df">DF</span>
+                        </div>
+                        <h3 class="product-name">Baklava Pistachio Pecan</h3>
+                        <p class="product-brief">Honey, pistachio, and pecan — cookie style</p>
+                        <div class="product-footer">
+                            <span class="product-price">$16</span>
+                            <span class="product-view">View Details</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" onclick="openModal('chocchip')">
+                    <div class="product-image">
+                        <img src="./images/chocolate-chip-cookie.jpg" alt="Cookie Dough Chocolate Chip">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-tags">
+                            <span class="tag tag-vegan">V</span>
+                            <span class="tag tag-gf">GF</span>
+                            <span class="tag tag-df">DF</span>
                         </div>
                         <h3 class="product-name">Cookie Dough Chocolate Chip</h3>
-                        <p class="product-description">Safe-to-eat cookie dough loaded with chocolate chips. Your childhood dream, guilt-free.</p>
-                        <div class="product-price">$13.00</div>
+                        <p class="product-brief">Safe-to-eat dough loaded with chocolate chips</p>
+                        <div class="product-footer">
+                            <span class="product-price">$13</span>
+                            <span class="product-view">View Details</span>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="product-card">
+                <div class="product-card" onclick="openModal('snickerdoodle')">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?w=400&h=300&fit=crop" alt="Cookie Dough Snickerdoodle">
+                        <img src="./images/snickerdoodle-cookie.jpg" alt="Cookie Dough Snickerdoodle">
                     </div>
                     <div class="product-content">
-                        <div class="product-badges">
-                            <span class="badge badge-vegan">Vegan</span>
-                            <span class="badge badge-gf">GF</span>
-                            <span class="badge badge-df">DF</span>
+                        <div class="product-tags">
+                            <span class="tag tag-vegan">V</span>
+                            <span class="tag tag-gf">GF</span>
+                            <span class="tag tag-df">DF</span>
                         </div>
                         <h3 class="product-name">Cookie Dough Snickerdoodle</h3>
-                        <p class="product-description">Classic cinnamon-sugar snickerdoodle in spoonable form. Warm, cozy, and safe to eat raw.</p>
-                        <div class="product-price">$13.00</div>
+                        <p class="product-brief">Classic cinnamon-sugar, spoonable form</p>
+                        <div class="product-footer">
+                            <span class="product-price">$13</span>
+                            <span class="product-view">View Details</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- About / Story Section -->
-    <section id="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <div class="badges" style="margin-bottom: 1rem;">
-                        <span class="badge badge-vegan">100% Vegan</span>
-                        <span class="badge badge-gf">Gluten-Free</span>
-                        <span class="badge badge-df">Dairy-Free</span>
-                    </div>
-                    <h2>My Story</h2>
-                    <p>
-                        I started Jane's Bountiful Pantry because I believe everyone deserves delicious treats — 
-                        regardless of dietary restrictions. After discovering my own food sensitivities, I spent years 
-                        perfecting recipes that are free from gluten, dairy, and eggs without sacrificing flavor.
-                    </p>
-                    <p>
-                        Every item is made from scratch in small batches with clean, simple ingredients. 
-                        No artificial preservatives. No mystery additives. Just real food made with love.
-                    </p>
-                    <p>
-                        <strong>My promise:</strong> If I wouldn't eat it myself, I won't sell it to you.
-                    </p>
-                </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1556217477-d325251ece38?w=500&h=600&fit=crop" alt="Fresh baked goods">
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Ingredients / Transparency Section -->
-    <section id="ingredients">
-        <div class="container">
-            <div class="section-header">
-                <h2>What's In Our Food</h2>
-                <p>Full transparency — because you deserve to know exactly what you're eating</p>
-            </div>
-            
-            <div class="ingredients-grid">
-                <div class="ingredient-card">
-                    <div class="ingredient-icon">🌾</div>
-                    <h3>Our Flour Blend</h3>
-                    <p>We use a custom blend of certified gluten-free oat flour, almond flour, and tapioca starch for the perfect texture.</p>
-                </div>
-                
-                <div class="ingredient-card">
-                    <div class="ingredient-icon">🥛</div>
-                    <h3>No Dairy, Ever</h3>
-                    <p>We use coconut oil and plant-based butter. Creamy taste without any dairy — safe for lactose intolerance and vegan diets.</p>
-                </div>
-                
-                <div class="ingredient-card">
-                    <div class="ingredient-icon">🥚</div>
-                    <h3>Egg-Free</h3>
-                    <p>Flax eggs and aquafaba give us the binding we need. No eggs in any of our products — perfect for vegans and egg allergies.</p>
-                </div>
-                
-                <div class="ingredient-card">
-                    <div class="ingredient-icon">🍯</div>
-                    <h3>Natural Sweeteners</h3>
-                    <p>We sweeten with maple syrup, coconut sugar, and pure cane sugar. No high fructose corn syrup or artificial sweeteners.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Market Schedule -->
+    <!-- Markets Section -->
     <section id="markets">
         <div class="container">
             <div class="section-header">
                 <h2>Find Us at the Market</h2>
-                <p>Come say hi and grab some treats! 👋</p>
+                <p>Pre-order online, pick up in person.</p>
             </div>
             
-            <div class="market-list">
-                <div class="market-item">
-                    <div class="market-info">
-                        <h3>Bell Farmers Market</h3>
-                        <p>Cedar Park, TX • 9am - 1pm</p>
-                    </div>
-                    <div class="market-day">Sundays</div>
+            <div class="markets-grid">
+                <div class="market-card">
+                    <h3>Bell Farmers Market</h3>
+                    <p class="day">Sundays, 9am – 1pm</p>
+                    <p>Cedar Park, TX</p>
                 </div>
                 
-                <div class="market-item">
-                    <div class="market-info">
-                        <h3>Texas Farmers Market at Lakeline</h3>
-                        <p>Cedar Park, TX • 9am - 1pm</p>
-                    </div>
-                    <div class="market-day">Saturdays</div>
+                <div class="market-card">
+                    <h3>Texas Farmers Market at Lakeline</h3>
+                    <p class="day">Saturdays, 9am – 1pm</p>
+                    <p>Cedar Park, TX</p>
                 </div>
             </div>
-            
-            <p style="text-align: center; margin-top: 2rem; color: var(--text-muted);">
-                💡 <strong>Tip:</strong> Pre-order below to guarantee your favorites!
-            </p>
         </div>
     </section>
     
@@ -929,167 +758,30 @@
     <section id="faq">
         <div class="container">
             <div class="section-header">
-                <h2>Allergen FAQ</h2>
-                <p>Your safety and peace of mind come first</p>
+                <h2>Common Questions</h2>
+                <p>For full allergen details, see our <a href="./ingredients.html" style="color: var(--brown);">ingredients page</a>.</p>
             </div>
             
-            <div class="faq-list">
+            <div class="faq-grid">
                 <div class="faq-item">
-                    <div class="faq-question">Are all your products vegan?</div>
-                    <div class="faq-answer">Yes! Every single item we make is 100% vegan. No eggs, no dairy, no honey, no animal products whatsoever.</div>
+                    <div class="faq-question">Is everything really vegan?</div>
+                    <div class="faq-answer">Yes. No eggs, no dairy, no honey, no animal products. Every item we make.</div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question">Is your kitchen gluten-free?</div>
-                    <div class="faq-answer">Yes! We bake in a dedicated gluten-free environment. There is no wheat, barley, or rye in our kitchen — ever. All our flour blends are certified gluten-free.</div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">What flour do you use?</div>
-                    <div class="faq-answer">We use a custom blend of certified gluten-free oat flour, almond flour, and tapioca starch. We're happy to share specific ingredients for any product — just ask!</div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">Are your products dairy-free?</div>
-                    <div class="faq-answer">Absolutely. We never use milk, butter, cream, or any dairy derivatives. We use coconut oil and plant-based alternatives instead.</div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">Do you use eggs?</div>
-                    <div class="faq-answer">No eggs! We use flax eggs and aquafaba (chickpea water) as binding agents. Safe for vegans and those with egg allergies.</div>
+                    <div class="faq-answer">Yes. We bake in a dedicated gluten-free space. No wheat, barley, or rye ever enters our kitchen.</div>
                 </div>
                 
                 <div class="faq-item">
                     <div class="faq-question">What about nut allergies?</div>
-                    <div class="faq-answer">Some of our products contain tree nuts (pecans, pistachios, almonds). If you have a nut allergy, please check individual product ingredients or contact us.</div>
+                    <div class="faq-answer">Some products contain tree nuts (pecans, pistachios, almonds). Check individual items or contact us.</div>
                 </div>
                 
                 <div class="faq-item">
-                    <div class="faq-question">Are your products certified?</div>
-                    <div class="faq-answer">Our flour blends are certified gluten-free. While we're not a certified facility, we maintain strict protocols and bake exclusively gluten-free, vegan products.</div>
+                    <div class="faq-question">How do I pay?</div>
+                    <div class="faq-answer">Payment at pickup. We accept Square (card), cash, and Venmo.</div>
                 </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Testimonials -->
-    <section id="testimonials">
-        <div class="container">
-            <div class="section-header">
-                <h2>What Customers Say</h2>
-                <p>Real reviews from real people</p>
-            </div>
-            
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Finally, a bakery I can trust! As someone with celiac, I'm always nervous trying new places. Jane's treats are not only safe — they're the BEST cookies I've had in years."</p>
-                    <div class="testimonial-author">— Sarah M.</div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"My vegan daughter was in tears when she tried the pecan pie cookie. She said it tastes like the ones grandma used to make. Thank you for making her feel included!"</p>
-                    <div class="testimonial-author">— Michelle R.</div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"I'm not even gluten-free and I'm obsessed. The cookie dough is dangerous — I ate the whole container in one sitting. No regrets."</p>
-                    <div class="testimonial-author">— David K.</div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Pre-Order Form -->
-    <section id="preorder">
-        <div class="container">
-            <div class="section-header">
-                <h2>Pre-Order for Market Pickup</h2>
-                <p>Reserve your favorites and skip the line!</p>
-            </div>
-            
-            <div class="preorder-form">
-                <form action="https://formsubmit.co/geetesh.parelly@2hourlearning.com" method="POST">
-                    <input type="hidden" name="_subject" value="New Pre-Order: Jane's Bountiful Pantry">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_template" value="table">
-                    
-                    <div class="form-group">
-                        <label>Select Your Treats:</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox-item">
-                                <input type="checkbox" name="Order" value="Pecan Pie Cookie ($16)">
-                                <div class="item-details">
-                                    <div class="item-name">Pecan Pie Cookie</div>
-                                    <div class="item-price">$16.00</div>
-                                </div>
-                            </label>
-                            
-                            <label class="checkbox-item">
-                                <input type="checkbox" name="Order" value="Baklava Pistachio Pecan Cookie ($16)">
-                                <div class="item-details">
-                                    <div class="item-name">Baklava Pistachio Pecan Cookie</div>
-                                    <div class="item-price">$16.00</div>
-                                </div>
-                            </label>
-                            
-                            <label class="checkbox-item">
-                                <input type="checkbox" name="Order" value="Cookie Dough Chocolate Chip ($13)">
-                                <div class="item-details">
-                                    <div class="item-name">Cookie Dough Chocolate Chip</div>
-                                    <div class="item-price">$13.00</div>
-                                </div>
-                            </label>
-                            
-                            <label class="checkbox-item">
-                                <input type="checkbox" name="Order" value="Cookie Dough Snickerdoodle ($13)">
-                                <div class="item-details">
-                                    <div class="item-name">Cookie Dough Snickerdoodle</div>
-                                    <div class="item-price">$13.00</div>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="pickup_market">Pickup Location:</label>
-                        <select id="pickup_market" name="Pickup Location" required>
-                            <option value="">Select a market...</option>
-                            <option value="Bell Farmers Market - Sunday">Bell Farmers Market (Sunday)</option>
-                            <option value="Lakeline Market - Saturday">Texas Farmers Market at Lakeline (Saturday)</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="pickup_date">Pickup Date:</label>
-                        <input type="date" id="pickup_date" name="Pickup Date" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="customer_name">Your Name:</label>
-                        <input type="text" id="customer_name" name="Name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="customer_email">Email:</label>
-                        <input type="email" id="customer_email" name="Email" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="customer_phone">Phone (for pickup confirmation):</label>
-                        <input type="tel" id="customer_phone" name="Phone" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="notes">Special Requests or Notes:</label>
-                        <textarea id="notes" name="Notes" rows="3" placeholder="Anything we should know?"></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Pre-Order →</button>
-                    
-                    <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">
-                        💳 Payment collected at pickup (Square accepted)
-                    </p>
-                </form>
             </div>
         </div>
     </section>
@@ -1099,12 +791,12 @@
         <div class="container">
             <div class="signup-box">
                 <h3>Get Pre-Order Alerts</h3>
-                <p>Be the first to know when pre-orders open + get notified about new flavors!</p>
+                <p>We'll let you know when this week's menu drops and pre-orders open.</p>
                 <form class="signup-form" action="https://formsubmit.co/geetesh.parelly@2hourlearning.com" method="POST">
-                    <input type="hidden" name="_subject" value="New Email Signup: Jane's Bountiful Pantry">
+                    <input type="hidden" name="_subject" value="Email Signup: Jane's Bountiful Pantry">
                     <input type="hidden" name="_captcha" value="false">
-                    <input type="email" name="Email Signup" placeholder="your@email.com" required>
-                    <button type="submit">Sign Up</button>
+                    <input type="email" name="Email" placeholder="you@email.com" required>
+                    <button type="submit" class="btn btn-primary">Sign Up</button>
                 </form>
             </div>
         </div>
@@ -1112,20 +804,140 @@
     
     <!-- Footer -->
     <footer>
-        <div class="footer-logo">Jane's Bountiful Pantry</div>
-        <div class="footer-badges">
-            <span class="badge badge-vegan">100% Vegan</span>
-            <span class="badge badge-gf">Gluten-Free</span>
-            <span class="badge badge-df">Dairy-Free</span>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <h3>Jane's Bountiful Pantry</h3>
+                <p>Vegan, gluten-free, dairy-free baked goods made in Austin, TX.</p>
+                <div class="dietary-tags" style="margin-top: 1rem;">
+                    <span class="tag tag-vegan">Vegan</span>
+                    <span class="tag tag-gf">GF</span>
+                    <span class="tag tag-df">DF</span>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Pages</h4>
+                <a href="./">Menu</a>
+                <a href="./about.html">About Us</a>
+                <a href="./ingredients.html">Ingredients</a>
+                <a href="./testimonials.html">Reviews</a>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Contact</h4>
+                <a href="mailto:jane@example.com">jane@example.com</a>
+                <a href="#">Instagram</a>
+            </div>
         </div>
-        <div class="footer-contact">
-            <p>Questions? Reach out!</p>
-            <p><a href="mailto:jane@example.com">jane@example.com</a></p>
-        </div>
+        
         <div class="footer-bottom">
-            <p>Made with ❤️ in Austin, TX</p>
-            <p style="margin-top: 0.5rem;">Website by <a href="https://geeteshparelly.github.io/flowly-demos/" target="_blank" style="color: var(--brown-light);">Flowly</a></p>
+            <span>Made in Austin, TX</span>
+            <span>Site by <a href="https://geeteshparelly.github.io/flowly-demos/" target="_blank">Flowly</a></span>
         </div>
     </footer>
+    
+    <!-- Product Modal -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+        <div class="modal" onclick="event.stopPropagation()">
+            <div class="modal-image">
+                <img id="modalImage" src="" alt="">
+            </div>
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+                
+                <div class="modal-tags" id="modalTags"></div>
+                <h2 class="modal-title" id="modalTitle"></h2>
+                <div class="modal-price" id="modalPrice"></div>
+                
+                <p class="modal-description" id="modalDescription"></p>
+                
+                <div class="modal-section">
+                    <h4>Ingredients</h4>
+                    <p id="modalIngredients"></p>
+                </div>
+                
+                <div class="modal-section">
+                    <h4>Allergen Info</h4>
+                    <p id="modalAllergens"></p>
+                </div>
+                
+                <div class="modal-actions">
+                    <a href="#" class="btn btn-primary" id="modalOrderBtn">Order This</a>
+                    <a href="./ingredients.html" class="btn btn-secondary">Full Ingredient List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const products = {
+            pecan: {
+                name: "Pecan Pie Cookie",
+                price: "$16.00",
+                image: "./images/pecan-pie-cookie.jpg",
+                description: "All the flavors of a Southern pecan pie, reimagined as a cookie. Rich, gooey pecan filling sits on top of a buttery, melt-in-your-mouth cookie base. Sweet, nutty, and absolutely addictive.",
+                ingredients: "Gluten-free flour blend (oat flour, almond flour, tapioca starch), coconut oil, maple syrup, pecans, coconut sugar, vanilla extract, flax egg, sea salt.",
+                allergens: "Contains tree nuts (pecans, almonds). Made in a facility that handles nuts. Gluten-free, dairy-free, egg-free, vegan."
+            },
+            baklava: {
+                name: "Baklava Pistachio Pecan Cookie",
+                price: "$16.00",
+                image: "./images/baklava-cookie.jpg",
+                description: "Inspired by traditional baklava, this cookie combines honey-like sweetness with crunchy pistachios and buttery pecans. Layers of flavor in every bite — Middle Eastern dessert meets American cookie.",
+                ingredients: "Gluten-free flour blend (oat flour, almond flour, tapioca starch), pistachios, pecans, maple syrup, coconut oil, cinnamon, cardamom, vanilla extract, flax egg, sea salt.",
+                allergens: "Contains tree nuts (pistachios, pecans, almonds). Made in a facility that handles nuts. Gluten-free, dairy-free, egg-free, vegan."
+            },
+            chocchip: {
+                name: "Cookie Dough Chocolate Chip",
+                price: "$13.00",
+                image: "./images/chocolate-chip-cookie.jpg",
+                description: "Remember sneaking cookie dough as a kid? Now you can eat the whole container without worry. Safe-to-eat cookie dough packed with chocolate chips. No raw eggs, no guilt, just pure nostalgia.",
+                ingredients: "Gluten-free flour blend (oat flour, almond flour, tapioca starch), dairy-free chocolate chips, coconut oil, maple syrup, coconut sugar, vanilla extract, sea salt.",
+                allergens: "Contains tree nuts (almonds). May contain traces of soy (chocolate chips). Gluten-free, dairy-free, egg-free, vegan."
+            },
+            snickerdoodle: {
+                name: "Cookie Dough Snickerdoodle",
+                price: "$13.00",
+                image: "./images/snickerdoodle-cookie.jpg",
+                description: "Classic snickerdoodle flavor in spoonable, edible cookie dough form. Warm cinnamon and sugar coating on a soft, buttery dough base. Cozy comfort food you can eat straight from the container.",
+                ingredients: "Gluten-free flour blend (oat flour, almond flour, tapioca starch), coconut oil, coconut sugar, maple syrup, cinnamon, vanilla extract, sea salt.",
+                allergens: "Contains tree nuts (almonds). Gluten-free, dairy-free, egg-free, vegan."
+            }
+        };
+        
+        function openModal(productId) {
+            const product = products[productId];
+            document.getElementById('modalImage').src = product.image;
+            document.getElementById('modalTitle').textContent = product.name;
+            document.getElementById('modalPrice').textContent = product.price;
+            document.getElementById('modalDescription').textContent = product.description;
+            document.getElementById('modalIngredients').textContent = product.ingredients;
+            document.getElementById('modalAllergens').textContent = product.allergens;
+            
+            // Set up order button
+            const orderBtn = document.getElementById('modalOrderBtn');
+            orderBtn.href = `./order.html?item=${encodeURIComponent(product.name)}&price=${encodeURIComponent(product.price)}`;
+            
+            document.getElementById('modalTags').innerHTML = `
+                <span class="tag tag-vegan">Vegan</span>
+                <span class="tag tag-gf">Gluten-Free</span>
+                <span class="tag tag-df">Dairy-Free</span>
+            `;
+            
+            document.getElementById('modalOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal(event) {
+            if (event && event.target !== document.getElementById('modalOverlay')) return;
+            document.getElementById('modalOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        // Close on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
 </body>
 </html>

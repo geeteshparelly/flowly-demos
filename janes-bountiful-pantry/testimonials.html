@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Reviews | Jane's Bountiful Pantry</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Serif+4:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #faf8f5;
+            --surface: #ffffff;
+            --cream: #f5f0e8;
+            --brown: #8b5a2b;
+            --brown-dark: #6b4423;
+            --brown-light: #d4a574;
+            --green: #5d7a5d;
+            --green-light: #e8f0e8;
+            --text-dark: #2d2418;
+            --text-body: #5c4d3d;
+            --text-muted: #8c7b6b;
+            --border: #e8e0d5;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--text-body);
+            line-height: 1.7;
+        }
+        
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--surface);
+            padding: 1rem 2rem;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .nav-logo {
+            font-family: 'Source Serif 4', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--brown);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--text-body);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--brown);
+        }
+        
+        .nav-cta {
+            background: var(--brown);
+            color: white !important;
+            padding: 0.6rem 1.25rem;
+            border-radius: 6px;
+        }
+        
+        .page-header {
+            padding: 8rem 2rem 4rem;
+            background: var(--cream);
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-family: 'Source Serif 4', serif;
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .page-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        section {
+            padding: 4rem 2rem;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        /* Featured Review */
+        .featured-section {
+            background: var(--surface);
+        }
+        
+        .featured-review {
+            background: var(--cream);
+            padding: 3rem;
+            border-radius: 16px;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .featured-quote {
+            font-family: 'Source Serif 4', serif;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+        
+        .featured-author {
+            color: var(--text-muted);
+        }
+        
+        .featured-author strong {
+            color: var(--text-dark);
+        }
+        
+        /* Reviews Grid */
+        .reviews-section {
+            background: var(--bg);
+        }
+        
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .review-card {
+            background: var(--surface);
+            padding: 1.75rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+        
+        .review-stars {
+            color: #f59e0b;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+        
+        .review-text {
+            color: var(--text-body);
+            margin-bottom: 1.25rem;
+            font-size: 0.95rem;
+        }
+        
+        .review-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        .review-author {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        
+        .review-product {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: var(--brown);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-family: 'Source Serif 4', serif;
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section p {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn {
+            padding: 0.9rem 1.75rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            background: white;
+            color: var(--brown);
+        }
+        
+        .btn:hover {
+            background: var(--cream);
+        }
+        
+        footer {
+            background: var(--text-dark);
+            color: rgba(255,255,255,0.7);
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--brown-light);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            nav { padding: 1rem; }
+            .nav-links { gap: 1rem; }
+            .page-header { padding: 6rem 1.5rem 3rem; }
+            .page-header h1 { font-size: 2rem; }
+            section { padding: 3rem 1.5rem; }
+            .featured-review { padding: 2rem; }
+            .featured-quote { font-size: 1.25rem; }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-links a:not(.nav-cta) { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="./" class="nav-logo">Jane's Bountiful Pantry</a>
+        <div class="nav-links">
+            <a href="./about.html">About Us</a>
+            <a href="./ingredients.html">Ingredients</a>
+            <a href="./testimonials.html" class="active">Reviews</a>
+            <a href="./#products" class="nav-cta">Order Now</a>
+        </div>
+    </nav>
+    
+    <header class="page-header">
+        <h1>Customer Reviews</h1>
+        <p>What people are saying about our baked goods</p>
+    </header>
+    
+    <!-- Featured Review -->
+    <section class="featured-section">
+        <div class="container">
+            <div class="featured-review">
+                <p class="featured-quote">
+                    "I've been gluten-free for eight years and I'd given up on finding baked goods that actually 
+                    taste good. Then I tried Jane's pecan pie cookie at Bell Market. I almost cried. 
+                    It tasted like the real thing — maybe better."
+                </p>
+                <p class="featured-author">
+                    <strong>Sarah M.</strong> — Cedar Park, TX
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Reviews Grid -->
+    <section class="reviews-section">
+        <div class="container">
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">
+                        My daughter has celiac and a dairy allergy. Finding treats she can safely eat is nearly 
+                        impossible. Jane's cookies are the first thing she's been able to enjoy at a birthday 
+                        party in years. Thank you.
+                    </p>
+                    <div class="review-meta">
+                        <span class="review-author">Michelle R.</span>
+                        <span class="review-product">Snickerdoodle Cookie Dough</span>
+                    </div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">
+                        I'm not even gluten-free — I just came for the baklava cookie because it sounded interesting. 
+                        Now I'm a regular. The flavor is unreal. Don't let "gluten-free" fool you, these are 
+                        legitimately great cookies.
+                    </p>
+                    <div class="review-meta">
+                        <span class="review-author">David K.</span>
+                        <span class="review-product">Baklava Pistachio Pecan</span>
+                    </div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">
+                        The cookie dough is dangerous. I bought one container to "try" and finished it in the 
+                        car on the way home. Went back next week for three more. No shame.
+                    </p>
+                    <div class="review-meta">
+                        <span class="review-author">Jessica T.</span>
+                        <span class="review-product">Chocolate Chip Cookie Dough</span>
+                    </div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">
+                        As someone with multiple food allergies, I've learned to read every label and trust 
+                        nobody. Jane actually knows what's in her products and takes it seriously. 
+                        That peace of mind is worth everything.
+                    </p>
+                    <div class="review-meta">
+                        <span class="review-author">Amanda L.</span>
+                        <span class="review-product">Multiple products</span>
+                    </div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">
+                        Bought the pecan pie cookie for my vegan sister's birthday. She cried actual tears. 
+                        Said it reminded her of our grandmother's pecan pie from before she went vegan. 
+                        Best $16 I've ever spent.
+                    </p>
+                    <div class="review-meta">
+                        <span class="review-author">Marcus W.</span>
+                        <span class="review-product">Pecan Pie Cookie</span>
+                    </div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">
+                        I've tried every GF bakery in Austin. Most are dry, crumbly, or taste like 
+                        cardboard with sugar on top. Jane's stuff is different — it's moist, flavorful, 
+                        and you'd never know it was gluten-free.
+                    </p>
+                    <div class="review-meta">
+                        <span class="review-author">Priya N.</span>
+                        <span class="review-product">Regular customer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Try?</h2>
+            <p>Pre-order online and pick up at your local farmers market.</p>
+            <a href="./#products" class="btn">See This Week's Menu</a>
+        </div>
+    </section>
+    
+    <footer>
+        <p>Jane's Bountiful Pantry · Austin, TX · <a href="./">Back to Menu</a></p>
+    </footer>
+</body>
+</html>

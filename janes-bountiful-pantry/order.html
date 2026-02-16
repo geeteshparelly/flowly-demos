@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place Order | Jane's Bountiful Pantry</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Serif+4:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #faf8f5;
+            --surface: #ffffff;
+            --cream: #f5f0e8;
+            --brown: #8b5a2b;
+            --brown-dark: #6b4423;
+            --brown-light: #d4a574;
+            --green: #5d7a5d;
+            --green-light: #e8f0e8;
+            --text-dark: #2d2418;
+            --text-body: #5c4d3d;
+            --text-muted: #8c7b6b;
+            --border: #e8e0d5;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--text-body);
+            line-height: 1.6;
+            padding-top: 70px;
+        }
+        
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--surface);
+            padding: 1rem 2rem;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .nav-logo {
+            font-family: 'Source Serif 4', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--brown);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--text-body);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        
+        .nav-links a:hover {
+            color: var(--brown);
+        }
+        
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+        
+        h1 {
+            font-family: 'Source Serif 4', serif;
+            font-size: 2rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+        
+        /* Order Form */
+        .order-form {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+        
+        .form-section {
+            margin-bottom: 2rem;
+        }
+        
+        .form-section h3 {
+            font-size: 1rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+        
+        label {
+            display: block;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 0.4rem;
+            font-size: 0.95rem;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            background: var(--bg);
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--brown);
+        }
+        
+        /* Product Selection */
+        .product-option {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--bg);
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .product-option:hover {
+            border-color: var(--brown-light);
+        }
+        
+        .product-option.selected {
+            border-color: var(--brown);
+            background: var(--cream);
+        }
+        
+        .product-option input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--brown);
+            flex-shrink: 0;
+        }
+        
+        .product-info {
+            flex: 1;
+        }
+        
+        .product-name {
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        
+        .product-price {
+            color: var(--brown);
+            font-weight: 600;
+        }
+        
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .quantity-btn {
+            width: 32px;
+            height: 32px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .quantity-btn:hover {
+            background: var(--cream);
+        }
+        
+        .quantity-input {
+            width: 50px;
+            text-align: center;
+            padding: 0.5rem;
+        }
+        
+        /* Order Summary */
+        .order-summary {
+            background: var(--cream);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        
+        .summary-line {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+        }
+        
+        .summary-total {
+            border-top: 2px solid var(--border);
+            margin-top: 0.5rem;
+            padding-top: 0.75rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .summary-total span:last-child {
+            color: var(--brown);
+        }
+        
+        /* Submit */
+        .btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--brown);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+        }
+        
+        .btn:hover {
+            background: var(--brown-dark);
+        }
+        
+        .form-note {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+        
+        .back-link:hover {
+            color: var(--brown);
+        }
+        
+        @media (max-width: 768px) {
+            nav { padding: 1rem; }
+            .nav-links { gap: 1rem; }
+            .container { padding: 2rem 1rem; }
+            .order-form { padding: 1.5rem; }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-links a:not(:last-child) { display: none; }
+            .product-option { flex-wrap: wrap; }
+            .quantity-control { width: 100%; justify-content: flex-end; margin-top: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="./" class="nav-logo">Jane's Bountiful Pantry</a>
+        <div class="nav-links">
+            <a href="./">Menu</a>
+            <a href="./about.html">About</a>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <a href="./#products" class="back-link">← Back to menu</a>
+        
+        <h1>Place Your Order</h1>
+        <p class="subtitle">Select items, choose your pickup, and we'll have them ready for you.</p>
+        
+        <form class="order-form" action="https://formsubmit.co/geetesh.parelly@2hourlearning.com" method="POST">
+            <input type="hidden" name="_subject" value="New Order: Jane's Bountiful Pantry">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            
+            <div class="form-section">
+                <h3>Select Items</h3>
+                
+                <label class="product-option" id="option-pecan">
+                    <input type="checkbox" name="Pecan Pie Cookie" value="1" onchange="updateTotal()">
+                    <div class="product-info">
+                        <div class="product-name">Pecan Pie Cookie</div>
+                        <div class="product-price">$16.00</div>
+                    </div>
+                    <div class="quantity-control">
+                        <button type="button" class="quantity-btn" onclick="adjustQty('pecan', -1)">−</button>
+                        <input type="number" class="quantity-input" id="qty-pecan" name="Pecan Pie Cookie Qty" value="1" min="1" max="10" onchange="updateTotal()">
+                        <button type="button" class="quantity-btn" onclick="adjustQty('pecan', 1)">+</button>
+                    </div>
+                </label>
+                
+                <label class="product-option" id="option-baklava">
+                    <input type="checkbox" name="Baklava Pistachio Pecan" value="1" onchange="updateTotal()">
+                    <div class="product-info">
+                        <div class="product-name">Baklava Pistachio Pecan Cookie</div>
+                        <div class="product-price">$16.00</div>
+                    </div>
+                    <div class="quantity-control">
+                        <button type="button" class="quantity-btn" onclick="adjustQty('baklava', -1)">−</button>
+                        <input type="number" class="quantity-input" id="qty-baklava" name="Baklava Cookie Qty" value="1" min="1" max="10" onchange="updateTotal()">
+                        <button type="button" class="quantity-btn" onclick="adjustQty('baklava', 1)">+</button>
+                    </div>
+                </label>
+                
+                <label class="product-option" id="option-chocchip">
+                    <input type="checkbox" name="Cookie Dough Chocolate Chip" value="1" onchange="updateTotal()">
+                    <div class="product-info">
+                        <div class="product-name">Cookie Dough Chocolate Chip</div>
+                        <div class="product-price">$13.00</div>
+                    </div>
+                    <div class="quantity-control">
+                        <button type="button" class="quantity-btn" onclick="adjustQty('chocchip', -1)">−</button>
+                        <input type="number" class="quantity-input" id="qty-chocchip" name="Chocolate Chip Qty" value="1" min="1" max="10" onchange="updateTotal()">
+                        <button type="button" class="quantity-btn" onclick="adjustQty('chocchip', 1)">+</button>
+                    </div>
+                </label>
+                
+                <label class="product-option" id="option-snickerdoodle">
+                    <input type="checkbox" name="Cookie Dough Snickerdoodle" value="1" onchange="updateTotal()">
+                    <div class="product-info">
+                        <div class="product-name">Cookie Dough Snickerdoodle</div>
+                        <div class="product-price">$13.00</div>
+                    </div>
+                    <div class="quantity-control">
+                        <button type="button" class="quantity-btn" onclick="adjustQty('snickerdoodle', -1)">−</button>
+                        <input type="number" class="quantity-input" id="qty-snickerdoodle" name="Snickerdoodle Qty" value="1" min="1" max="10" onchange="updateTotal()">
+                        <button type="button" class="quantity-btn" onclick="adjustQty('snickerdoodle', 1)">+</button>
+                    </div>
+                </label>
+            </div>
+            
+            <div class="order-summary" id="orderSummary">
+                <div class="summary-line">
+                    <span>Select items above</span>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h3>Pickup Details</h3>
+                
+                <div class="form-group">
+                    <label for="market">Pickup Location</label>
+                    <select id="market" name="Pickup Location" required>
+                        <option value="">Select a market...</option>
+                        <option value="Bell Farmers Market - Sunday">Bell Farmers Market (Sunday, 9am-1pm)</option>
+                        <option value="Lakeline Market - Saturday">Texas Farmers Market at Lakeline (Saturday, 9am-1pm)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="date">Pickup Date</label>
+                    <input type="date" id="date" name="Pickup Date" required>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h3>Your Information</h3>
+                
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="Name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="Email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone (for pickup confirmation)</label>
+                    <input type="tel" id="phone" name="Phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="notes">Notes (optional)</label>
+                    <textarea id="notes" name="Notes" rows="2" placeholder="Anything we should know?"></textarea>
+                </div>
+            </div>
+            
+            <input type="hidden" id="orderTotal" name="Order Total" value="">
+            
+            <button type="submit" class="btn">Submit Pre-Order</button>
+            
+            <p class="form-note">
+                Payment collected at pickup. We accept Square (card), cash, and Venmo.
+            </p>
+        </form>
+    </div>
+    
+    <script>
+        const prices = {
+            pecan: 16,
+            baklava: 16,
+            chocchip: 13,
+            snickerdoodle: 13
+        };
+        
+        const names = {
+            pecan: 'Pecan Pie Cookie',
+            baklava: 'Baklava Pistachio Pecan',
+            chocchip: 'Cookie Dough Chocolate Chip',
+            snickerdoodle: 'Cookie Dough Snickerdoodle'
+        };
+        
+        function adjustQty(product, delta) {
+            const input = document.getElementById('qty-' + product);
+            let val = parseInt(input.value) + delta;
+            if (val < 1) val = 1;
+            if (val > 10) val = 10;
+            input.value = val;
+            updateTotal();
+        }
+        
+        function updateTotal() {
+            let total = 0;
+            let summaryHtml = '';
+            
+            ['pecan', 'baklava', 'chocchip', 'snickerdoodle'].forEach(product => {
+                const checkbox = document.querySelector('#option-' + product + ' input[type="checkbox"]');
+                const option = document.getElementById('option-' + product);
+                const qty = parseInt(document.getElementById('qty-' + product).value);
+                
+                if (checkbox.checked) {
+                    option.classList.add('selected');
+                    const lineTotal = prices[product] * qty;
+                    total += lineTotal;
+                    summaryHtml += `<div class="summary-line"><span>${names[product]} x ${qty}</span><span>$${lineTotal.toFixed(2)}</span></div>`;
+                } else {
+                    option.classList.remove('selected');
+                }
+            });
+            
+            if (total > 0) {
+                summaryHtml += `<div class="summary-line summary-total"><span>Total</span><span>$${total.toFixed(2)}</span></div>`;
+            } else {
+                summaryHtml = '<div class="summary-line"><span>Select items above</span></div>';
+            }
+            
+            document.getElementById('orderSummary').innerHTML = summaryHtml;
+            document.getElementById('orderTotal').value = '$' + total.toFixed(2);
+        }
+        
+        // Pre-select item if coming from product modal
+        const urlParams = new URLSearchParams(window.location.search);
+        const preselect = urlParams.get('item');
+        if (preselect) {
+            const productMap = {
+                'Pecan Pie Cookie': 'pecan',
+                'Baklava Pistachio Pecan Cookie': 'baklava',
+                'Cookie Dough Chocolate Chip': 'chocchip',
+                'Cookie Dough Snickerdoodle': 'snickerdoodle'
+            };
+            const key = productMap[preselect];
+            if (key) {
+                document.querySelector('#option-' + key + ' input[type="checkbox"]').checked = true;
+                updateTotal();
+            }
+        }
+        
+        // Initialize
+        updateTotal();
+    </script>
+</body>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Jane's Bountiful Pantry</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Serif+4:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #faf8f5;
+            --surface: #ffffff;
+            --cream: #f5f0e8;
+            --brown: #8b5a2b;
+            --brown-dark: #6b4423;
+            --brown-light: #d4a574;
+            --green: #5d7a5d;
+            --green-light: #e8f0e8;
+            --text-dark: #2d2418;
+            --text-body: #5c4d3d;
+            --text-muted: #8c7b6b;
+            --border: #e8e0d5;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--text-body);
+            line-height: 1.7;
+        }
+        
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--surface);
+            padding: 1rem 2rem;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .nav-logo {
+            font-family: 'Source Serif 4', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--brown);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--text-body);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--brown);
+        }
+        
+        .nav-cta {
+            background: var(--brown);
+            color: white !important;
+            padding: 0.6rem 1.25rem;
+            border-radius: 6px;
+        }
+        
+        .page-header {
+            padding: 8rem 2rem 4rem;
+            background: var(--cream);
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-family: 'Source Serif 4', serif;
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .page-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        section {
+            padding: 4rem 2rem;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .story-section {
+            background: var(--surface);
+        }
+        
+        .story-content h2 {
+            font-family: 'Source Serif 4', serif;
+            font-size: 1.75rem;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+        
+        .story-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+        
+        .story-content p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .highlight-box {
+            background: var(--cream);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border-left: 4px solid var(--brown);
+        }
+        
+        .highlight-box p {
+            margin: 0;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            font-style: italic;
+        }
+        
+        .values-section {
+            background: var(--bg);
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .value-item h3 {
+            font-family: 'Source Serif 4', serif;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .value-item p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        
+        .cta-section {
+            background: var(--brown);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-family: 'Source Serif 4', serif;
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section p {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn {
+            padding: 0.9rem 1.75rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            background: white;
+            color: var(--brown);
+        }
+        
+        .btn:hover {
+            background: var(--cream);
+        }
+        
+        footer {
+            background: var(--text-dark);
+            color: rgba(255,255,255,0.7);
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--brown-light);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            nav { padding: 1rem; }
+            .nav-links { gap: 1rem; }
+            .page-header { padding: 6rem 1.5rem 3rem; }
+            .page-header h1 { font-size: 2rem; }
+            section { padding: 3rem 1.5rem; }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-links a:not(.nav-cta) { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="./" class="nav-logo">Jane's Bountiful Pantry</a>
+        <div class="nav-links">
+            <a href="./about.html" class="active">About Us</a>
+            <a href="./ingredients.html">Ingredients</a>
+            <a href="./testimonials.html">Reviews</a>
+            <a href="./#products" class="nav-cta">Order Now</a>
+        </div>
+    </nav>
+    
+    <header class="page-header">
+        <h1>About Us</h1>
+        <p>The story behind the baked goods</p>
+    </header>
+    
+    <section class="story-section">
+        <div class="container">
+            <div class="story-content">
+                <h2>Why I Started Baking</h2>
+                
+                <p>
+                    A few years ago, I was diagnosed with multiple food sensitivities. Gluten, dairy, eggs — 
+                    suddenly, most of the foods I loved were off the table. Bakeries became places I'd walk past, 
+                    not into. Birthday parties meant watching everyone else eat cake.
+                </p>
+                
+                <p>
+                    So I started experimenting in my kitchen. Dozens of failed batches. Cookies that crumbled into dust. 
+                    Brownies that could double as bricks. But eventually, something clicked. I figured out how to make 
+                    treats that tasted like the real thing — no compromise, no sadness.
+                </p>
+                
+                <div class="highlight-box">
+                    <p>"If I wouldn't eat it myself, I won't sell it to you. That's the rule."</p>
+                </div>
+                
+                <p>
+                    Jane's Bountiful Pantry started at my local farmers market with three products and a folding table. 
+                    Now I'm at multiple markets every week, and I've shipped treats across Texas. But the mission 
+                    hasn't changed: make food that people with dietary restrictions can actually enjoy — not just tolerate.
+                </p>
+                
+                <h2>What Makes Us Different</h2>
+                
+                <p>
+                    I'm not a big bakery. I don't have a factory or a team of bakers. Every item is made by hand, 
+                    in small batches, in my dedicated gluten-free kitchen. That means I can control exactly what 
+                    goes into each product.
+                </p>
+                
+                <p>
+                    No mystery ingredients. No "natural flavors" hiding dairy. No shared equipment with wheat products. 
+                    When I say something is gluten-free and vegan, I mean it — because I'm eating the same thing you are.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="values-section">
+        <div class="container">
+            <div class="story-content">
+                <h2>What We Believe</h2>
+            </div>
+            
+            <div class="values-grid">
+                <div class="value-item">
+                    <h3>Real Ingredients</h3>
+                    <p>If you can't pronounce it, we don't use it. Simple foods made from simple ingredients.</p>
+                </div>
+                
+                <div class="value-item">
+                    <h3>Full Transparency</h3>
+                    <p>Every ingredient is listed. Every allergen is disclosed. No surprises, ever.</p>
+                </div>
+                
+                <div class="value-item">
+                    <h3>Small Batches</h3>
+                    <p>We bake fresh for each market. Nothing sits in a warehouse. Quality over quantity.</p>
+                </div>
+                
+                <div class="value-item">
+                    <h3>Inclusive Eating</h3>
+                    <p>Everyone deserves a good cookie. Dietary restrictions shouldn't mean missing out.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Try?</h2>
+            <p>Pre-order online and pick up at your local farmers market.</p>
+            <a href="./#products" class="btn">See This Week's Menu</a>
+        </div>
+    </section>
+    
+    <footer>
+        <p>Jane's Bountiful Pantry · Austin, TX · <a href="./">Back to Menu</a></p>
+    </footer>
+</body>
+</html>
