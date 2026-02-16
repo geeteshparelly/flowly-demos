@@ -298,8 +298,12 @@
     <div class="container">
         <a href="./#products" class="back-link">← Back to menu</a>
         
-        <h1>Place Your Order</h1>
-        <p class="subtitle">Select items, choose your pickup, and we'll have them ready for you.</p>
+        <h1>Pre-Order for Market Pickup</h1>
+        <p class="subtitle">Order now, pick up in person at your local farmers market. We do not ship.</p>
+        
+        <div style="background: #e8f0e8; color: #5d7a5d; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; text-align: center; font-weight: 500;">
+            All orders are for in-person pickup only. Select your market and date below.
+        </div>
         
         <form class="order-form" action="https://formsubmit.co/geetesh.parelly@2hourlearning.com" method="POST">
             <input type="hidden" name="_subject" value="New Order: Jane's Bountiful Pantry">
@@ -476,6 +480,7 @@
         // Pre-select item if coming from product modal
         const urlParams = new URLSearchParams(window.location.search);
         const preselect = urlParams.get('item');
+        const preQty = parseInt(urlParams.get('qty')) || 1;
         if (preselect) {
             const productMap = {
                 'Pecan Pie Cookie': 'pecan',
@@ -486,6 +491,7 @@
             const key = productMap[preselect];
             if (key) {
                 document.querySelector('#option-' + key + ' input[type="checkbox"]').checked = true;
+                document.getElementById('qty-' + key).value = preQty;
                 updateTotal();
             }
         }

@@ -299,7 +299,8 @@
             display: none;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
+            padding: 1.5rem;
+            overflow-y: auto;
         }
         
         .modal-overlay.active {
@@ -309,27 +310,29 @@
         .modal {
             background: var(--surface);
             border-radius: 16px;
-            max-width: 900px;
+            max-width: 950px;
             width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
+            position: relative;
+            margin: auto;
         }
         
         .modal-image {
             background: var(--cream);
+            border-radius: 16px 0 0 16px;
+            overflow: hidden;
         }
         
         .modal-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            min-height: 400px;
+            min-height: 500px;
         }
         
         .modal-content {
-            padding: 2.5rem;
+            padding: 2rem;
             display: flex;
             flex-direction: column;
         }
@@ -340,78 +343,148 @@
             right: 1rem;
             background: var(--surface);
             border: none;
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            z-index: 10;
+        }
+        
+        .modal-close:hover {
+            background: var(--cream);
         }
         
         .modal-tags {
             display: flex;
             gap: 0.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
         
         .modal-title {
             font-family: 'Source Serif 4', serif;
-            font-size: 1.75rem;
+            font-size: 1.6rem;
             color: var(--text-dark);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
             font-weight: 600;
         }
         
         .modal-price {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: var(--brown);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
         
         .modal-description {
             color: var(--text-body);
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-        
-        .modal-section {
-            margin-bottom: 1.5rem;
-        }
-        
-        .modal-section h4 {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--text-muted);
-            margin-bottom: 0.5rem;
-        }
-        
-        .modal-section p, .modal-section ul {
-            color: var(--text-body);
+            margin-bottom: 1rem;
+            line-height: 1.6;
             font-size: 0.95rem;
         }
         
-        .modal-section ul {
-            list-style: none;
+        .modal-section {
+            margin-bottom: 1rem;
         }
         
-        .modal-section li {
-            padding: 0.25rem 0;
+        .modal-section h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            margin-bottom: 0.35rem;
+        }
+        
+        .modal-section p {
+            color: var(--text-body);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .modal-order-section {
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        .modal-quantity {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .modal-quantity label {
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .qty-btn {
+            width: 36px;
+            height: 36px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .qty-btn:hover {
+            background: var(--cream);
+            border-color: var(--brown-light);
+        }
+        
+        .qty-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            min-width: 30px;
+            text-align: center;
+        }
+        
+        .modal-total {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-left: auto;
+        }
+        
+        .modal-total span {
+            font-weight: 700;
+            color: var(--brown);
         }
         
         .modal-actions {
-            margin-top: auto;
             display: flex;
-            gap: 1rem;
+            flex-direction: column;
+            gap: 0.75rem;
         }
         
         .modal-actions .btn {
-            flex: 1;
+            width: 100%;
             text-align: center;
+            padding: 0.9rem 1.5rem;
+        }
+        
+        .pickup-notice {
+            background: var(--green-light);
+            color: var(--green);
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            text-align: center;
+            font-weight: 500;
         }
         
         /* FAQ Section */
@@ -592,12 +665,16 @@
             
             .modal {
                 grid-template-columns: 1fr;
-                max-height: 95vh;
             }
             
-            .modal-image { max-height: 250px; }
+            .modal-image { 
+                max-height: 280px;
+                border-radius: 16px 16px 0 0;
+            }
             .modal-image img { min-height: auto; }
-            .modal-content { padding: 1.5rem; }
+            .modal-content { padding: 1.25rem; }
+            .modal-quantity { flex-wrap: wrap; }
+            .modal-total { margin-left: 0; margin-top: 0.5rem; width: 100%; }
             
             .signup-form { flex-direction: column; }
             
@@ -636,7 +713,7 @@
                 Real ingredients, real flavor — made in small batches in Austin.
             </p>
             <div class="hero-buttons">
-                <a href="#products" class="btn btn-primary">See What's Available</a>
+                <a href="#products" class="btn btn-primary">Pre-Order for Market Pickup</a>
                 <a href="./about.html" class="btn btn-secondary">Our Story</a>
             </div>
         </div>
@@ -839,12 +916,11 @@
     <!-- Product Modal -->
     <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
         <div class="modal" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
             <div class="modal-image">
                 <img id="modalImage" src="" alt="">
             </div>
             <div class="modal-content">
-                <button class="modal-close" onclick="closeModal()">&times;</button>
-                
                 <div class="modal-tags" id="modalTags"></div>
                 <h2 class="modal-title" id="modalTitle"></h2>
                 <div class="modal-price" id="modalPrice"></div>
@@ -861,9 +937,21 @@
                     <p id="modalAllergens"></p>
                 </div>
                 
-                <div class="modal-actions">
-                    <a href="#" class="btn btn-primary" id="modalOrderBtn">Order This</a>
-                    <a href="./ingredients.html" class="btn btn-secondary">Full Ingredient List</a>
+                <div class="modal-order-section">
+                    <div class="modal-quantity">
+                        <label>Quantity:</label>
+                        <div class="quantity-controls">
+                            <button type="button" class="qty-btn" onclick="adjustModalQty(-1)">−</button>
+                            <span class="qty-value" id="modalQty">1</span>
+                            <button type="button" class="qty-btn" onclick="adjustModalQty(1)">+</button>
+                        </div>
+                        <div class="modal-total">Total: <span id="modalTotal">$16.00</span></div>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <div class="pickup-notice">Pickup at farmers market — not shipped</div>
+                        <a href="#" class="btn btn-primary" id="modalOrderBtn">Pre-Order for Pickup</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -873,7 +961,7 @@
         const products = {
             pecan: {
                 name: "Pecan Pie Cookie",
-                price: "$16.00",
+                price: 16,
                 image: "./images/pecan-pie-cookie.jpg",
                 description: "All the flavors of a Southern pecan pie, reimagined as a cookie. Rich, gooey pecan filling sits on top of a buttery, melt-in-your-mouth cookie base. Sweet, nutty, and absolutely addictive.",
                 ingredients: "Gluten-free flour blend (oat flour, almond flour, tapioca starch), coconut oil, maple syrup, pecans, coconut sugar, vanilla extract, flax egg, sea salt.",
@@ -881,7 +969,7 @@
             },
             baklava: {
                 name: "Baklava Pistachio Pecan Cookie",
-                price: "$16.00",
+                price: 16,
                 image: "./images/baklava-cookie.jpg",
                 description: "Inspired by traditional baklava, this cookie combines honey-like sweetness with crunchy pistachios and buttery pecans. Layers of flavor in every bite — Middle Eastern dessert meets American cookie.",
                 ingredients: "Gluten-free flour blend (oat flour, almond flour, tapioca starch), pistachios, pecans, maple syrup, coconut oil, cinnamon, cardamom, vanilla extract, flax egg, sea salt.",
@@ -889,7 +977,7 @@
             },
             chocchip: {
                 name: "Cookie Dough Chocolate Chip",
-                price: "$13.00",
+                price: 13,
                 image: "./images/chocolate-chip-cookie.jpg",
                 description: "Remember sneaking cookie dough as a kid? Now you can eat the whole container without worry. Safe-to-eat cookie dough packed with chocolate chips. No raw eggs, no guilt, just pure nostalgia.",
                 ingredients: "Gluten-free flour blend (oat flour, almond flour, tapioca starch), dairy-free chocolate chips, coconut oil, maple syrup, coconut sugar, vanilla extract, sea salt.",
@@ -897,7 +985,7 @@
             },
             snickerdoodle: {
                 name: "Cookie Dough Snickerdoodle",
-                price: "$13.00",
+                price: 13,
                 image: "./images/snickerdoodle-cookie.jpg",
                 description: "Classic snickerdoodle flavor in spoonable, edible cookie dough form. Warm cinnamon and sugar coating on a soft, buttery dough base. Cozy comfort food you can eat straight from the container.",
                 ingredients: "Gluten-free flour blend (oat flour, almond flour, tapioca starch), coconut oil, coconut sugar, maple syrup, cinnamon, vanilla extract, sea salt.",
@@ -905,18 +993,21 @@
             }
         };
         
+        let currentProduct = null;
+        let currentQty = 1;
+        
         function openModal(productId) {
-            const product = products[productId];
-            document.getElementById('modalImage').src = product.image;
-            document.getElementById('modalTitle').textContent = product.name;
-            document.getElementById('modalPrice').textContent = product.price;
-            document.getElementById('modalDescription').textContent = product.description;
-            document.getElementById('modalIngredients').textContent = product.ingredients;
-            document.getElementById('modalAllergens').textContent = product.allergens;
+            currentProduct = products[productId];
+            currentQty = 1;
             
-            // Set up order button
-            const orderBtn = document.getElementById('modalOrderBtn');
-            orderBtn.href = `./order.html?item=${encodeURIComponent(product.name)}&price=${encodeURIComponent(product.price)}`;
+            document.getElementById('modalImage').src = currentProduct.image;
+            document.getElementById('modalTitle').textContent = currentProduct.name;
+            document.getElementById('modalPrice').textContent = '$' + currentProduct.price.toFixed(2);
+            document.getElementById('modalDescription').textContent = currentProduct.description;
+            document.getElementById('modalIngredients').textContent = currentProduct.ingredients;
+            document.getElementById('modalAllergens').textContent = currentProduct.allergens;
+            document.getElementById('modalQty').textContent = currentQty;
+            updateModalTotal();
             
             document.getElementById('modalTags').innerHTML = `
                 <span class="tag tag-vegan">Vegan</span>
@@ -926,6 +1017,21 @@
             
             document.getElementById('modalOverlay').classList.add('active');
             document.body.style.overflow = 'hidden';
+        }
+        
+        function adjustModalQty(delta) {
+            currentQty = Math.max(1, Math.min(10, currentQty + delta));
+            document.getElementById('modalQty').textContent = currentQty;
+            updateModalTotal();
+        }
+        
+        function updateModalTotal() {
+            const total = currentProduct.price * currentQty;
+            document.getElementById('modalTotal').textContent = '$' + total.toFixed(2);
+            
+            // Update order button link with quantity
+            const orderBtn = document.getElementById('modalOrderBtn');
+            orderBtn.href = `./order.html?item=${encodeURIComponent(currentProduct.name)}&qty=${currentQty}`;
         }
         
         function closeModal(event) {
