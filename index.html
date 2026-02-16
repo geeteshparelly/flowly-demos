@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flowly | Website Demos by Geetesh</title>
+    <title>flowly | Websites for Small Businesses</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #e8f4fc;
@@ -14,6 +14,7 @@
             --text-body: #4a5568;
             --text-muted: #7b8fa3;
             --accent: #5a8bb8;
+            --accent-dark: #4a7ba8;
             --accent-light: #d4e8f7;
             --border: #cde4f4;
         }
@@ -25,895 +26,465 @@
             background: var(--bg);
             color: var(--text-body);
             line-height: 1.6;
-            min-height: 100vh;
-            padding-top: 70px;
         }
         
-        /* Sticky Contact Header */
-        .sticky-header {
+        /* Navigation */
+        nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             background: var(--surface);
-            color: var(--text-dark);
-            padding: 0.75rem 1.5rem;
+            padding: 1rem 2rem;
             z-index: 1000;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            gap: 2rem;
-            flex-wrap: wrap;
             box-shadow: 0 2px 15px rgba(90, 139, 184, 0.15);
             border-bottom: 1px solid var(--border);
         }
         
-        .sticky-header .name {
+        .nav-logo {
+            font-size: 1.5rem;
             font-weight: 700;
-            font-size: 1.1rem;
             color: var(--text-dark);
+            text-decoration: none;
         }
         
-        .sticky-header a {
-            color: var(--accent);
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--text-body);
             text-decoration: none;
             font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
+            transition: color 0.2s;
         }
         
-        .sticky-header a:hover {
-            color: #4a7ba8;
+        .nav-links a:hover {
+            color: var(--accent);
         }
         
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem;
+        .nav-cta {
+            background: var(--accent) !important;
+            color: white !important;
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
         }
         
-        header {
+        .nav-cta:hover {
+            background: var(--accent-dark) !important;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 8rem 2rem 4rem;
             text-align: center;
-            margin-bottom: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
         }
         
-        .logo {
-            font-size: 2.8rem;
+        .hero-logo {
+            font-size: 4rem;
             font-weight: 700;
             color: var(--text-dark);
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.5rem;
             letter-spacing: -0.02em;
         }
         
-        .tagline {
+        .hero-tagline {
+            font-size: 1.4rem;
             color: var(--accent);
-            font-size: 1.1rem;
             font-weight: 500;
             margin-bottom: 1.5rem;
         }
         
-        /* Search Bar */
-        .search-container {
-            max-width: 500px;
-            margin: 0 auto 1.5rem;
-        }
-        
-        .search-input {
-            width: 100%;
-            padding: 1rem 1.5rem;
-            border: 2px solid var(--border);
-            border-radius: 50px;
-            font-size: 1rem;
-            font-family: inherit;
-            outline: none;
-            transition: all 0.2s;
-        }
-        
-        .search-input:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px var(--accent-light);
-        }
-        
-        .search-input::placeholder {
-            color: var(--text-muted);
-        }
-        
-        /* Filter Tabs */
-        .filters {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .filter-btn {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            padding: 0.5rem 1.2rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-family: inherit;
+        .hero-description {
+            font-size: 1.15rem;
             color: var(--text-body);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
-        .filter-btn:hover {
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 0.875rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: var(--surface);
+            color: var(--text-dark);
+            border: 2px solid var(--border);
+        }
+        
+        .btn-secondary:hover {
             border-color: var(--accent);
             color: var(--accent);
         }
         
-        .filter-btn.active {
-            background: var(--accent);
-            border-color: var(--accent);
-            color: white;
+        /* Features Section */
+        .features {
+            padding: 4rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
         }
         
-        .filter-btn.bell-special {
-            background: #fff3e0;
-            border-color: #ff9800;
-            color: #e65100;
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
         }
         
-        .filter-btn.bell-special:hover,
-        .filter-btn.bell-special.active {
-            background: #ff9800;
-            border-color: #ff9800;
-            color: white;
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
         }
         
-        .filter-btn.ramadan-special {
-            background: #e8f5e9;
-            border-color: #2d6a4f;
-            color: #2d6a4f;
-        }
-        
-        .filter-btn.ramadan-special:hover,
-        .filter-btn.ramadan-special.active {
-            background: #2d6a4f;
-            border-color: #2d6a4f;
-            color: white;
-        }
-        
-        .grid {
+        .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
         }
         
-        .card {
+        .feature-card {
             background: var(--surface);
+            padding: 2rem;
             border-radius: 16px;
             border: 1px solid var(--border);
-            overflow: hidden;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: block;
-        }
-        
-        .card.hidden {
-            display: none;
-        }
-        
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.1);
-        }
-        
-        .card-image {
-            height: 160px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top;
-        }
-        
-        .card-image .fallback {
-            display: none;
-            font-size: 3rem;
-        }
-        
-        .card-image img.error + .fallback {
-            display: flex;
-        }
-        
-        .card-image img.error {
-            display: none;
-        }
-        
-        .card-image.farm-bg { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); }
-        .card-image.beauty-bg { background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%); }
-        
-        .card-badge {
-            position: absolute;
-            top: 0.75rem;
-            right: 0.75rem;
-            background: #ff9800;
-            color: white;
-            font-size: 0.7rem;
-            font-weight: 600;
-            padding: 0.25rem 0.6rem;
-            border-radius: 50px;
-        }
-        
-        .card-content {
-            padding: 1.25rem;
-        }
-        
-        .card-title {
-            font-weight: 600;
-            color: var(--text-dark);
-            margin-bottom: 0.25rem;
-            font-size: 1.1rem;
-        }
-        
-        .card-type {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-        
-        .card-arrow {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border);
-        }
-        
-        .view-site {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--accent);
-        }
-        
-        footer {
             text-align: center;
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border);
         }
         
-        .contact-info {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1.5rem;
+        .feature-icon {
+            font-size: 2.5rem;
             margin-bottom: 1rem;
         }
         
-        .contact-info a {
-            color: var(--text-body);
-            text-decoration: none;
+        .feature-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-desc {
+            color: var(--text-muted);
             font-size: 0.95rem;
         }
         
-        .contact-info a:hover { color: var(--accent); }
-        
-        .price-tag {
-            display: inline-block;
-            background: var(--accent);
-            color: white;
-            padding: 0.6rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-            margin-top: 1rem;
+        /* How It Works */
+        .how-it-works {
+            padding: 4rem 2rem;
+            background: var(--surface);
         }
         
-        /* Category colors */
-        .food { background: linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%); }
-        .farm { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); }
-        .flowers { background: linear-gradient(135deg, #fdf4ff 0%, #fae8ff 100%); }
-        .pets { background: linear-gradient(135deg, #fefce8 0%, #fef9c3 100%); }
-        .services { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); }
-        .beauty { background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%); }
+        .steps {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            gap: 2rem;
+        }
         
-        .no-results {
-            text-align: center;
-            padding: 3rem;
+        .step {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+        
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: var(--accent-light);
+            color: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .step-content h3 {
+            color: var(--text-dark);
+            margin-bottom: 0.25rem;
+        }
+        
+        .step-content p {
             color: var(--text-muted);
-            display: none;
         }
         
+        /* Pricing Preview */
+        .pricing-preview {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .price-highlight {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+        
+        .price-context {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 4rem 2rem;
+            background: var(--surface);
+            text-align: center;
+        }
+        
+        .contact-card {
+            max-width: 500px;
+            margin: 0 auto;
+            background: var(--bg);
+            padding: 2.5rem;
+            border-radius: 20px;
+        }
+        
+        .contact-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.25rem;
+        }
+        
+        .contact-title {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .contact-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .contact-links a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        /* Mobile */
         @media (max-width: 768px) {
-            body { padding-top: 100px; }
-            .sticky-header { 
-                padding: 0.5rem 1rem;
-                gap: 0.75rem;
+            nav {
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
                 font-size: 0.9rem;
             }
-            .sticky-header .name { font-size: 1rem; }
-            h1 { font-size: 1.8rem; }
-            .container { padding: 1.5rem 1rem; }
-            .grid { grid-template-columns: 1fr; }
-            .filters { gap: 0.4rem; }
-            .filter-btn { padding: 0.4rem 0.9rem; font-size: 0.8rem; }
-            .search-input { padding: 0.8rem 1.2rem; font-size: 0.95rem; }
+            
+            .hero {
+                padding: 7rem 1.5rem 3rem;
+            }
+            
+            .hero-logo {
+                font-size: 2.8rem;
+            }
+            
+            .hero-tagline {
+                font-size: 1.15rem;
+            }
+            
+            .hero-description {
+                font-size: 1rem;
+            }
+            
+            .step {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+            
+            .features, .how-it-works, .pricing-preview, .contact {
+                padding: 3rem 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-links a:not(.nav-cta) {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Sticky Contact Header -->
-    <div class="sticky-header">
-        <span class="name">Geetesh Parelly</span>
-        <a href="tel:737-287-5336">📞 (737) 287-5336</a>
-        <a href="mailto:geetesh.parelly@2hourlearning.com">✉️ Email</a>
-        <a href="./pricing.html" class="nav-link" target="_blank">💰 View Pricing</a>
-    </div>
-
-    <div class="container">
-        <header>
-            <div class="logo">flowly</div>
-            <p class="tagline">websites for small businesses</p>
-        </header>
-        
-        <!-- Search Bar -->
-        <div class="search-container">
-            <input type="text" class="search-input" id="searchInput" placeholder="🔍 Search by name, type, or keyword (e.g. farm, jewelry, food...)">
+    <nav>
+        <a href="./" class="nav-logo">flowly</a>
+        <div class="nav-links">
+            <a href="./demos.html">Demos</a>
+            <a href="./pricing.html">Pricing</a>
+            <a href="./start.html" class="nav-cta">Get Started</a>
         </div>
-        
-        <div class="filters">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn bell-special" data-filter="bell">🎯 Bell Cedar Park</button>
-            <button class="filter-btn" data-filter="food">🍽️ Food & Restaurant</button>
-            <button class="filter-btn" data-filter="farm">🌿 Farm & Produce</button>
-            <button class="filter-btn" data-filter="other">✨ Other</button>
-            <button class="filter-btn ramadan-special" data-filter="ramadan">🌙 Ramadan Market</button>
+    </nav>
+    
+    <section class="hero">
+        <div class="hero-logo">flowly</div>
+        <p class="hero-tagline">websites for small businesses</p>
+        <p class="hero-description">
+            Professional, mobile-friendly websites built fast and affordable. 
+            Perfect for farmers market vendors, local shops, and small businesses ready to get online.
+        </p>
+        <div class="hero-buttons">
+            <a href="./start.html" class="btn btn-primary">Get Your Website →</a>
+            <a href="./demos.html" class="btn btn-secondary">View Demos</a>
         </div>
+    </section>
+    
+    <section class="features">
+        <h2 class="section-title">Why Flowly?</h2>
+        <p class="section-subtitle">Built for businesses that need results, not complexity</p>
         
-        <div class="grid" id="grid">
-            <!-- Bell Cedar Park Vendors -->
-            <a href="./goodie-dumplings/" class="card" target="_blank" data-categories="bell food" data-tags="goodie dumplings restaurant chinese asian austin food bell market cedar park">
-                <div class="card-image">
-                    <span class="card-badge">Bell Market</span>
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/goodie-dumplings/" alt="Goodie Dumplings preview" loading="lazy">
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Goodie Dumplings</div>
-                    <div class="card-type">Restaurant • Austin, TX</div>
-                    <div class="card-arrow">
-                        <span class="view-site">View Demo →</span>
-                    </div>
-                </div>
-            </a>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3 class="feature-title">Fast Delivery</h3>
+                <p class="feature-desc">Most sites delivered in 24-48 hours. No waiting weeks for a simple website.</p>
+            </div>
             
-            <a href="./yallatizers/" class="card" target="_blank" data-categories="bell food" data-tags="yallatizers mediterranean middle eastern food bell market">
-                <div class="card-image">
-                    <span class="card-badge">Bell Market</span>
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/yallatizers/" alt="Yallatizers preview" loading="lazy">
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Yallatizers</div>
-                    <div class="card-type">Mediterranean Food • Austin, TX</div>
-                    <div class="card-arrow">
-                        <span class="view-site">View Demo →</span>
-                    </div>
-                </div>
-            </a>
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3 class="feature-title">Mobile-First</h3>
+                <p class="feature-desc">Looks great on phones — because that's where your customers are.</p>
+            </div>
             
-            <a href="./ks-seafood/" class="card" target="_blank" data-categories="bell food" data-tags="ks seafood gulf fish shrimp georgetown bell market">
-                <div class="card-image">
-                    <span class="card-badge">Bell Market</span>
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ks-seafood/" alt="K&S Seafood preview" loading="lazy">
-                </div>
-                <div class="card-content">
-                    <div class="card-title">K&S Seafood</div>
-                    <div class="card-type">Gulf Seafood • Georgetown, TX</div>
-                    <div class="card-arrow">
-                        <span class="view-site">View Demo →</span>
-                    </div>
-                </div>
-            </a>
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3 class="feature-title">Affordable</h3>
+                <p class="feature-desc">Starting at $100. No hidden fees, no monthly subscriptions required.</p>
+            </div>
             
-            <a href="./bernhardts-farm/" class="card" target="_blank" data-categories="bell farm" data-tags="bernhardts farm produce organic vegetables elgin bell market">
-                <div class="card-image">
-                    <span class="card-badge">Bell Market</span>
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/bernhardts-farm/" alt="Bernhardt's Farm preview" loading="lazy">
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Bernhardt's Farm</div>
-                    <div class="card-type">Farm & Produce • Elgin, TX</div>
-                    <div class="card-arrow">
-                        <span class="view-site">View Demo →</span>
-                    </div>
-                </div>
-            </a>
+            <div class="feature-card">
+                <div class="feature-icon">🛒</div>
+                <h3 class="feature-title">Sell Online</h3>
+                <p class="feature-desc">Accept payments, take pre-orders, connect Square or Stripe.</p>
+            </div>
             
-            <a href="./native-roots-salsa/" class="card" target="_blank" data-categories="bell food" data-tags="native roots salsa fresh artisan hot sauce queso austin bell market">
-                <div class="card-image" style="background: linear-gradient(135deg, #fef3f0 0%, #fce8e4 100%);">
-                    <span class="card-badge">Bell Market</span>
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/native-roots-salsa/" alt="Native Roots Salsa" loading="lazy">
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Native Roots Salsa</div>
-                    <div class="card-type">Artisan Salsa & Hot Sauce • Austin, TX</div>
-                    <div class="card-arrow"><span class="view-site">View Demo →</span></div>
-                </div>
-            </a>
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3 class="feature-title">Custom Design</h3>
+                <p class="feature-desc">Not a template dump — designed to match your brand and vibe.</p>
+            </div>
             
-            <a href="./janes-bountiful-pantry/" class="card" target="_blank" data-categories="bell food" data-tags="janes bountiful pantry gluten free dairy free bakery keto bell market">
-                <div class="card-image" style="background: linear-gradient(135deg, #faf5ef 0%, #f5ebe0 100%);">
-                    <span class="card-badge">Bell Market</span>
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/janes-bountiful-pantry/" alt="Jane's Bountiful Pantry" loading="lazy">
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Jane's Bountiful Pantry</div>
-                    <div class="card-type">Gluten-Free Bakery • Austin, TX</div>
-                    <div class="card-arrow"><span class="view-site">View Demo →</span></div>
-                </div>
-            </a>
-            
-            <a href="./yellow-pumpkin-bakery/" class="card" target="_blank" data-categories="bell food" data-tags="yellow pumpkin bakery micro bakery pastries baked goods austin bell market">
-                <div class="card-image" style="background: linear-gradient(135deg, #fff8eb 0%, #fff3d6 100%);">
-                    <span class="card-badge">Bell Market</span>
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/yellow-pumpkin-bakery/" alt="Yellow Pumpkin Bakery" loading="lazy">
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Yellow Pumpkin Bakery</div>
-                    <div class="card-type">Micro Bakery • Austin, TX</div>
-                    <div class="card-arrow"><span class="view-site">View Demo →</span></div>
-                </div>
-            </a>
-            
-            <a href="./meza-franco/" class="card" target="_blank" data-categories="bell other" data-tags="meza franco pottery ceramics handmade mugs bowls art bell market">
-                <div class="card-image" style="background: linear-gradient(135deg, #f5f0eb 0%, #ebe5dc 100%);">
-                    <span class="card-badge">Bell Market</span>
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/meza-franco/" alt="Meza Franco" loading="lazy">
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Meza Franco</div>
-                    <div class="card-type">Handmade Pottery • Texas</div>
-                    <div class="card-arrow"><span class="view-site">View Demo →</span></div>
-                </div>
-            </a>
-            
-            <a href="./southpaw-bladeworks/" class="card" target="_blank" data-categories="bell other" data-tags="southpaw bladeworks knife sharpening services bell market">
-                <div class="card-image">
-                    <span class="card-badge">Bell Market</span>
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/southpaw-bladeworks/" alt="Southpaw Bladeworks preview" loading="lazy">
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Southpaw Bladeworks</div>
-                    <div class="card-type">Knife Sharpening • Austin, TX</div>
-                    <div class="card-arrow">
-                        <span class="view-site">View Demo →</span>
-                    </div>
-                </div>
-            </a>
-            
-            <!-- Other Demos -->
-            <a href="./french-and-ginger-flower-co/" class="card" target="_blank" data-categories="other" data-tags="french ginger flower florist bouquet wedding flowers austin">
-                <div class="card-image">
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/french-and-ginger-flower-co/" alt="French & Ginger preview" loading="lazy">
-                </div>
-                <div class="card-content">
-                    <div class="card-title">French & Ginger Flower Co</div>
-                    <div class="card-type">Florist • Austin, TX</div>
-                    <div class="card-arrow">
-                        <span class="view-site">View Demo →</span>
-                    </div>
-                </div>
-            </a>
-            
-            <a href="./haute-canine-couture/" class="card" target="_blank" data-categories="other" data-tags="haute canine couture pet dog boutique austin">
-                <div class="card-image">
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/haute-canine-couture/" alt="Haute Canine Couture preview" loading="lazy">
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Haute Canine Couture</div>
-                    <div class="card-type">Pet Boutique • Austin, TX</div>
-                    <div class="card-arrow">
-                        <span class="view-site">View Demo →</span>
-                    </div>
-                </div>
-            </a>
-            
-            <a href="./crescent-city-flavor/" class="card" target="_blank" data-categories="food" data-tags="crescent city flavor cajun creole new orleans food austin">
-                <div class="card-image">
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/crescent-city-flavor/" alt="Crescent City Flavor preview" loading="lazy">
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Crescent City Flavor</div>
-                    <div class="card-type">Cajun/Creole Food • Austin, TX</div>
-                    <div class="card-arrow">
-                        <span class="view-site">View Demo →</span>
-                    </div>
-                </div>
-            </a>
-            
-            <a href="./caskey-orchards/" class="card" target="_blank" data-categories="farm" data-tags="caskey orchards apples fruit farm produce texas">
-                <div class="card-image farm-bg">
-                    <img src="https://image.thum.io/get/noanimate/width/400/https://geeteshparelly.github.io/flowly-demos/caskey-orchards/" alt="Caskey Orchards preview" loading="lazy" onerror="this.classList.add('error')">
-                    <span class="fallback">🍎</span>
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Caskey Orchards</div>
-                    <div class="card-type">Orchard & Farm • Texas</div>
-                    <div class="card-arrow">
-                        <span class="view-site">View Demo →</span>
-                    </div>
-                </div>
-            </a>
-            
-            <a href="./salon/" class="card" target="_blank" data-categories="other" data-tags="salon hair beauty haircut styling barber">
-                <div class="card-image beauty-bg">
-                    <img src="https://image.thum.io/get/noanimate/width/400/https://geeteshparelly.github.io/flowly-demos/salon/" alt="Salon Template preview" loading="lazy" onerror="this.classList.add('error')">
-                    <span class="fallback">💇‍♀️</span>
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Salon Template</div>
-                    <div class="card-type">Hair & Beauty Salon</div>
-                    <div class="card-arrow">
-                        <span class="view-site">View Demo →</span>
-                    </div>
-                </div>
-            </a>
-            
-            <!-- Ramadan Market Vendors -->
-            <a href="./ramadan/ahenk-home.html" class="card" target="_blank" data-categories="ramadan other" data-tags="ahenk home prayer rugs textiles islamic muslim ramadan">
-                <div class="card-image" style="background: linear-gradient(135deg, #e8f4f3 0%, #d0e8e6 100%);">
-                    <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/ahenk-home.html" alt="Ahenk Home" loading="lazy">
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Ahenk Home</div>
-                    <div class="card-type">Prayer Rugs & Textiles</div>
-                    <div class="card-arrow"><span class="view-site">View Demo →</span></div>
-                </div>
-            </a>
-            
-            <a href="./ramadan/husnulain.html" class="card" target="_blank" data-categories="ramadan other" data-tags="husnulain desi fashion clothing eid ramadan indian pakistani">
-                <div class="card-image" style="background: linear-gradient(135deg, #faf5f0 0%, #f5ebe0 100%);">
-                    <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/husnulain.html" alt="Husnulain" loading="lazy">
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Husnulain</div>
-                    <div class="card-type">Desi Fashion & Wear</div>
-                    <div class="card-arrow"><span class="view-site">View Demo →</span></div>
-                </div>
-            </a>
-            
-            <a href="./ramadan/graceful-scarfs.html" class="card" target="_blank" data-categories="ramadan other" data-tags="graceful scarfs hijab hijabs jewelry modest fashion ramadan">
-                <div class="card-image" style="background: linear-gradient(135deg, #fdf8f5 0%, #f5f0ec 100%);">
-                    <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/graceful-scarfs.html" alt="Graceful Scarfs" loading="lazy">
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Graceful Scarfs</div>
-                    <div class="card-type">Hijabs & Jewelry</div>
-                    <div class="card-arrow"><span class="view-site">View Demo →</span></div>
-                </div>
-            </a>
-            
-            <a href="./ramadan/arabisk-boutique.html" class="card" target="_blank" data-categories="ramadan other" data-tags="arabisk boutique hijab hijabs kuwait modest fashion ramadan">
-                <div class="card-image" style="background: linear-gradient(135deg, #faf5ef 0%, #f5ebe0 100%);">
-                    <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/arabisk-boutique.html" alt="Arabisk Boutique" loading="lazy">
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Arabisk Boutique</div>
-                    <div class="card-type">Premium Hijabs from Kuwait</div>
-                    <div class="card-arrow"><span class="view-site">View Demo →</span></div>
-                </div>
-            </a>
-            
-            <a href="./ramadan/haus-of-z-jewelry.html" class="card" target="_blank" data-categories="ramadan other" data-tags="haus of z jewelry bold statement rings necklaces earrings ramadan">
-                <div class="card-image" style="background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);">
-                    <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/haus-of-z-jewelry.html" alt="Haus of Z" loading="lazy">
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Haus of Z Jewelry</div>
-                    <div class="card-type">Bold Statement Jewelry</div>
-                    <div class="card-arrow"><span class="view-site">View Demo →</span></div>
-                </div>
-            </a>
-            
-            <a href="./ramadan/moti-jewelry.html" class="card" target="_blank" data-categories="ramadan other" data-tags="moti jewelry luxurious trendy rings necklaces earrings ramadan">
-                <div class="card-image" style="background: linear-gradient(135deg, #faf5ef 0%, #f5ebe0 100%);">
-                    <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/moti-jewelry.html" alt="Moti Jewelry" loading="lazy">
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Moti Jewelry</div>
-                    <div class="card-type">Luxurious Trendy Pieces</div>
-                    <div class="card-arrow"><span class="view-site">View Demo →</span></div>
-                </div>
-            </a>
-            
-            <a href="./ramadan/nationgem.html" class="card" target="_blank" data-categories="ramadan other" data-tags="nationgem gemstone jewelry gems precious stones ramadan">
-                <div class="card-image" style="background: linear-gradient(135deg, #e8f0ed 0%, #d8e8e3 100%);">
-                    <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/nationgem.html" alt="NationGem" loading="lazy">
-                </div>
-                <div class="card-content">
-                    <div class="card-title">NationGem</div>
-                    <div class="card-type">Premium Gemstone Jewelry</div>
-                    <div class="card-arrow"><span class="view-site">View Demo →</span></div>
-                </div>
-            </a>
-            
-            <a href="./ramadan/fashion-fusion.html" class="card" target="_blank" data-categories="ramadan other" data-tags="fashion 786 fusion jewelry accessories trendy ramadan">
-                <div class="card-image" style="background: linear-gradient(135deg, #faf5ff 0%, #f5e6ff 100%);">
-                    <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/fashion-fusion.html" alt="Fashion 786 Fusion" loading="lazy">
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Fashion 786 Fusion</div>
-                    <div class="card-type">Trendy Jewelry & Accessories</div>
-                    <div class="card-arrow"><span class="view-site">View Demo →</span></div>
-                </div>
-            </a>
-            
-            <a href="./ramadan/selene-by-ayesha.html" class="card" target="_blank" data-categories="ramadan other" data-tags="selene ayesha moon celestial jewelry design ramadan">
-                <div class="card-image" style="background: linear-gradient(135deg, #16161d 0%, #0d0d12 100%);">
-                    <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/selene-by-ayesha.html" alt="Selene by Ayesha" loading="lazy">
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Selene by Ayesha</div>
-                    <div class="card-type">Moon-Inspired Designs</div>
-                    <div class="card-arrow"><span class="view-site">View Demo →</span></div>
-                </div>
-            </a>
-            
-            <a href="./ramadan/c-is-for-crafting.html" class="card" target="_blank" data-categories="ramadan other" data-tags="c is for crafting laila personalized gifts handmade ramadan">
-                <div class="card-image" style="background: linear-gradient(135deg, #fdf0f4 0%, #fce8ef 100%);">
-                    <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/c-is-for-crafting.html" alt="C is for Crafting" loading="lazy">
-                </div>
-                <div class="card-content">
-                    <div class="card-title">C is for Crafting</div>
-                    <div class="card-type">Personalized Gifts by Laila</div>
-                    <div class="card-arrow"><span class="view-site">View Demo →</span></div>
-                </div>
-            </a>
-            
-            <a href="./ramadan/gifty-by-ai.html" class="card" target="_blank" data-categories="ramadan other" data-tags="gifty ai gifts decor handmade eid ramadan">
-                <div class="card-image" style="background: linear-gradient(135deg, #faf6ef 0%, #f5ebe0 100%);">
-                    <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/gifty-by-ai.html" alt="Gifty by AI" loading="lazy">
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Gifty by AI</div>
-                    <div class="card-type">Ramadan Gifts & Decor</div>
-                    <div class="card-arrow"><span class="view-site">View Demo →</span></div>
-                </div>
-            </a>
-            
-            <a href="./ramadan/tulip-hut.html" class="card" target="_blank" data-categories="ramadan other" data-tags="tulip hut saleha handmade crafts gifts ramadan">
-                <div class="card-image" style="background: linear-gradient(135deg, #fff0f0 0%, #fff5f5 100%);">
-                    <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/tulip-hut.html" alt="Tulip Hut" loading="lazy">
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Tulip Hut</div>
-                    <div class="card-type">Handmade by Saleha</div>
-                    <div class="card-arrow"><span class="view-site">View Demo →</span></div>
-                </div>
-            </a>
-            
-            <a href="./ramadan/pinora-by-huda.html" class="card" target="_blank" data-categories="ramadan other" data-tags="pinora huda art artwork designs artist ramadan">
-                <div class="card-image" style="background: linear-gradient(135deg, #f5f0ec 0%, #ebe5df 100%);">
-                    <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/pinora-by-huda.html" alt="Pinora by Huda" loading="lazy">
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Pinora by Huda</div>
-                    <div class="card-type">Art & Designs</div>
-                    <div class="card-arrow"><span class="view-site">View Demo →</span></div>
-                </div>
-            </a>
-            
-            <a href="./ramadan/art-by-3afaf.html" class="card" target="_blank" data-categories="ramadan other" data-tags="art 3afaf afaf artwork paintings artist ramadan">
-                <div class="card-image" style="background: linear-gradient(135deg, #f5f0eb 0%, #ebe5df 100%);">
-                    <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/art-by-3afaf.html" alt="Art by 3afaf" loading="lazy">
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Art by 3afaf</div>
-                    <div class="card-type">Original Artwork</div>
-                    <div class="card-arrow"><span class="view-site">View Demo →</span></div>
-                </div>
-            </a>
-            
-            <a href="./ramadan/2009-apparel.html" class="card" target="_blank" data-categories="ramadan other" data-tags="2009 apparel streetwear hoodies tees clothing fashion ramadan">
-                <div class="card-image" style="background: linear-gradient(135deg, #141414 0%, #0a0a0a 100%);">
-                    <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/2009-apparel.html" alt="2009 Apparel" loading="lazy">
-                </div>
-                <div class="card-content">
-                    <div class="card-title">2009 Apparel</div>
-                    <div class="card-type">Streetwear Hoodies & Tees</div>
-                    <div class="card-arrow"><span class="view-site">View Demo →</span></div>
-                </div>
-            </a>
-            
-            <a href="./ramadan/a-better-force.html" class="card" target="_blank" data-categories="ramadan other" data-tags="better force women fitness performance empowerment ramadan">
-                <div class="card-image" style="background: linear-gradient(135deg, #eef0ff 0%, #e0e4ff 100%);">
-                    <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/a-better-force.html" alt="A Better Force" loading="lazy">
-                </div>
-                <div class="card-content">
-                    <div class="card-title">A Better Force</div>
-                    <div class="card-type">Women's Performance</div>
-                    <div class="card-arrow"><span class="view-site">View Demo →</span></div>
-                </div>
-            </a>
-            
-            <a href="./ramadan/nadia-baklava.html" class="card" target="_blank" data-categories="ramadan food" data-tags="nadia baklava middle eastern sweets dessert pastry ramadan">
-                <div class="card-image" style="background: linear-gradient(135deg, #fdf9f3 0%, #f5ebe0 100%);">
-                    <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/nadia-baklava.html" alt="Nadia's Baklava" loading="lazy">
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Nadia's Baklava</div>
-                    <div class="card-type">Middle Eastern Sweets</div>
-                    <div class="card-arrow"><span class="view-site">View Demo →</span></div>
-                </div>
-            </a>
-            
-            <a href="./ramadan/damascus-sweets.html" class="card" target="_blank" data-categories="ramadan food" data-tags="damascus sweets syrian pastries dessert baklava ramadan">
-                <div class="card-image" style="background: linear-gradient(135deg, #fdf9f3 0%, #f5ebe0 100%);">
-                    <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/damascus-sweets.html" alt="Damascus Sweets" loading="lazy">
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Damascus Sweets</div>
-                    <div class="card-type">Syrian Pastries</div>
-                    <div class="card-arrow"><span class="view-site">View Demo →</span></div>
-                </div>
-            </a>
-            
-            <a href="./ramadan/oasis-dates-co.html" class="card" target="_blank" data-categories="ramadan food" data-tags="oasis dates stuffed chocolate premium ramadan">
-                <div class="card-image" style="background: linear-gradient(135deg, #faf6ef 0%, #f5ebe0 100%);">
-                    <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/oasis-dates-co.html" alt="Oasis Dates Co" loading="lazy">
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Oasis Dates Co</div>
-                    <div class="card-type">Premium Stuffed Dates</div>
-                    <div class="card-arrow"><span class="view-site">View Demo →</span></div>
-                </div>
-            </a>
-            
-            <a href="./ramadan/green-crescent-farm.html" class="card" target="_blank" data-categories="ramadan farm" data-tags="green crescent farm organic produce dates vegetables ramadan">
-                <div class="card-image" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);">
-                    <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/green-crescent-farm.html" alt="Green Crescent Farm" loading="lazy">
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Green Crescent Farm</div>
-                    <div class="card-type">Organic Produce & Dates</div>
-                    <div class="card-arrow"><span class="view-site">View Demo →</span></div>
-                </div>
-            </a>
-            
-            <a href="./ramadan/halal-heritage-farm.html" class="card" target="_blank" data-categories="ramadan farm" data-tags="halal heritage farm meat beef lamb chicken zabiha ramadan">
-                <div class="card-image" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);">
-                    <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/halal-heritage-farm.html" alt="Halal Heritage Farm" loading="lazy">
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Halal Heritage Farm</div>
-                    <div class="card-type">Pasture-Raised Halal Meats</div>
-                    <div class="card-arrow"><span class="view-site">View Demo →</span></div>
-                </div>
-            </a>
-            
-            <a href="./ramadan/saffron-spice-co.html" class="card" target="_blank" data-categories="ramadan food" data-tags="saffron spice spices blends cooking middle eastern ramadan">
-                <div class="card-image" style="background: linear-gradient(135deg, #fef9e7 0%, #fef3c7 100%);">
-                    <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/saffron-spice-co.html" alt="Saffron Spice Co" loading="lazy">
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Saffron Spice Co</div>
-                    <div class="card-type">Premium Spices & Blends</div>
-                    <div class="card-arrow"><span class="view-site">View Demo →</span></div>
-                </div>
-            </a>
-            
-            <a href="./ramadan/olive-branch-imports.html" class="card" target="_blank" data-categories="ramadan food" data-tags="olive branch imports mediterranean food olives ramadan">
-                <div class="card-image" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);">
-                    <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/olive-branch-imports.html" alt="Olive Branch Imports" loading="lazy">
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Olive Branch Imports</div>
-                    <div class="card-type">Mediterranean Foods</div>
-                    <div class="card-arrow"><span class="view-site">View Demo →</span></div>
-                </div>
-            </a>
-            
-            <a href="./ramadan/zaytoun-olive-oil.html" class="card" target="_blank" data-categories="ramadan food" data-tags="zaytoun olive oil premium cooking mediterranean ramadan">
-                <div class="card-image" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);">
-                    <span class="card-badge" style="background:#2d6a4f;">Ramadan</span>
-                    <img src="https://image.thum.io/get/width/400/https://geeteshparelly.github.io/flowly-demos/ramadan/zaytoun-olive-oil.html" alt="Zaytoun Olive Oil" loading="lazy">
-                </div>
-                <div class="card-content">
-                    <div class="card-title">Zaytoun Olive Oil</div>
-                    <div class="card-type">Premium Olive Oils</div>
-                    <div class="card-arrow"><span class="view-site">View Demo →</span></div>
-                </div>
-            </a>
+            <div class="feature-card">
+                <div class="feature-icon">🤝</div>
+                <h3 class="feature-title">Real Support</h3>
+                <p class="feature-desc">Text me directly with questions. No support tickets, no bots.</p>
+            </div>
         </div>
+    </section>
+    
+    <section class="how-it-works">
+        <h2 class="section-title">How It Works</h2>
+        <p class="section-subtitle">Three steps to your new website</p>
         
-        <div class="no-results" id="no-results">
-            No demos in this category yet.
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Fill Out the Quick Form</h3>
+                    <p>Tell me about your business, what you need, and your style preferences. Takes 5 minutes.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Review Your Draft</h3>
+                    <p>I'll send you a working preview within 24-48 hours. We'll tweak until it's perfect.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Go Live</h3>
+                    <p>Your site goes live and you start getting customers. I'll handle the technical stuff.</p>
+                </div>
+            </div>
         </div>
+    </section>
+    
+    <section class="pricing-preview">
+        <h2 class="section-title">Simple Pricing</h2>
+        <p class="section-subtitle">No surprises, no subscriptions</p>
         
-        <footer>
-            <div class="contact-info">
+        <div class="price-highlight">$100</div>
+        <p class="price-context">Starting price for a professional single-page website</p>
+        
+        <a href="./pricing.html" class="btn btn-secondary">See All Plans →</a>
+    </section>
+    
+    <section class="contact">
+        <h2 class="section-title">Let's Talk</h2>
+        <p class="section-subtitle">Questions? Want to see if we're a good fit?</p>
+        
+        <div class="contact-card">
+            <div class="contact-name">Geetesh Parelly</div>
+            <p class="contact-title">Founder, Flowly</p>
+            <div class="contact-links">
                 <a href="tel:737-287-5336">📞 (737) 287-5336</a>
                 <a href="mailto:geetesh.parelly@2hourlearning.com">✉️ geetesh.parelly@2hourlearning.com</a>
                 <a href="https://x.com/GeeteshParelly" target="_blank">𝕏 @GeeteshParelly</a>
             </div>
-        </footer>
-    </div>
+        </div>
+    </section>
     
-    <script>
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const cards = document.querySelectorAll('.card');
-        const noResults = document.getElementById('no-results');
-        const searchInput = document.getElementById('searchInput');
-        
-        let currentFilter = 'all';
-        let currentSearch = '';
-        
-        function filterCards() {
-            let visibleCount = 0;
-            
-            cards.forEach(card => {
-                const categories = card.dataset.categories.split(' ');
-                const tags = (card.dataset.tags || '').toLowerCase();
-                const title = card.querySelector('.card-title').textContent.toLowerCase();
-                const type = card.querySelector('.card-type').textContent.toLowerCase();
-                const searchText = `${title} ${type} ${tags} ${categories.join(' ')}`;
-                
-                const matchesFilter = currentFilter === 'all' || categories.includes(currentFilter);
-                const matchesSearch = currentSearch === '' || searchText.includes(currentSearch.toLowerCase());
-                
-                if (matchesFilter && matchesSearch) {
-                    card.classList.remove('hidden');
-                    visibleCount++;
-                } else {
-                    card.classList.add('hidden');
-                }
-            });
-            
-            noResults.style.display = visibleCount === 0 ? 'block' : 'none';
-        }
-        
-        // Search input handler
-        searchInput.addEventListener('input', (e) => {
-            currentSearch = e.target.value.trim();
-            filterCards();
-        });
-        
-        // Filter button handlers
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                currentFilter = btn.dataset.filter;
-                searchInput.value = ''; // Clear search when changing filter
-                currentSearch = '';
-                filterCards();
-            });
-        });
-    </script>
+    <footer>
+        <p>© 2026 Flowly · Built in Austin, TX · <a href="./demos.html">View Demos</a></p>
+    </footer>
 </body>
 </html>
