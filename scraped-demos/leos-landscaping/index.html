@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leo's Landscaping & Handyman Services | Austin, TX</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f5f7f5;
+            --surface: #ffffff;
+            --primary: #388e3c;
+            --primary-dark: #1b5e20;
+            --primary-light: #e8f5e9;
+            --orange: #f57c00;
+            --text-dark: #1a1a1a;
+            --text-body: #4a4a4a;
+            --text-muted: #6b6b6b;
+            --border: #e0e0e0;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text-body); line-height: 1.6; }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .hero h1 { font-family: 'Source Serif 4', serif; font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .hero p { font-size: 1.2rem; opacity: 0.9; margin-bottom: 1.5rem; }
+        .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn { padding: 0.9rem 2rem; border-radius: 8px; font-weight: 600; text-decoration: none; display: inline-block; }
+        .btn-primary { background: var(--orange); color: white; }
+        .btn-secondary { background: white; color: var(--primary); }
+        
+        .container { max-width: 900px; margin: 0 auto; padding: 3rem 1.5rem; }
+        h2 { font-family: 'Source Serif 4', serif; font-size: 1.8rem; color: var(--text-dark); margin-bottom: 1rem; }
+        
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .service-section { background: var(--surface); padding: 2rem; border-radius: 12px; border: 1px solid var(--border); }
+        .service-section h3 { color: var(--primary); margin-bottom: 1rem; font-size: 1.3rem; }
+        .service-list { list-style: none; }
+        .service-list li { padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+        .service-list li:last-child { border-bottom: none; }
+        
+        .why-us { background: var(--surface); }
+        .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 1.5rem; text-align: center; }
+        .why-item h3 { color: var(--primary); margin-bottom: 0.25rem; }
+        .why-item p { font-size: 0.9rem; color: var(--text-muted); }
+        
+        .cta { background: var(--primary-light); text-align: center; padding: 3rem 1.5rem; }
+        .cta h2 { color: var(--primary-dark); }
+        .cta p { margin-bottom: 1.5rem; }
+        .phone { font-size: 1.5rem; font-weight: 700; color: var(--primary); text-decoration: none; }
+        
+        footer { background: var(--primary-dark); color: white; padding: 2rem; text-align: center; }
+        footer a { color: #a5d6a7; text-decoration: none; }
+        
+        @media (max-width: 700px) {
+            .hero h1 { font-size: 1.8rem; }
+            .two-col { grid-template-columns: 1fr; }
+            .why-grid { grid-template-columns: 1fr; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h1>Leo's Landscaping & Handyman</h1>
+        <p>Two services, one call — Austin, TX</p>
+        <div class="hero-buttons">
+            <a href="tel:512-555-0456" class="btn btn-primary">Call Leo</a>
+            <a href="#services" class="btn btn-secondary">See Services</a>
+        </div>
+    </section>
+    
+    <section class="container" id="services">
+        <h2>What We Do</h2>
+        <p>Landscaping AND handyman work — so you don't have to call two people.</p>
+        
+        <div class="two-col" style="margin-top: 1.5rem;">
+            <div class="service-section">
+                <h3>🌿 Landscaping</h3>
+                <ul class="service-list">
+                    <li>Lawn mowing & edging</li>
+                    <li>Tree & shrub trimming</li>
+                    <li>Mulching & bed maintenance</li>
+                    <li>Leaf & debris cleanup</li>
+                    <li>Basic irrigation repairs</li>
+                </ul>
+            </div>
+            
+            <div class="service-section">
+                <h3>🔧 Handyman</h3>
+                <ul class="service-list">
+                    <li>Minor home repairs</li>
+                    <li>Fence repairs</li>
+                    <li>Pressure washing</li>
+                    <li>Gutter cleaning</li>
+                    <li>Furniture assembly</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <section class="why-us">
+        <div class="container">
+            <h2>Why Choose Leo's?</h2>
+            <div class="why-grid">
+                <div class="why-item">
+                    <h3>One Call</h3>
+                    <p>Yard work AND home repairs in one visit</p>
+                </div>
+                <div class="why-item">
+                    <h3>Fair Rates</h3>
+                    <p>Competitive pricing, no surprises</p>
+                </div>
+                <div class="why-item">
+                    <h3>Reliable</h3>
+                    <p>Shows up when promised</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta">
+        <h2>Need a Hand?</h2>
+        <p>Call or text for a quick quote. Same-week availability most times.</p>
+        <a href="tel:512-555-0456" class="phone">📞 (512) 555-0456</a>
+    </section>
+    
+    <footer>
+        <p>Leo's Landscaping & Handyman Services · Austin, TX</p>
+        <p style="margin-top:0.5rem;font-size:0.85rem;opacity:0.7;">Demo site by <a href="https://geeteshparelly.github.io/flowly-demos/">Flowly</a></p>
+    </footer>
+</body>
+</html>

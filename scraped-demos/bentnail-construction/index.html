@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bentnail Construction | Austin, TX</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f5f5f5;
+            --surface: #ffffff;
+            --primary: #37474f;
+            --primary-dark: #263238;
+            --primary-light: #eceff1;
+            --accent: #ff8f00;
+            --accent-light: #fff3e0;
+            --text-dark: #1a1a1a;
+            --text-body: #4a4a4a;
+            --text-muted: #6b6b6b;
+            --border: #e0e0e0;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text-body); line-height: 1.6; }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .hero h1 { font-family: 'Source Serif 4', serif; font-size: 2.8rem; margin-bottom: 0.5rem; }
+        .hero p { font-size: 1.2rem; opacity: 0.9; margin-bottom: 1.5rem; }
+        .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn { padding: 0.9rem 2rem; border-radius: 8px; font-weight: 600; text-decoration: none; display: inline-block; }
+        .btn-primary { background: var(--accent); color: white; }
+        .btn-secondary { background: white; color: var(--primary); }
+        
+        .container { max-width: 900px; margin: 0 auto; padding: 3rem 1.5rem; }
+        h2 { font-family: 'Source Serif 4', serif; font-size: 1.8rem; color: var(--text-dark); margin-bottom: 1rem; }
+        
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+        .service-card { background: var(--surface); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border); border-left: 4px solid var(--accent); }
+        .service-card h3 { color: var(--primary); margin-bottom: 0.5rem; }
+        .service-card p { font-size: 0.9rem; color: var(--text-muted); }
+        
+        .about { background: var(--surface); }
+        
+        .stats { background: var(--primary-light); }
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; text-align: center; }
+        .stat-item .number { font-size: 2.5rem; font-weight: 700; color: var(--accent); }
+        .stat-item .label { color: var(--text-muted); }
+        
+        .cta { background: var(--accent-light); text-align: center; padding: 3rem 1.5rem; }
+        .cta h2 { color: var(--primary-dark); }
+        .cta p { margin-bottom: 1.5rem; }
+        .phone { font-size: 1.5rem; font-weight: 700; color: var(--primary); text-decoration: none; display: block; margin-bottom: 0.5rem; }
+        .email { color: var(--accent); text-decoration: none; }
+        
+        footer { background: var(--primary-dark); color: white; padding: 2rem; text-align: center; }
+        footer a { color: var(--accent); text-decoration: none; }
+        
+        @media (max-width: 700px) {
+            .hero h1 { font-size: 2rem; }
+            .stats-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h1>Bentnail Construction</h1>
+        <p>Quality building and remodeling in Austin, TX</p>
+        <div class="hero-buttons">
+            <a href="tel:512-555-0567" class="btn btn-primary">Request Quote</a>
+            <a href="#services" class="btn btn-secondary">Our Work</a>
+        </div>
+    </section>
+    
+    <section class="container" id="services">
+        <h2>What We Build</h2>
+        <p>From small renovations to full construction projects — we do it right.</p>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Home Additions</h3>
+                <p>Expand your living space with a room addition, garage, or ADU</p>
+            </div>
+            <div class="service-card">
+                <h3>Kitchen Remodeling</h3>
+                <p>Full kitchen renovations — cabinets, counters, layout changes</p>
+            </div>
+            <div class="service-card">
+                <h3>Bathroom Remodeling</h3>
+                <p>Modernize your bathroom with new fixtures, tile, and layout</p>
+            </div>
+            <div class="service-card">
+                <h3>Decks & Patios</h3>
+                <p>Custom outdoor living spaces built to last</p>
+            </div>
+            <div class="service-card">
+                <h3>Framing & Structure</h3>
+                <p>Solid framing work for new construction and repairs</p>
+            </div>
+            <div class="service-card">
+                <h3>General Contracting</h3>
+                <p>We manage your project from permits to final walkthrough</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="number">15+</div>
+                    <div class="label">Years in Austin</div>
+                </div>
+                <div class="stat-item">
+                    <div class="number">200+</div>
+                    <div class="label">Projects Completed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="number">100%</div>
+                    <div class="label">Licensed & Insured</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="about">
+        <div class="container">
+            <h2>Why Bentnail?</h2>
+            <p>We've been building in Austin for over 15 years. Our name comes from a simple idea: even when things don't go perfectly (and they won't), we fix it and keep going. Every project gets our full attention, honest communication, and quality craftsmanship.</p>
+            <p style="margin-top:1rem;">Licensed, insured, and ready to build.</p>
+        </div>
+    </section>
+    
+    <section class="cta">
+        <h2>Let's Talk About Your Project</h2>
+        <p>Free consultations and estimates. No pressure, just honest advice.</p>
+        <a href="tel:512-555-0567" class="phone">📞 (512) 555-0567</a>
+        <a href="mailto:info@bentnailconstruction.com" class="email">info@bentnailconstruction.com</a>
+    </section>
+    
+    <footer>
+        <p>Bentnail Construction · Austin, TX · Licensed & Insured</p>
+        <p style="margin-top:0.5rem;font-size:0.85rem;opacity:0.7;">Demo site by <a href="https://geeteshparelly.github.io/flowly-demos/">Flowly</a></p>
+    </footer>
+</body>
+</html>

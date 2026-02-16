@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galindo Landscaping & More | Dripping Springs, TX</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #faf9f6;
+            --surface: #ffffff;
+            --primary: #5d4e37;
+            --primary-dark: #3d3225;
+            --primary-light: #f5f0e8;
+            --green: #6b8e50;
+            --green-light: #e8f0e0;
+            --text-dark: #2d2418;
+            --text-body: #5c4d3d;
+            --text-muted: #8c7b6b;
+            --border: #e8e0d5;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text-body); line-height: 1.6; }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--green) 0%, var(--primary) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .hero h1 { font-family: 'Source Serif 4', serif; font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .hero-location { font-size: 1rem; opacity: 0.85; margin-bottom: 0.5rem; }
+        .hero p { font-size: 1.2rem; opacity: 0.9; margin-bottom: 1.5rem; }
+        .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn { padding: 0.9rem 2rem; border-radius: 8px; font-weight: 600; text-decoration: none; display: inline-block; }
+        .btn-primary { background: white; color: var(--primary); }
+        .btn-secondary { background: transparent; color: white; border: 2px solid white; }
+        
+        .container { max-width: 900px; margin: 0 auto; padding: 3rem 1.5rem; }
+        h2 { font-family: 'Source Serif 4', serif; font-size: 1.8rem; color: var(--text-dark); margin-bottom: 1rem; }
+        
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+        .service-card { background: var(--surface); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border); }
+        .service-card h3 { color: var(--green); margin-bottom: 0.5rem; }
+        .service-card p { font-size: 0.9rem; color: var(--text-muted); }
+        
+        .about { background: var(--surface); }
+        .about-content { display: grid; gap: 1rem; }
+        
+        .service-areas { background: var(--green-light); }
+        .areas-list { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem; }
+        .area-tag { background: var(--surface); padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.9rem; }
+        
+        .cta { background: var(--primary); color: white; text-align: center; padding: 3rem 1.5rem; }
+        .cta h2 { color: white; }
+        .cta p { opacity: 0.9; margin-bottom: 1.5rem; }
+        .phone { font-size: 1.5rem; font-weight: 700; color: white; text-decoration: none; }
+        
+        footer { background: var(--primary-dark); color: white; padding: 2rem; text-align: center; }
+        footer a { color: var(--green-light); text-decoration: none; }
+        
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 1.8rem; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <p class="hero-location">Dripping Springs, TX</p>
+        <h1>Galindo Landscaping & More</h1>
+        <p>Quality landscaping for Hill Country homes</p>
+        <div class="hero-buttons">
+            <a href="tel:512-555-0345" class="btn btn-primary">Call for Quote</a>
+            <a href="#services" class="btn btn-secondary">See Services</a>
+        </div>
+    </section>
+    
+    <section class="container" id="services">
+        <h2>Our Services</h2>
+        <p>Full-service landscaping for residential and commercial properties.</p>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Landscape Design</h3>
+                <p>Custom designs that work with Texas climate</p>
+            </div>
+            <div class="service-card">
+                <h3>Installation</h3>
+                <p>Plants, trees, hardscaping, irrigation</p>
+            </div>
+            <div class="service-card">
+                <h3>Lawn Care</h3>
+                <p>Mowing, edging, and maintenance</p>
+            </div>
+            <div class="service-card">
+                <h3>Irrigation</h3>
+                <p>Sprinkler systems and drip irrigation</p>
+            </div>
+            <div class="service-card">
+                <h3>Hardscaping</h3>
+                <p>Patios, walkways, retaining walls</p>
+            </div>
+            <div class="service-card">
+                <h3>Cleanup</h3>
+                <p>Brush clearing, debris removal</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="about">
+        <div class="container">
+            <h2>About Galindo Landscaping</h2>
+            <div class="about-content">
+                <p>Family-owned and operated in the Texas Hill Country. We understand the unique challenges of landscaping in this area — the rocky soil, the heat, the deer. Our designs work with the land, not against it.</p>
+                <p>From full yard transformations to regular maintenance, we treat every property like it's our own.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="service-areas">
+        <div class="container">
+            <h2>Areas We Serve</h2>
+            <div class="areas-list">
+                <span class="area-tag">Dripping Springs</span>
+                <span class="area-tag">Austin</span>
+                <span class="area-tag">Bee Cave</span>
+                <span class="area-tag">Lakeway</span>
+                <span class="area-tag">Wimberley</span>
+                <span class="area-tag">Buda</span>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta">
+        <h2>Get a Free Quote</h2>
+        <p>Tell us about your project and we'll give you an honest estimate.</p>
+        <a href="tel:512-555-0345" class="phone">📞 (512) 555-0345</a>
+    </section>
+    
+    <footer>
+        <p>Galindo Landscaping & More · Dripping Springs, TX</p>
+        <p style="margin-top:0.5rem;font-size:0.85rem;opacity:0.7;">Demo site by <a href="https://geeteshparelly.github.io/flowly-demos/">Flowly</a></p>
+    </footer>
+</body>
+</html>

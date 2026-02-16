@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patton Works Tree & Lawn Services | Austin, TX</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f5f9f5;
+            --surface: #ffffff;
+            --primary: #2d6a4f;
+            --primary-dark: #1b4332;
+            --primary-light: #d8f3dc;
+            --text-dark: #1a1a1a;
+            --text-body: #4a4a4a;
+            --text-muted: #6b6b6b;
+            --border: #e0e0e0;
+            --accent: #95d5b2;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text-body); line-height: 1.6; }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .hero h1 { font-family: 'Source Serif 4', serif; font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .hero p { font-size: 1.2rem; opacity: 0.9; margin-bottom: 1.5rem; }
+        .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn { padding: 0.9rem 2rem; border-radius: 8px; font-weight: 600; text-decoration: none; display: inline-block; }
+        .btn-primary { background: white; color: var(--primary); }
+        .btn-secondary { background: transparent; color: white; border: 2px solid white; }
+        
+        .container { max-width: 900px; margin: 0 auto; padding: 3rem 1.5rem; }
+        h2 { font-family: 'Source Serif 4', serif; font-size: 1.8rem; color: var(--text-dark); margin-bottom: 1rem; }
+        
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+        .service-card { background: var(--surface); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border); }
+        .service-card h3 { color: var(--primary); margin-bottom: 0.5rem; }
+        .service-card p { font-size: 0.9rem; color: var(--text-muted); }
+        
+        .about { background: var(--surface); }
+        
+        .cta { background: var(--primary-light); text-align: center; padding: 3rem 1.5rem; }
+        .cta h2 { color: var(--primary-dark); }
+        .cta p { color: var(--text-body); margin-bottom: 1.5rem; }
+        .phone { font-size: 1.5rem; font-weight: 700; color: var(--primary); text-decoration: none; }
+        
+        footer { background: var(--primary-dark); color: white; padding: 2rem; text-align: center; }
+        footer a { color: var(--accent); text-decoration: none; }
+        
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 1.8rem; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h1>Patton Works</h1>
+        <p>Tree & Lawn Services in Austin, TX</p>
+        <div class="hero-buttons">
+            <a href="tel:512-555-0234" class="btn btn-primary">Get Free Estimate</a>
+            <a href="#services" class="btn btn-secondary">Our Services</a>
+        </div>
+    </section>
+    
+    <section class="container" id="services">
+        <h2>Our Services</h2>
+        <p>Professional tree care and lawn maintenance for Austin homeowners.</p>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Tree Trimming</h3>
+                <p>Keep your trees healthy and your property safe</p>
+            </div>
+            <div class="service-card">
+                <h3>Tree Removal</h3>
+                <p>Safe removal of dead, damaged, or unwanted trees</p>
+            </div>
+            <div class="service-card">
+                <h3>Lawn Mowing</h3>
+                <p>Regular mowing to keep your yard looking sharp</p>
+            </div>
+            <div class="service-card">
+                <h3>Landscaping</h3>
+                <p>Design and installation for a yard you'll love</p>
+            </div>
+            <div class="service-card">
+                <h3>Stump Grinding</h3>
+                <p>Remove unsightly stumps completely</p>
+            </div>
+            <div class="service-card">
+                <h3>Seasonal Cleanup</h3>
+                <p>Fall leaves, spring prep, and everything between</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="about">
+        <div class="container">
+            <h2>Why Patton Works?</h2>
+            <p>We're Austin locals who take pride in our work. Every job gets our full attention — whether it's a quick trim or a full yard overhaul. Licensed, insured, and ready to make your property look its best.</p>
+        </div>
+    </section>
+    
+    <section class="cta">
+        <h2>Free Estimates</h2>
+        <p>Call today for a no-obligation quote on your tree or lawn project.</p>
+        <a href="tel:512-555-0234" class="phone">📞 (512) 555-0234</a>
+    </section>
+    
+    <footer>
+        <p>Patton Works Tree & Lawn Services · Austin, TX</p>
+        <p style="margin-top:0.5rem;font-size:0.85rem;opacity:0.7;">Demo site by <a href="https://geeteshparelly.github.io/flowly-demos/">Flowly</a></p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thompson Handyman Services | Austin, TX</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f8f9fa;
+            --surface: #ffffff;
+            --primary: #1565c0;
+            --primary-dark: #0d47a1;
+            --primary-light: #e3f2fd;
+            --text-dark: #1a1a1a;
+            --text-body: #4a4a4a;
+            --text-muted: #6b6b6b;
+            --border: #e0e0e0;
+            --accent: #ff6f00;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text-body); line-height: 1.6; }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .hero h1 { font-family: 'Source Serif 4', serif; font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .hero p { font-size: 1.2rem; opacity: 0.9; margin-bottom: 1.5rem; }
+        .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn { padding: 0.9rem 2rem; border-radius: 8px; font-weight: 600; text-decoration: none; display: inline-block; }
+        .btn-primary { background: var(--accent); color: white; }
+        .btn-secondary { background: white; color: var(--primary); }
+        
+        .container { max-width: 900px; margin: 0 auto; padding: 3rem 1.5rem; }
+        h2 { font-family: 'Source Serif 4', serif; font-size: 1.8rem; color: var(--text-dark); margin-bottom: 1rem; }
+        
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+        .service-card { background: var(--surface); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border); text-align: center; }
+        .service-card h3 { color: var(--text-dark); margin-bottom: 0.5rem; }
+        .service-card p { font-size: 0.9rem; color: var(--text-muted); }
+        
+        .why-us { background: var(--surface); }
+        .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+        .why-item h3 { color: var(--primary); margin-bottom: 0.25rem; }
+        
+        .cta { background: var(--primary-light); text-align: center; padding: 3rem 1.5rem; }
+        .cta h2 { color: var(--primary-dark); }
+        .cta p { color: var(--text-body); margin-bottom: 1.5rem; }
+        .cta .phone { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+        
+        footer { background: var(--text-dark); color: white; padding: 2rem; text-align: center; }
+        footer a { color: var(--accent); text-decoration: none; }
+        
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 1.8rem; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h1>Thompson Handyman Services</h1>
+        <p>Reliable repairs and home improvements in Austin, TX</p>
+        <div class="hero-buttons">
+            <a href="tel:512-555-0123" class="btn btn-primary">Call Now</a>
+            <a href="#services" class="btn btn-secondary">Our Services</a>
+        </div>
+    </section>
+    
+    <section class="container" id="services">
+        <h2>What We Do</h2>
+        <p>From small fixes to bigger projects — we handle it all.</p>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>General Repairs</h3>
+                <p>Drywall, doors, fixtures, and everyday fixes</p>
+            </div>
+            <div class="service-card">
+                <h3>Carpentry</h3>
+                <p>Shelving, trim work, deck repairs</p>
+            </div>
+            <div class="service-card">
+                <h3>Painting</h3>
+                <p>Interior and exterior touch-ups</p>
+            </div>
+            <div class="service-card">
+                <h3>Assembly</h3>
+                <p>Furniture, fixtures, and equipment</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="why-us">
+        <div class="container">
+            <h2>Why Hire Us?</h2>
+            <div class="why-grid">
+                <div class="why-item">
+                    <h3>Local & Reliable</h3>
+                    <p>Austin-based. We show up on time.</p>
+                </div>
+                <div class="why-item">
+                    <h3>Fair Pricing</h3>
+                    <p>Honest quotes. No hidden fees.</p>
+                </div>
+                <div class="why-item">
+                    <h3>Quality Work</h3>
+                    <p>Done right the first time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta">
+        <h2>Ready to Get Started?</h2>
+        <p>Call for a free estimate or to schedule your repair.</p>
+        <a href="tel:512-555-0123" class="phone">📞 (512) 555-0123</a>
+    </section>
+    
+    <footer>
+        <p>Thompson Handyman Services · Austin, TX</p>
+        <p style="margin-top:0.5rem;font-size:0.85rem;opacity:0.7;">Demo site by <a href="https://geeteshparelly.github.io/flowly-demos/">Flowly</a></p>
+    </footer>
+</body>
+</html>
