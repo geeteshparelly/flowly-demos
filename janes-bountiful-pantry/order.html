@@ -314,53 +314,53 @@
                 <h3>Select Items</h3>
                 
                 <label class="product-option" id="option-pecan">
-                    <input type="checkbox" name="Pecan Pie Cookie" value="1" onchange="updateTotal()">
+                    <input type="checkbox" name="Pecan Pie Cookie" value="1" onchange="onCheckboxChange('pecan')">
                     <div class="product-info">
                         <div class="product-name">Pecan Pie Cookie</div>
                         <div class="product-price">$16.00</div>
                     </div>
                     <div class="quantity-control">
                         <button type="button" class="quantity-btn" onclick="adjustQty('pecan', -1)">−</button>
-                        <input type="number" class="quantity-input" id="qty-pecan" name="Pecan Pie Cookie Qty" value="1" min="1" max="10" onchange="updateTotal()">
+                        <input type="number" class="quantity-input" id="qty-pecan" name="Pecan Pie Cookie Qty" value="0" min="0" max="10" onchange="updateTotal()">
                         <button type="button" class="quantity-btn" onclick="adjustQty('pecan', 1)">+</button>
                     </div>
                 </label>
                 
                 <label class="product-option" id="option-baklava">
-                    <input type="checkbox" name="Baklava Pistachio Pecan" value="1" onchange="updateTotal()">
+                    <input type="checkbox" name="Baklava Pistachio Pecan" value="1" onchange="onCheckboxChange('baklava')">
                     <div class="product-info">
                         <div class="product-name">Baklava Pistachio Pecan Cookie</div>
                         <div class="product-price">$16.00</div>
                     </div>
                     <div class="quantity-control">
                         <button type="button" class="quantity-btn" onclick="adjustQty('baklava', -1)">−</button>
-                        <input type="number" class="quantity-input" id="qty-baklava" name="Baklava Cookie Qty" value="1" min="1" max="10" onchange="updateTotal()">
+                        <input type="number" class="quantity-input" id="qty-baklava" name="Baklava Cookie Qty" value="0" min="0" max="10" onchange="updateTotal()">
                         <button type="button" class="quantity-btn" onclick="adjustQty('baklava', 1)">+</button>
                     </div>
                 </label>
                 
                 <label class="product-option" id="option-chocchip">
-                    <input type="checkbox" name="Cookie Dough Chocolate Chip" value="1" onchange="updateTotal()">
+                    <input type="checkbox" name="Cookie Dough Chocolate Chip" value="1" onchange="onCheckboxChange('chocchip')">
                     <div class="product-info">
                         <div class="product-name">Cookie Dough Chocolate Chip</div>
                         <div class="product-price">$13.00</div>
                     </div>
                     <div class="quantity-control">
                         <button type="button" class="quantity-btn" onclick="adjustQty('chocchip', -1)">−</button>
-                        <input type="number" class="quantity-input" id="qty-chocchip" name="Chocolate Chip Qty" value="1" min="1" max="10" onchange="updateTotal()">
+                        <input type="number" class="quantity-input" id="qty-chocchip" name="Chocolate Chip Qty" value="0" min="0" max="10" onchange="updateTotal()">
                         <button type="button" class="quantity-btn" onclick="adjustQty('chocchip', 1)">+</button>
                     </div>
                 </label>
                 
                 <label class="product-option" id="option-snickerdoodle">
-                    <input type="checkbox" name="Cookie Dough Snickerdoodle" value="1" onchange="updateTotal()">
+                    <input type="checkbox" name="Cookie Dough Snickerdoodle" value="1" onchange="onCheckboxChange('snickerdoodle')">
                     <div class="product-info">
                         <div class="product-name">Cookie Dough Snickerdoodle</div>
                         <div class="product-price">$13.00</div>
                     </div>
                     <div class="quantity-control">
                         <button type="button" class="quantity-btn" onclick="adjustQty('snickerdoodle', -1)">−</button>
-                        <input type="number" class="quantity-input" id="qty-snickerdoodle" name="Snickerdoodle Qty" value="1" min="1" max="10" onchange="updateTotal()">
+                        <input type="number" class="quantity-input" id="qty-snickerdoodle" name="Snickerdoodle Qty" value="0" min="0" max="10" onchange="updateTotal()">
                         <button type="button" class="quantity-btn" onclick="adjustQty('snickerdoodle', 1)">+</button>
                     </div>
                 </label>
@@ -441,10 +441,26 @@
         
         function adjustQty(product, delta) {
             const input = document.getElementById('qty-' + product);
+            const checkbox = document.querySelector('#option-' + product + ' input[type="checkbox"]');
             let val = parseInt(input.value) + delta;
-            if (val < 1) val = 1;
+            if (val < 0) val = 0;
             if (val > 10) val = 10;
             input.value = val;
+            
+            // Sync checkbox with quantity
+            checkbox.checked = val > 0;
+            updateTotal();
+        }
+        
+        function onCheckboxChange(product) {
+            const checkbox = document.querySelector('#option-' + product + ' input[type="checkbox"]');
+            const input = document.getElementById('qty-' + product);
+            
+            if (checkbox.checked && parseInt(input.value) === 0) {
+                input.value = 1;
+            } else if (!checkbox.checked) {
+                input.value = 0;
+            }
             updateTotal();
         }
         
@@ -457,13 +473,15 @@
                 const option = document.getElementById('option-' + product);
                 const qty = parseInt(document.getElementById('qty-' + product).value);
                 
-                if (checkbox.checked) {
+                if (qty > 0) {
                     option.classList.add('selected');
+                    checkbox.checked = true;
                     const lineTotal = prices[product] * qty;
                     total += lineTotal;
                     summaryHtml += `<div class="summary-line"><span>${names[product]} x ${qty}</span><span>$${lineTotal.toFixed(2)}</span></div>`;
                 } else {
                     option.classList.remove('selected');
+                    checkbox.checked = false;
                 }
             });
             
