@@ -492,28 +492,31 @@
             background: var(--bg);
         }
         
-        .faq-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
+        .faq-list {
+            max-width: 700px;
+            margin: 0 auto;
         }
         
         .faq-item {
-            background: var(--surface);
-            padding: 1.5rem;
-            border-radius: 10px;
-            border: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 1.25rem 0;
+        }
+        
+        .faq-item:first-child {
+            border-top: 1px solid var(--border);
         }
         
         .faq-question {
             font-weight: 600;
             color: var(--text-dark);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
+            font-size: 1.05rem;
         }
         
         .faq-answer {
             color: var(--text-muted);
             font-size: 0.95rem;
+            line-height: 1.6;
         }
         
         /* Market Info */
@@ -839,7 +842,7 @@
                 <p>For full allergen details, see our <a href="./ingredients.html" style="color: var(--brown);">ingredients page</a>.</p>
             </div>
             
-            <div class="faq-grid">
+            <div class="faq-list">
                 <div class="faq-item">
                     <div class="faq-question">Is everything really vegan?</div>
                     <div class="faq-answer">Yes. No eggs, no dairy, no honey, no animal products. Every item we make.</div>
@@ -858,6 +861,11 @@
                 <div class="faq-item">
                     <div class="faq-question">How do I pay?</div>
                     <div class="faq-answer">Payment at pickup. We accept Square (card), cash, and Venmo.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">How does ordering work?</div>
+                    <div class="faq-answer">Pre-order online, then pick up your items at the farmers market on your selected date. We do not ship.</div>
                 </div>
             </div>
         </div>
