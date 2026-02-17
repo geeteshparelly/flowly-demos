@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>You're In — Drift</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    :root {
+      --font-display: 'Fraunces', serif;
+      --font-body: 'Source Sans 3', sans-serif;
+      --color-bg: #faf7f4;
+      --color-text: #2a2522;
+      --color-text-muted: #847b73;
+      --color-accent: #c4785a;
+    }
+    
+    html {
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      text-align: center;
+    }
+    
+    .container {
+      max-width: 500px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeIn 0.7s ease-out forwards;
+    }
+    
+    .check {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 2rem;
+      border-radius: 50%;
+      background: rgba(196, 120, 90, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .check svg {
+      width: 36px;
+      height: 36px;
+      stroke: var(--color-accent);
+      stroke-width: 2;
+      fill: none;
+    }
+    
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      font-weight: 500;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    
+    p {
+      font-size: 1.1rem;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+    
+    a {
+      color: var(--color-accent);
+      text-decoration: none;
+      font-weight: 500;
+      transition: opacity 0.2s ease;
+    }
+    
+    a:hover {
+      opacity: 0.8;
+    }
+    
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="check">
+      <svg viewBox="0 0 24 24">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+    </div>
+    <h1>You're on the list</h1>
+    <p>We'll reach out when early access opens. In the meantime, keep capturing those ideas — they matter more than you think.</p>
+    <a href="index.html">Back to Drift</a>
+  </div>
+</body>
+</html>

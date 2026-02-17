@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drift — AI Journaling for Creatives</title>
+  <meta name="description" content="The journaling app that thinks with you. Drift uses AI to help creative professionals capture ideas, find patterns, and unlock clarity.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    :root {
+      --font-display: 'Fraunces', serif;
+      --font-body: 'Source Sans 3', sans-serif;
+      
+      --color-bg: #faf7f4;
+      --color-surface: #f0ebe5;
+      --color-border: #e4ddd4;
+      --color-text: #2a2522;
+      --color-text-muted: #847b73;
+      --color-accent: #c4785a;
+      --color-accent-hover: #b5694b;
+      --color-accent-light: rgba(196, 120, 90, 0.1);
+      
+      --space-xs: 0.5rem;
+      --space-sm: 1rem;
+      --space-md: 2rem;
+      --space-lg: 4rem;
+      --space-xl: 8rem;
+      --space-2xl: 12rem;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    
+    /* === NAV === */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(250, 247, 244, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+    
+    .nav.scrolled {
+      border-color: var(--color-border);
+    }
+    
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--color-text);
+      text-decoration: none;
+      letter-spacing: -0.03em;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    
+    .nav-link {
+      font-size: 0.95rem;
+      color: var(--color-text-muted);
+      text-decoration: none;
+      transition: color 0.25s ease;
+    }
+    
+    .nav-link:hover,
+    .nav-link:focus {
+      color: var(--color-text);
+    }
+    
+    .nav-cta {
+      padding: 0.65rem 1.5rem;
+      background: var(--color-text);
+      color: var(--color-bg);
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: 100px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(42, 37, 34, 0.2);
+    }
+    
+    .nav-cta:focus {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 2px;
+    }
+    
+    /* === HERO === */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+      align-items: center;
+      padding: calc(var(--space-xl) + 4rem) var(--space-lg) var(--space-xl);
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .hero-content {
+      max-width: 580px;
+    }
+    
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: var(--space-md);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s ease-out 0.2s forwards;
+    }
+    
+    .hero-eyebrow::before {
+      content: "";
+      width: 24px;
+      height: 2px;
+      background: var(--color-accent);
+    }
+    
+    .hero h1 {
+      font-size: clamp(2.75rem, 5vw, 4rem);
+      margin-bottom: var(--space-md);
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.7s ease-out 0.35s forwards;
+    }
+    
+    .hero-subtitle {
+      font-size: clamp(1.1rem, 1.5vw, 1.25rem);
+      color: var(--color-text-muted);
+      line-height: 1.7;
+      margin-bottom: var(--space-lg);
+      max-width: 480px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.7s ease-out 0.5s forwards;
+    }
+    
+    .hero-actions {
+      display: flex;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.7s ease-out 0.65s forwards;
+    }
+    
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      background: var(--color-accent);
+      color: white;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .btn-primary:hover {
+      background: var(--color-accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(196, 120, 90, 0.3);
+    }
+    
+    .btn-primary:focus {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 3px;
+    }
+    
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      background: transparent;
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: 100px;
+      border: 1.5px solid var(--color-border);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-secondary:hover {
+      border-color: var(--color-text);
+      background: rgba(42, 37, 34, 0.03);
+    }
+    
+    .btn-secondary:focus {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 3px;
+    }
+    
+    /* Hero Visual */
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(40px) scale(0.95);
+      animation: fadeInUp 0.9s ease-out 0.4s forwards;
+    }
+    
+    .hero-mockup {
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+      aspect-ratio: 3/4;
+      background: white;
+      border-radius: 24px;
+      box-shadow: 
+        0 4px 6px rgba(0,0,0,0.02),
+        0 12px 24px rgba(0,0,0,0.04),
+        0 48px 80px rgba(0,0,0,0.06);
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+    }
+    
+    .mockup-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .mockup-date {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      letter-spacing: 0.05em;
+    }
+    
+    .mockup-dots {
+      display: flex;
+      gap: 4px;
+    }
+    
+    .mockup-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-border);
+    }
+    
+    .mockup-content {
+      padding: 1.5rem;
+    }
+    
+    .mockup-prompt {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--color-accent);
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+    
+    .mockup-text {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--color-text);
+    }
+    
+    .mockup-text .line {
+      display: block;
+      opacity: 0;
+      animation: typeIn 0.5s ease-out forwards;
+    }
+    
+    .mockup-text .line:nth-child(1) { animation-delay: 1.2s; }
+    .mockup-text .line:nth-child(2) { animation-delay: 1.5s; }
+    .mockup-text .line:nth-child(3) { animation-delay: 1.8s; }
+    .mockup-text .line:nth-child(4) { animation-delay: 2.1s; }
+    
+    .mockup-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.1em;
+      background: var(--color-accent);
+      margin-left: 2px;
+      animation: blink 1s infinite;
+      vertical-align: text-bottom;
+    }
+    
+    /* Floating decorative elements */
+    .hero-float {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: var(--color-accent-light);
+      filter: blur(40px);
+      z-index: -1;
+    }
+    
+    .hero-float-1 {
+      top: -10%;
+      right: 10%;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .hero-float-2 {
+      bottom: 10%;
+      left: -5%;
+      width: 160px;
+      height: 160px;
+      animation: float 8s ease-in-out infinite reverse;
+    }
+    
+    /* === NARRATIVE SECTION === */
+    .narrative {
+      padding: var(--space-2xl) var(--space-lg);
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .narrative-text {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      line-height: 1.5;
+      color: var(--color-text);
+    }
+    
+    .narrative-text .line {
+      display: block;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .narrative-text .line.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .narrative-text .highlight {
+      color: var(--color-accent);
+    }
+    
+    /* === FEATURES === */
+    .features {
+      padding: var(--space-xl) var(--space-lg);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .features-header {
+      text-align: center;
+      margin-bottom: var(--space-xl);
+    }
+    
+    .features-eyebrow {
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: var(--space-sm);
+    }
+    
+    .features-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+    }
+    
+    .feature {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+      align-items: center;
+      padding: var(--space-xl) 0;
+      border-top: 1px solid var(--color-border);
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .feature.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .feature:nth-child(even) {
+      direction: rtl;
+    }
+    
+    .feature:nth-child(even) > * {
+      direction: ltr;
+    }
+    
+    .feature-content {
+      max-width: 480px;
+    }
+    
+    .feature-number {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-md);
+    }
+    
+    .feature-number::before {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: var(--color-accent);
+    }
+    
+    .feature h3 {
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      margin-bottom: var(--space-sm);
+    }
+    
+    .feature p {
+      font-size: 1.05rem;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+    }
+    
+    .feature-visual {
+      aspect-ratio: 4/3;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .feature-visual-inner {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-border) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .feature:hover .feature-visual-inner {
+      transform: scale(1.03);
+    }
+    
+    .feature-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      background: white;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .feature-icon svg {
+      width: 36px;
+      height: 36px;
+      stroke: var(--color-accent);
+      stroke-width: 1.5;
+      fill: none;
+    }
+    
+    /* === TESTIMONIALS === */
+    .testimonials {
+      padding: var(--space-2xl) var(--space-lg);
+      background: var(--color-surface);
+    }
+    
+    .testimonials-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .testimonials-header {
+      text-align: center;
+      margin-bottom: var(--space-xl);
+    }
+    
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+    }
+    
+    .testimonial {
+      background: white;
+      padding: var(--space-md);
+      border-radius: 16px;
+      border: 1px solid var(--color-border);
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .testimonial.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .testimonial:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.06);
+    }
+    
+    .testimonial-text {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: var(--space-md);
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      padding-top: var(--space-sm);
+      border-top: 1px solid var(--color-border);
+    }
+    
+    .testimonial-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--color-accent-light), var(--color-surface));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--color-accent);
+    }
+    
+    .testimonial-info {
+      flex: 1;
+    }
+    
+    .testimonial-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    
+    .testimonial-role {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+    }
+    
+    /* === CTA === */
+    .cta {
+      padding: var(--space-2xl) var(--space-lg);
+      text-align: center;
+    }
+    
+    .cta-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .cta-inner.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .cta h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: var(--space-sm);
+    }
+    
+    .cta p {
+      font-size: 1.15rem;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-lg);
+    }
+    
+    .cta-form {
+      display: flex;
+      gap: var(--space-sm);
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .cta-input {
+      padding: 1rem 1.5rem;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      border: 1.5px solid var(--color-border);
+      border-radius: 100px;
+      background: white;
+      min-width: 280px;
+      transition: all 0.3s ease;
+    }
+    
+    .cta-input:focus {
+      outline: none;
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 3px var(--color-accent-light);
+    }
+    
+    .cta-note {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      margin-top: var(--space-sm);
+    }
+    
+    /* === FOOTER === */
+    .footer {
+      padding: var(--space-lg) var(--space-lg);
+      border-top: 1px solid var(--color-border);
+    }
+    
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--color-text);
+      text-decoration: none;
+    }
+    
+    .footer-links {
+      display: flex;
+      gap: var(--space-md);
+    }
+    
+    .footer-link {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      text-decoration: none;
+      transition: color 0.25s ease;
+    }
+    
+    .footer-link:hover {
+      color: var(--color-text);
+    }
+    
+    .footer-copy {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+    }
+    
+    /* === ANIMATIONS === */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes typeIn {
+      from {
+        opacity: 0;
+        transform: translateX(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-20px) scale(1.05); }
+    }
+    
+    /* === RESPONSIVE === */
+    @media (max-width: 1024px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: var(--space-xl);
+      }
+      
+      .hero-content {
+        max-width: 100%;
+      }
+      
+      .hero-subtitle {
+        max-width: 100%;
+      }
+      
+      .hero-actions {
+        justify-content: center;
+      }
+      
+      .hero-mockup {
+        max-width: 340px;
+      }
+      
+      .feature {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+        text-align: center;
+      }
+      
+      .feature:nth-child(even) {
+        direction: ltr;
+      }
+      
+      .feature-content {
+        max-width: 100%;
+      }
+      
+      .feature-number {
+        justify-content: center;
+      }
+      
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      :root {
+        --space-lg: 2.5rem;
+        --space-xl: 5rem;
+        --space-2xl: 7rem;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .hero {
+        padding-top: calc(var(--space-lg) + 4rem);
+        min-height: auto;
+      }
+      
+      .hero h1 {
+        font-size: 2.25rem;
+      }
+      
+      .btn-primary,
+      .btn-secondary {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.95rem;
+      }
+      
+      .narrative-text {
+        font-size: 1.35rem;
+      }
+      
+      .footer-inner {
+        flex-direction: column;
+        gap: var(--space-md);
+        text-align: center;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hero-actions {
+        flex-direction: column;
+        width: 100%;
+      }
+      
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .cta-form {
+        flex-direction: column;
+      }
+      
+      .cta-input {
+        min-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav-logo">Drift</a>
+    <div class="nav-links">
+      <a href="#features" class="nav-link">Features</a>
+      <a href="#testimonials" class="nav-link">Stories</a>
+      <a href="#" class="nav-link">Pricing</a>
+      <a href="#cta" class="nav-cta">Get Early Access</a>
+    </div>
+  </nav>
+  
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="hero-eyebrow">AI-Powered Journaling</span>
+      <h1>Your thoughts deserve more than a blank page</h1>
+      <p class="hero-subtitle">
+        Drift is the journaling app that thinks with you. Capture ideas, surface patterns, and find clarity — powered by AI that understands the creative mind.
+      </p>
+      <div class="hero-actions">
+        <a href="#cta" class="btn-primary">
+          Join the Waitlist
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <a href="#features" class="btn-secondary">See How It Works</a>
+      </div>
+    </div>
+    
+    <div class="hero-visual">
+      <div class="hero-float hero-float-1"></div>
+      <div class="hero-float hero-float-2"></div>
+      
+      <div class="hero-mockup">
+        <div class="mockup-header">
+          <span class="mockup-date">February 16, 2026</span>
+          <div class="mockup-dots">
+            <span class="mockup-dot"></span>
+            <span class="mockup-dot"></span>
+            <span class="mockup-dot"></span>
+          </div>
+        </div>
+        <div class="mockup-content">
+          <p class="mockup-prompt">What's on your mind today?</p>
+          <p class="mockup-text">
+            <span class="line">I've been thinking about the film project.</span>
+            <span class="line">The pacing in act two still feels off.</span>
+            <span class="line">Maybe it's the transition between scenes —</span>
+            <span class="line">I need to sit with this longer.<span class="mockup-cursor"></span></span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- NARRATIVE -->
+  <section class="narrative">
+    <p class="narrative-text">
+      <span class="line">Most journals are graveyards of unfinished thoughts.</span>
+      <span class="line">Drift is different. It <span class="highlight">reads between the lines</span>,</span>
+      <span class="line">finds connections you missed,</span>
+      <span class="line">and reminds you what you were onto three weeks ago.</span>
+    </p>
+  </section>
+  
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <header class="features-header">
+      <p class="features-eyebrow">How it works</p>
+      <h2 class="features-title">Journaling that actually works</h2>
+    </header>
+    
+    <article class="feature">
+      <div class="feature-content">
+        <span class="feature-number">01 — Capture</span>
+        <h3>Write without friction</h3>
+        <p>No templates. No prompts unless you want them. Just start typing. Drift adapts to how you think, not the other way around.</p>
+      </div>
+      <div class="feature-visual">
+        <div class="feature-visual-inner">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+              <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+              <path d="M2 2l7.586 7.586"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </article>
+    
+    <article class="feature">
+      <div class="feature-content">
+        <span class="feature-number">02 — Connect</span>
+        <h3>Surface hidden patterns</h3>
+        <p>Drift notices when you return to the same ideas. It links entries across weeks and months, showing you the threads running through your creative work.</p>
+      </div>
+      <div class="feature-visual">
+        <div class="feature-visual-inner">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </article>
+    
+    <article class="feature">
+      <div class="feature-content">
+        <span class="feature-number">03 — Clarity</span>
+        <h3>Ask your own archive</h3>
+        <p>"What was I thinking about collaboration last month?" Drift can answer. Search your entries by theme, emotion, or idea — not just keywords.</p>
+      </div>
+      <div class="feature-visual">
+        <div class="feature-visual-inner">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="M21 21l-4.35-4.35"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+  
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="testimonials-inner">
+      <header class="testimonials-header">
+        <p class="features-eyebrow">Early Voices</p>
+        <h2 class="features-title">What creators are saying</h2>
+      </header>
+      
+      <div class="testimonials-grid">
+        <article class="testimonial">
+          <p class="testimonial-text">"I've tried every journaling app. Drift is the first one that made me actually want to come back. The AI doesn't feel gimmicky — it feels like a thinking partner."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">S</div>
+            <div class="testimonial-info">
+              <p class="testimonial-name">Sarah Chen</p>
+              <p class="testimonial-role">Documentary Filmmaker</p>
+            </div>
+          </div>
+        </article>
+        
+        <article class="testimonial">
+          <p class="testimonial-text">"Three weeks in, Drift showed me I'd written about 'creative burnout' in 12 separate entries. I didn't even realize it was weighing on me that much. Changed how I approach my work."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">M</div>
+            <div class="testimonial-info">
+              <p class="testimonial-name">Marcus Webb</p>
+              <p class="testimonial-role">Brand Designer</p>
+            </div>
+          </div>
+        </article>
+        
+        <article class="testimonial">
+          <p class="testimonial-text">"The semantic search is incredible. I asked 'when did I feel most confident about the novel?' and it pulled up entries I'd completely forgotten. Pure magic."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">J</div>
+            <div class="testimonial-info">
+              <p class="testimonial-name">Jasmine Okonkwo</p>
+              <p class="testimonial-role">Fiction Writer</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA -->
+  <section class="cta" id="cta">
+    <div class="cta-inner">
+      <h2>Think clearer. Create better.</h2>
+      <p>Join 2,400+ creatives on the waitlist. Early access opens March 2026.</p>
+      <form class="cta-form" action="https://formsubmit.co/geetesh.parelly@2hourlearning.com" method="POST">
+        <input type="hidden" name="_subject" value="Drift Waitlist Signup">
+        <input type="hidden" name="_next" value="https://geeteshparelly.github.io/flowly-demos/drift/thanks.html">
+        <input type="email" name="email" class="cta-input" placeholder="Enter your email" required>
+        <button type="submit" class="btn-primary">Get Early Access</button>
+      </form>
+      <p class="cta-note">No spam. Unsubscribe anytime.</p>
+    </div>
+  </section>
+  
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <a href="#" class="footer-logo">Drift</a>
+      <div class="footer-links">
+        <a href="#" class="footer-link">Privacy</a>
+        <a href="#" class="footer-link">Terms</a>
+        <a href="#" class="footer-link">Twitter</a>
+      </div>
+      <p class="footer-copy">© 2026 Drift. Crafted for the creative mind.</p>
+    </div>
+  </footer>
+  
+  <script>
+    // Nav scroll effect
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+    
+    // Scroll reveal observer
+    const observerOptions = {
+      threshold: 0.15,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+    
+    // Observe narrative lines
+    document.querySelectorAll('.narrative-text .line').forEach((line, index) => {
+      line.style.transitionDelay = `${index * 0.15}s`;
+      observer.observe(line);
+    });
+    
+    // Observe features
+    document.querySelectorAll('.feature').forEach((feature, index) => {
+      feature.style.transitionDelay = `${index * 0.1}s`;
+      observer.observe(feature);
+    });
+    
+    // Observe testimonials
+    document.querySelectorAll('.testimonial').forEach((testimonial, index) => {
+      testimonial.style.transitionDelay = `${index * 0.1}s`;
+      observer.observe(testimonial);
+    });
+    
+    // Observe CTA
+    observer.observe(document.querySelector('.cta-inner'));
+  </script>
+  
+</body>
+</html>
